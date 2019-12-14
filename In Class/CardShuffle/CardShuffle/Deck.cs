@@ -6,53 +6,57 @@ using System.Threading.Tasks;
 
 namespace CardShuffle
 {
-    public class Deck
+    public class Deck : Card
     {
         private const int NUMBER_OF_CARDS = 52;
 
-        List<Card> cards = new List<Card>(); // create an empty list
+        private Card[] deck; // array for Cards
+        public Deck()
+        {
+            deck = new Card[NUMBER_OF_CARDS];// dimension array to 52
+        }
 
-        //public void Shuffle()
-        //{
-        //    var random = new System.Random();
-        //    var n = NUMBER_OF_CARDS;
+        public Card[] getDeck { get { return deck; } }
 
-        //    for (var i = 0; i < n; i++)
-        //    {
-        //        var r = i + random.Next(n - i);
-        //        var card = cards[r];
-        //        cards[r] = cards[i];
-        //        cards[i] = card;
-        //    }
-        //}
+
+        // create the deck
+        public void setupDeck()
+        {
+            int i = 0; // index for deck array
+            foreach (Suit s in Enum.GetValues(typeof(Suit)))
+            {
+                foreach(Rank r in Enum.GetValues(typeof(Rank)))
+                {
+                    deck[i] = new Card {SUIT = s,RANK = r };
+                    i++;
+                }
+            }
+            
+        }
 
         public void Shuffle()
         {
-            List<Card> shuffledDeck = new List<Card>(); // make a place to hold the new deck order
-            while (cards.Count > 0)
+            Random rand = new Random();
+            Card temp;
+
+            for (int shuffletimes = 0; shuffletimes <1000; shuffletimes++)
             {
-                Random rand = new Random();
-                int selected = rand.Next(cards.Count); // get an index to move to the new deck
-                shuffledDeck.Add(cards.ElementAt(selected)); // move it
-                cards.RemoveAt(selected); // remove it from consideration
-            }
-            cards = shuffledDeck;  // replace deck
-        }
-        public Deck()
-        {
-            for (int j = 0; j < 3; j++) // loop through suits
-            {
-                for (int i = 0; i < NUMBER_OF_CARDS; i++) // loop through ranks
+                for(int i=0;i<NUMBER_OF_CARDS; i++)
                 {
-                    Card next = new Card(i, j, j);
-                    cards.Add(next);
+                    int secondcardindex = rand.Next(13);
+                    temp = deck[i];
+                    deck[i] = deck[secondcardindex];
+                    deck[secondcardindex] = temp;
                 }
             }
+
         }
+
+        
         public override string ToString()
         {
-            string stringified = "Deck of " + cards.Count + " Cards:\n-----------------\n";
-            foreach (Card c in cards)
+            string stringified = "Deck of " + NUMBER_OF_CARDS + " Cards:\n-----------------\n";
+            foreach (Card c in deck)
             {
                 stringified += c.ToString() + "\n";
             }

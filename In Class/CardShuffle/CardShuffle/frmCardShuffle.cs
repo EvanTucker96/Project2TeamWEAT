@@ -20,6 +20,7 @@ namespace CardShuffle
 
         private void btnShuffle_Click(object sender, EventArgs e)
         {
+            cardDeck.setupDeck();
             cardDeck.Shuffle();
             RefreshCards();
         }

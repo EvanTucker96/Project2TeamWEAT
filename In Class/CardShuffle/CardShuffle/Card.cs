@@ -6,41 +6,47 @@ using System.Threading.Tasks;
 
 namespace CardShuffle
 {
+   
     public class Card
     {
-        // Public data items as nothing changes
+        public enum Suit
+        {
+            Clubs,
+            Diamonds,
+            Hearts,
+            Spades
+        }
         public enum Rank
         {
-            Ace = 1, Two, Three, Four, Five,
-            Six, Seven, Eight, Nine, Ten, Jack, Queen, King
+            Ace = 1,
+            Two,
+            Three,
+            Four,
+            Five,
+            Six,
+            Seven,
+            Eight,
+            Nine,
+            Ten,
+            Jack,
+            Queen,
+            King
         }
 
-        public enum Suit { Club, Diamond, Heart, Spade }
-        private char[] suitChar = { '\u2663', '\u2666', '\u2665', '\u2660' };
+        public char[] Symbol = { '\u2663', '\u2666', '\u2665', '\u2660' };
 
-        private readonly int rank;
-        private readonly int suit;
-        private readonly int pic;
-        // Properties
+        // properties
+        public Suit SUIT { get; set; }
 
-        //public Suit Suit { get; set; }
-        //public Rank Rank { get; set; }
-        // Constructor
-        public Card (int r, int s, int p)
-        {
-            rank = r;
-            suit = s;
-            pic = p;
-        }
-
-        // Public operations
-        public override string ToString()
-        {
-           
-
-            return suitChar[pic] + " " + rank + " of " + suit;
-        } 
+        public Rank RANK { get; set; }
 
        
+
+        public override string ToString()
+        {
+            int i = Convert.ToInt32(SUIT);
+            return Symbol[i].ToString() + " " + RANK + " " + SUIT;
+        }
+
     }// end of class
 } // end of namespace
