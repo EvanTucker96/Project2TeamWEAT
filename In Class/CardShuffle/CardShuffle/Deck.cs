@@ -14,14 +14,17 @@ namespace CardShuffle
         public void Shuffle()
         {
             List<Card> shuffledDeck = new List<Card>(); // make a place to hold the new deck order
-            while (cards.Count > 0)
+            for (int i = 0; i < 7; i++) // "they" say seven times is the best (one time was kinda weak in any case)
             {
-                Random rand = new Random();
-                int selected = rand.Next(cards.Count); // get an index to move to the new deck
-                shuffledDeck.Add(cards.ElementAt(selected)); // move it
-                cards.RemoveAt(selected); // remove it from consideration
+                while (cards.Count > 0)
+                {
+                    Random rand = new Random();
+                    int selected = rand.Next(cards.Count); // get an index to move to the new deck
+                    shuffledDeck.Add(cards.ElementAt(selected)); // move it
+                    cards.RemoveAt(selected); // remove it from consideration
+                }
+                cards = shuffledDeck;  // replace deck
             }
-            cards = shuffledDeck;  // replace deck
         }
 
         public void setupDeck()
@@ -60,11 +63,14 @@ namespace CardShuffle
         public override string ToString()
         {
             string stringified = "Deck of " + cards.Count + " Cards:\r-----------------\r\n";
+            int cardCount = 0;
             foreach (Card c in cards)
             {
-                stringified += c.ToString() + "\t";
-            }
-            return stringified;
+                stringified += c.ToString();
+                //every third card do a newline instead of a tab
+                stringified += ((cardCount % 3) == 2) ? "\r\n" : "\t";
+                cardCount++;
+                return stringified;
         }
     }// end of class
 } // end of namespace
