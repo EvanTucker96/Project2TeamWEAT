@@ -38,11 +38,10 @@ namespace CardGame
 
         public override string ToString()
         {
-            string stringified = "Deck of " + cards.Count + " Cards:" + Environment.NewLine 
-                                            + "-----------------" + Environment.NewLine;
+            string stringified = "Deck of " + cards.Count + " Cards:\n-----------------\n";
             foreach (Card c in cards)
             {
-                stringified += c.ToShortString() +Environment.NewLine;
+                stringified += c.ToString() + "\n";
             }
             return stringified;
         }

@@ -27,10 +27,7 @@ namespace CardGame
 
         private void btnShuffle_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 7; i++)
-            {
-                cardDeck.Shuffle();
-            }
+            cardDeck.Shuffle();
             RefreshCards();
         }
     }

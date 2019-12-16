@@ -60,13 +60,9 @@ namespace CardShuffle
         public override string ToString()
         {
             string stringified = "Deck of " + cards.Count + " Cards:\r-----------------\r\n";
-            int cardCount = 0;
             foreach (Card c in cards)
             {
-                stringified += c.ToString();
-                //every third card do a newline instead of a tab
-                stringified += ((cardCount % 3) == 2) ? "\r\n" : "\t\t";
-                cardCount++;
+                stringified += c.ToString() + "\t";
             }
             return stringified;
         }

@@ -54,19 +54,5 @@ namespace CardGame
         {
             return RankName() + " of " + SuitName();
         }
-
-        public string ToShortString()
-        {
-            string theCard = "";
-            if (rank == 0 || rank > 9) // if it's a named card...
-            {
-                theCard += RankName().Substring(0, 1); // use the first letter of the name
-            } else
-            {
-                theCard += (rank + 1); // otherwise use the number
-            }
-            theCard += getSuitChar(); // tack on the suit symbol
-            return theCard; // and we're done
-        }
     }
 }
