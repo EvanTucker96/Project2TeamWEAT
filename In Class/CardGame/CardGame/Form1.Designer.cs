@@ -34,15 +34,17 @@
             // 
             // txtCardList
             // 
-            this.txtCardList.Location = new System.Drawing.Point(278, 36);
+            this.txtCardList.AcceptsReturn = true;
+            this.txtCardList.Location = new System.Drawing.Point(93, 12);
             this.txtCardList.Multiline = true;
             this.txtCardList.Name = "txtCardList";
-            this.txtCardList.Size = new System.Drawing.Size(209, 687);
+            this.txtCardList.ReadOnly = true;
+            this.txtCardList.Size = new System.Drawing.Size(209, 926);
             this.txtCardList.TabIndex = 0;
             // 
             // btnShuffle
             // 
-            this.btnShuffle.Location = new System.Drawing.Point(118, 145);
+            this.btnShuffle.Location = new System.Drawing.Point(12, 12);
             this.btnShuffle.Name = "btnShuffle";
             this.btnShuffle.Size = new System.Drawing.Size(75, 23);
             this.btnShuffle.TabIndex = 1;
@@ -54,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 735);
+            this.ClientSize = new System.Drawing.Size(332, 961);
             this.Controls.Add(this.btnShuffle);
             this.Controls.Add(this.txtCardList);
             this.Name = "frmCards";
