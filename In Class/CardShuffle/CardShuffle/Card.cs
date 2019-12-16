@@ -28,9 +28,9 @@ namespace CardShuffle
             Eight,
             Nine,
             Ten,
-            Jack,
-            Queen,
-            King
+            Jack = 10,
+            Queen = 10,
+            King =10
         }
 
         public char[] Symbol = { '\u2663', '\u2666', '\u2665', '\u2660' };
@@ -41,11 +41,14 @@ namespace CardShuffle
         public Rank RANK { get; set; }
 
        
-
+        public int GetRank(string temp)
+        {
+            return (int)Enum.Parse(typeof(Rank), temp); 
+        }
         public override string ToString()
         {
             int i = Convert.ToInt32(SUIT);
-            return Symbol[i].ToString() + " " + RANK + " " + SUIT;
+            return Symbol[i].ToString() + " " + RANK + " of " + SUIT;
         }
 
     }// end of class

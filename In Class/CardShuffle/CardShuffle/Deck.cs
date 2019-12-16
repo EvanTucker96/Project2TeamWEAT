@@ -9,56 +9,60 @@ namespace CardShuffle
     public class Deck : Card
     {
         private const int NUMBER_OF_CARDS = 52;
-
-        private Card[] deck; // array for Cards
-        public Deck()
+        List<Card> cards = new List<Card>();
+        
+        public void Shuffle()
         {
-            deck = new Card[NUMBER_OF_CARDS];// dimension array to 52
+            List<Card> shuffledDeck = new List<Card>(); // make a place to hold the new deck order
+            while (cards.Count > 0)
+            {
+                Random rand = new Random();
+                int selected = rand.Next(cards.Count); // get an index to move to the new deck
+                shuffledDeck.Add(cards.ElementAt(selected)); // move it
+                cards.RemoveAt(selected); // remove it from consideration
+            }
+            cards = shuffledDeck;  // replace deck
         }
 
-        public Card[] getDeck { get { return deck; } }
-
-
-        // create the deck
         public void setupDeck()
         {
             int i = 0; // index for deck array
             foreach (Suit s in Enum.GetValues(typeof(Suit)))
             {
-                foreach(Rank r in Enum.GetValues(typeof(Rank)))
+                foreach (Rank r in Enum.GetValues(typeof(Rank)))
                 {
-                    deck[i] = new Card {SUIT = s,RANK = r };
+                    Card next = new Card { SUIT = s, RANK = r };
+                    cards.Add(next);
                     i++;
                 }
             }
-            
-        }
 
-        public void Shuffle()
+        }
+        public  int Count()
         {
-            Random rand = new Random();
-            Card temp;
-
-            for (int shuffletimes = 0; shuffletimes <1000; shuffletimes++)
-            {
-                for(int i=0;i<NUMBER_OF_CARDS; i++)
-                {
-                    int secondcardindex = rand.Next(13);
-                    temp = deck[i];
-                    deck[i] = deck[secondcardindex];
-                    deck[secondcardindex] = temp;
-                }
-            }
-
+            return cards.Count;
         }
 
-        
+        public Card GetCard(int i)
+        {
+            return cards.ElementAt(i);
+        }
+
+        public int GetValue(string s)
+        {
+            return GetRank(s);
+        }
+
+        public void RemoveAt(int i)
+        {
+            cards.RemoveAt(i);
+        }
         public override string ToString()
         {
-            string stringified = "Deck of " + NUMBER_OF_CARDS + " Cards:\n-----------------\n";
-            foreach (Card c in deck)
+            string stringified = "Deck of " + cards.Count + " Cards:\r-----------------\r\n";
+            foreach (Card c in cards)
             {
-                stringified += c.ToString() + "\n";
+                stringified += c.ToString() + "\t";
             }
             return stringified;
         }
