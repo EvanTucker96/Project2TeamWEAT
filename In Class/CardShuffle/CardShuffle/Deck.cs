@@ -70,7 +70,9 @@ namespace CardShuffle
                 //every third card do a newline instead of a tab
                 stringified += ((cardCount % 3) == 2) ? "\r\n" : "\t";
                 cardCount++;
-                return stringified;
+            }
+
+            return stringified;
         }
     }// end of class
 } // end of namespace
