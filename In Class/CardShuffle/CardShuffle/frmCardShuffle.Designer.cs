@@ -42,6 +42,7 @@
             this.btnDealerHit = new System.Windows.Forms.Button();
             this.lblPlayerStat = new System.Windows.Forms.Label();
             this.lblDealerStat = new System.Windows.Forms.Label();
+            this.btnNewDeck = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnShuffle
@@ -182,11 +183,23 @@
             this.lblDealerStat.Size = new System.Drawing.Size(204, 20);
             this.lblDealerStat.TabIndex = 14;
             // 
+            // btnNewDeck
+            // 
+            this.btnNewDeck.Location = new System.Drawing.Point(435, 89);
+            this.btnNewDeck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNewDeck.Name = "btnNewDeck";
+            this.btnNewDeck.Size = new System.Drawing.Size(112, 35);
+            this.btnNewDeck.TabIndex = 15;
+            this.btnNewDeck.Text = "New Deck";
+            this.btnNewDeck.UseVisualStyleBackColor = true;
+            this.btnNewDeck.Click += new System.EventHandler(this.btnNewDeck_Click);
+            // 
             // frmCardShuffle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 540);
+            this.Controls.Add(this.btnNewDeck);
             this.Controls.Add(this.lblDealerStat);
             this.Controls.Add(this.lblPlayerStat);
             this.Controls.Add(this.btnDealerHit);
@@ -205,6 +218,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmCardShuffle";
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.frmCardShuffle_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,6 +239,7 @@
         private System.Windows.Forms.Button btnDealerHit;
         private System.Windows.Forms.Label lblPlayerStat;
         private System.Windows.Forms.Label lblDealerStat;
+        private System.Windows.Forms.Button btnNewDeck;
     }
 }
 

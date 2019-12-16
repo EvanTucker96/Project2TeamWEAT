@@ -21,7 +21,7 @@ namespace CardShuffle
         public void btnShuffle_Click(object sender, EventArgs e)
         {
             
-            cardDeck.setupDeck();
+            //cardDeck.setupDeck();
             cardDeck.Shuffle();
             RefreshCards();
             btnDeal.Enabled = true;
@@ -219,6 +219,20 @@ namespace CardShuffle
                 btnPlayerHit.Enabled = false;
                 MessageBox.Show("Not enough Cards!");
             }
+        }
+
+        private void frmCardShuffle_Shown(object sender, EventArgs e)
+        {
+            cardDeck.setupDeck();
+        }
+
+        private void btnNewDeck_Click(object sender, EventArgs e)
+        {
+            cardDeck = new Deck();
+            cardDeck.setupDeck();
+            cardDeck.Shuffle();
+            RefreshCards();
+            btnDeal.Enabled = true;
         }
     }
 }
