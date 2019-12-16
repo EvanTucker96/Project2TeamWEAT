@@ -20,79 +20,82 @@ namespace CardShuffle
 
         public void btnShuffle_Click(object sender, EventArgs e)
         {
-            
-            //cardDeck.setupDeck();
+
             cardDeck.Shuffle();
             RefreshCards();
             btnDeal.Enabled = true;
-            //btnClrHands.Enabled = true;
-            //btnDealerHit.Enabled = true;
-            //btnPlayerHit.Enabled = true;
         }
 
         private void RefreshCards()
         {
-            //txtCardDisplay.Text = cardDeck.ToString();
             rtCards.Text = cardDeck.ToString();
-           
+
         }
 
         private void btnDeal_Click(object sender, EventArgs e)
         {
-            int cardCheck = cardDeck.Count();
-            if (cardCheck >= 4)
+            int cardCheck = cardDeck.Count(); // Get the current number of cards
+            if (cardCheck >= 4) // only do this if we have atleast 4 cards remaining
             {
-                List<Card> playerHand = new List<Card>();
-                List<Card> dealerHand = new List<Card>();
-                string playerCards = "", dealerCards = "", temp;
-                int player = 0, dealer = 0;
+                DealOrHit(true, cardCheck, rtPLayer, lblPlayerHand, lblPlayerStat);
+                DealOrHit(true, cardCheck, rtDealer, lblDealersHand, lblDealerStat);
 
-
-                while (playerHand.Count < 2)
-                {
-                    Random rand = new Random();
-                    int cards = cardDeck.Count();
-                    int selected = rand.Next(cards); // get an index to move to the new deck
-                    playerHand.Add(cardDeck.GetCard(selected)); // move it
-                    playerCards += cardDeck.GetCard(selected).ToString() + "\r\n";
-                    temp = cardDeck.GetCard(selected).ToString();
-                    string[] strlinst = temp.Split(' ');
-                    player += cardDeck.GetValue(strlinst[1]);
-                    cardDeck.RemoveAt(selected); // remove it from consideration
-                    RefreshCards();
-                }
-                //for (int i = 0; i < playerHand.Count; i++)
-                rtPLayer.Text = playerCards;
-                lblPlayerHand.Text = player.ToString();
-
-                while (dealerHand.Count < 2)
-                {
-                    Random rand = new Random();
-                    int cards = cardDeck.Count();
-                    int selected = rand.Next(cards); // get an index to move to the new deck
-                    dealerHand.Add(cardDeck.GetCard(selected)); // move it
-                    dealerCards += cardDeck.GetCard(selected).ToString() + "\r\n";
-                    temp = cardDeck.GetCard(selected).ToString();
-                    string[] strlinst = temp.Split(' ');
-                    dealer += cardDeck.GetValue(strlinst[1]);
-                    cardDeck.RemoveAt(selected); // remove it from consideration
-                    RefreshCards();
-                }
-                //for (int i = 0; i < playerHand.Count; i++)
-                rtDealer.Text = dealerCards;
-                lblDealersHand.Text = dealer.ToString();
+                // enable the Clear Hands & Hit buttons, disable Deal
                 btnClrHands.Enabled = true;
                 btnDealerHit.Enabled = true;
                 btnPlayerHit.Enabled = true;
                 btnDeal.Enabled = false;
             }
-            else
+            else // if we don't have enough cards, disable Actions
             {
                 btnDealerHit.Enabled = false;
                 btnPlayerHit.Enabled = false;
                 btnDeal.Enabled = false;
-                
+
             }
+        }
+
+        public void DealOrHit(bool Deal, int cardCount, RichTextBox rtb, Label lb, Label stat)
+        {
+            List<Card> Hand = new List<Card>(); // create a temporary List for Cards (empty)
+            Random rand = new Random();
+            string tmpCards = "", temp; // setup string variables
+            int score = 0; // setup int variables for the hand score
+
+            if (Deal) // only do this if we are dealing
+            {
+                while (Hand.Count < 2) // each deal gets 2 cards
+                {
+                    //Random rand = new Random(); // create a rand variable
+                    //int cards = cardDeck.Count(); // get the current # cards in the deck
+                    int selected = rand.Next(cardCount); // get an index to move to the new deck
+                    Hand.Add(cardDeck.GetCard(selected)); // move it
+                    tmpCards += cardDeck.GetCard(selected).ToString() + "\r\n"; //generate the string for RichTextBox
+                    temp = cardDeck.GetCard(selected).ToString(); // temp container to hold the string that we will split
+                    string[] strlinst = temp.Split(' '); // split string on space
+                    score = cardDeck.GetValue(strlinst[1]); // get the Rank value of the card, position 1 is Rank
+                                                             // add values together to get running total
+                    cardDeck.RemoveAt(selected); // remove card from deck
+                    RefreshCards(); // refresh the deck display
+                }
+                rtb.Text = tmpCards; // add the cards to the RT
+                UpdateScore(lb,stat, score); // display the current hand value
+            }
+            else
+            {
+                int selected = rand.Next(cardCount); // get an index to move to the new deck
+                Hand.Add(cardDeck.GetCard(selected)); // move it
+                tmpCards += cardDeck.GetCard(selected).ToString() + "\r\n";
+                temp = cardDeck.GetCard(selected).ToString();
+                string[] strlinst = temp.Split(' ');
+                //score = Convert.ToInt32(lb.Text);
+                score = cardDeck.GetValue(strlinst[1]);
+                cardDeck.RemoveAt(selected); // remove it from consideration
+                UpdateScore(lb,stat, score);
+                rtb.Text += tmpCards;
+            }
+
+
         }
 
         private void btnClrHands_Click(object sender, EventArgs e)
@@ -101,13 +104,16 @@ namespace CardShuffle
             rtDealer.Text = "";
             rtPLayer.Text = "";
             lblDealersHand.Text = "";
+            lblDealersHand.ForeColor = Color.Black;
             lblPlayerHand.Text = "";
+            lblPlayerHand.ForeColor = Color.Black;
             lblPlayerStat.Text = "";
             lblDealerStat.Text = "";
             btnClrHands.Enabled = false;
             btnDealerHit.Enabled = false;
             btnPlayerHit.Enabled = false;
 
+            // only enable if we have 4 or more cards
             if ((checkCards = cardDeck.Count()) >= 4)
             {
                 btnDeal.Enabled = true;
@@ -118,100 +124,69 @@ namespace CardShuffle
 
         private void btnPlayerHit_Click(object sender, EventArgs e)
         {
-            int checkCards;
-            if ((checkCards = cardDeck.Count()) >= 1)
-            {
-                string playerCards = "", temp;
-            int player = 0, score;
-            List<Card> playerHand = new List<Card>();
-            Random rand = new Random();
-            int cards = cardDeck.Count();
-            int selected = rand.Next(cards); // get an index to move to the new deck
-            playerHand.Add(cardDeck.GetCard(selected)); // move it
-            playerCards += cardDeck.GetCard(selected).ToString() + "\r\n";
-            temp = cardDeck.GetCard(selected).ToString();
-            string[] strlinst = temp.Split(' ');
-            player += cardDeck.GetValue(strlinst[1]);
-            cardDeck.RemoveAt(selected); // remove it from consideration
-            
-            rtPLayer.Text += playerCards;
+            int checkCards, score=0;
             if (lblPlayerHand.Text != "")
             {
-                score = Convert.ToInt32(lblPlayerHand.Text) + player;
+                score = Convert.ToInt32(lblPlayerHand.Text);
+            }
+            if ((checkCards = cardDeck.Count()) >= 1 && score < 21)
+            {
+                DealOrHit(false, checkCards, rtPLayer, lblPlayerHand, lblPlayerStat);
+                
             }
             else
             {
-                score = player;
-            }
-            
-            if (score > 21)
-            {
-                lblPlayerStat.ForeColor = Color.Red;
-                lblPlayerStat.Text = "BUST!";
-                btnDealerHit.Enabled = false;
-                btnPlayerHit.Enabled = false;
-            }else if(score==21)
-                {
-                    lblPlayerStat.ForeColor = Color.Green;
-                    lblPlayerStat.Text = "BLACKJACK!";
-                    btnDealerHit.Enabled = false;
-                    btnPlayerHit.Enabled = false;
-                }
-            lblPlayerHand.Text = score.ToString();
-            RefreshCards();
-            }
-            else
-            {
-                btnDealerHit.Enabled = false;
-                btnPlayerHit.Enabled = false;
+               
                 MessageBox.Show("Not enough Cards!");
 
             }
         }
 
+        private void UpdateScore(Label lb, Label stat, int score)
+        {
+            //int tmpScore = 0;
+            if (lb.Text != "")
+            {
+                score += Convert.ToInt32(lb.Text); // + tmpScore;
+            }
+            
+
+            if (score > 21)
+            {
+                stat.ForeColor = Color.Red;
+                stat.Text = "BUST!";
+                btnDealerHit.Enabled = false;
+                btnPlayerHit.Enabled = false;
+            }
+            else if (score == 21)
+            {
+                stat.ForeColor = Color.Green;
+                stat.Text = "BLACKJACK!";
+                btnDealerHit.Enabled = false;
+                btnPlayerHit.Enabled = false;
+            }
+            
+            lb.Text = score.ToString();
+            RefreshCards();
+        
+        }
+    
+            
+
+
         private void btnDealerHit_Click(object sender, EventArgs e)
         {
-            int checkCards;
-            if ((checkCards = cardDeck.Count()) >= 1)
+            int checkCards, score = 0;
+            if (lblDealersHand.Text != "")
             {
-                string dealerCards = "", temp;
-                int dealer = 0, score;
-                List<Card> dealerHand = new List<Card>();
-                Random rand = new Random();
-                int cards = cardDeck.Count();
-                int selected = rand.Next(cards); // get an index to move to the new deck
-                dealerHand.Add(cardDeck.GetCard(selected)); // move it
-                dealerCards += cardDeck.GetCard(selected).ToString() + "\r\n";
-                temp = cardDeck.GetCard(selected).ToString();
-                string[] strlinst = temp.Split(' ');
-                dealer += cardDeck.GetValue(strlinst[1]);
-                cardDeck.RemoveAt(selected); // remove it from consideration
+                score = Convert.ToInt32(lblDealersHand.Text);
+            }
+            if ((checkCards = cardDeck.Count()) >= 1 && score < 21)
+            {
+            DealOrHit(false, checkCards, rtDealer, lblDealersHand, lblDealerStat);
+                btnDealerHit.Enabled = true;
+                btnPlayerHit.Enabled = true;
 
-                rtDealer.Text += dealerCards;
-                if (lblDealersHand.Text != "")
-                {
-                    score = Convert.ToInt32(lblDealersHand.Text) + dealer;
-                }
-                else
-                {
-                    score = dealer;
-                }
-                if (score > 21)
-                {
-                    lblDealerStat.ForeColor = Color.Red;
-                    lblDealerStat.Text = "BUST!";
-                    btnDealerHit.Enabled = false;
-                    btnPlayerHit.Enabled = false;
-                }
-                else if (score == 21)
-                {
-                    lblDealerStat.ForeColor = Color.Green;
-                    lblDealerStat.Text = "BLACKJACK!";
-                    btnDealerHit.Enabled = false;
-                    btnPlayerHit.Enabled = false;
-                }
-                lblDealersHand.Text = score.ToString();
-                RefreshCards();
             }
             else
             {
