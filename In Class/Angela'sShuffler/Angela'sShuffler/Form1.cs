@@ -17,6 +17,5 @@ namespace Angela_sShuffler
             InitializeComponent();
         }
 
-
     }
 }

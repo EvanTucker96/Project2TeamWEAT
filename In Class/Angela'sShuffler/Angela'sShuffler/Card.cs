@@ -13,8 +13,8 @@ namespace Angela_sShuffler
 
         public Card(int mySuit, int myFace)
         {
-            Suit = (CardSuit)(mySuit);
-            Face = (CardFace)(myFace);
+            suit = (CardSuit)(mySuit);
+            face = (CardFace)(myFace);
         }
 
         public CardSuit CardSuit
