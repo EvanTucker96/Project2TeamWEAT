@@ -20,26 +20,19 @@ namespace Workshop4_team3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //TravelExpertsDataContext teContext = new TravelExpertsDataContext();
             LoadDGV();
         }
 
         public void LoadDGV()
         {
-            packageDataGridView.DataSource = teContext.Packages;
-            //packageDataGridView.AutoResizeColumns();
-
-            // dataGrid formatting items - they don't all matter as we aren't allowing
-            // data editing in this application
-            // Allows the columns to Autoresize based on contents
-           // packageDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            packageDataGridView.DataSource = teContext.Packages;           
             // select full row instead of a single cell
             packageDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // don't allow more than one row to be selected
             packageDataGridView.MultiSelect = false;
+            // set column names and display format
             packageDataGridView.Columns[0].HeaderText = "Package ID";
             packageDataGridView.Columns[1].HeaderText = "Package Name";
-            //packageDataGridView.Columns[2].Width = 330;
             packageDataGridView.Columns[2].HeaderText = "Start Date";
             packageDataGridView.Columns[3].HeaderText = "End Date";
             packageDataGridView.Columns[4].HeaderText = "Description";
@@ -47,7 +40,6 @@ namespace Workshop4_team3
             packageDataGridView.Columns[6].HeaderText = "Agency Commission";
             packageDataGridView.Columns[5].DefaultCellStyle.Format = "c";
             packageDataGridView.Columns[6].DefaultCellStyle.Format = "c";
-            //packageDataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
