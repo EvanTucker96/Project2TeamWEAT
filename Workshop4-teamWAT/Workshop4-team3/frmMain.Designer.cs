@@ -1,6 +1,6 @@
 ﻿namespace Workshop4_team3
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.packageDataGridView = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,17 +41,10 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
+            this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.packageDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // packageBindingSource
-            // 
-            this.packageBindingSource.DataSource = typeof(Workshop4_team3.Package);
             // 
             // packageDataGridView
             // 
@@ -69,6 +65,43 @@
             this.packageDataGridView.RowTemplate.Height = 24;
             this.packageDataGridView.Size = new System.Drawing.Size(1382, 220);
             this.packageDataGridView.TabIndex = 1;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(114, 302);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(100, 47);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(244, 302);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(100, 47);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnModify
+            // 
+            this.btnModify.Location = new System.Drawing.Point(363, 302);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(100, 47);
+            this.btnModify.TabIndex = 4;
+            this.btnModify.Text = "Modify";
+            this.btnModify.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(486, 302);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(100, 47);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -126,43 +159,11 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 125;
             // 
-            // btnAdd
+            // packageBindingSource
             // 
-            this.btnAdd.Location = new System.Drawing.Point(114, 302);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 47);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.packageBindingSource.DataSource = typeof(Workshop4_team3.Package);
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(244, 302);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 47);
-            this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnModify
-            // 
-            this.btnModify.Location = new System.Drawing.Point(363, 302);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(100, 47);
-            this.btnModify.TabIndex = 4;
-            this.btnModify.Text = "Modify";
-            this.btnModify.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(486, 302);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 47);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // Form1
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -174,11 +175,11 @@
             this.Controls.Add(this.packageDataGridView);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
+            this.Name = "frmMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.packageDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

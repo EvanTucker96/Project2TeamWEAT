@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Workshop4_team3
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         TravelExpertsDataContext teContext = new TravelExpertsDataContext();
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -48,6 +48,12 @@ namespace Workshop4_team3
             packageDataGridView.Columns[5].DefaultCellStyle.Format = "c";
             packageDataGridView.Columns[6].DefaultCellStyle.Format = "c";
             //packageDataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddEdit addForm = new frmAddEdit();
+            DialogResult result = addForm.ShowDialog();
         }
     }
 }
