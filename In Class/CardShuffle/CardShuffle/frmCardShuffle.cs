@@ -60,7 +60,8 @@ namespace CardShuffle
             List<Card> Hand = new List<Card>(); // create a temporary List for Cards (empty)
             Random rand = new Random();
             string tmpCards = "", temp; // setup string variables
-            int score = 0; // setup int variables for the hand score
+            //int score = 0; // setup int variables for the hand score
+            bool blAce = false;
 
             if (Deal) // only do this if we are dealing
             {
@@ -73,13 +74,18 @@ namespace CardShuffle
                     tmpCards += cardDeck.GetCard(selected).ToString() + "\r\n"; //generate the string for RichTextBox
                     temp = cardDeck.GetCard(selected).ToString(); // temp container to hold the string that we will split
                     string[] strlinst = temp.Split(' '); // split string on space
-                    score = cardDeck.GetValue(strlinst[1]); // get the Rank value of the card, position 1 is Rank
-                                                             // add values together to get running total
+                    if (strlinst[1] == "Ace")
+                    {
+                        blAce = true;
+                    }
+                    //score = cardDeck.GetValue(strlinst[1]); // get the Rank value of the card, position 1 is Rank
+                    // add values together to get running total
+                    UpdateScore(lb, stat, cardDeck.GetValue(strlinst[1]), blAce); // display the current hand value
                     cardDeck.RemoveAt(selected); // remove card from deck
                     RefreshCards(); // refresh the deck display
                 }
                 rtb.Text = tmpCards; // add the cards to the RT
-                UpdateScore(lb,stat, score); // display the current hand value
+                
             }
             else
             {
@@ -88,10 +94,14 @@ namespace CardShuffle
                 tmpCards += cardDeck.GetCard(selected).ToString() + "\r\n";
                 temp = cardDeck.GetCard(selected).ToString();
                 string[] strlinst = temp.Split(' ');
+                if (strlinst[1] == "Ace")
+                {
+                    blAce = true;
+                }
                 //score = Convert.ToInt32(lb.Text);
-                score = cardDeck.GetValue(strlinst[1]);
+                //
                 cardDeck.RemoveAt(selected); // remove it from consideration
-                UpdateScore(lb,stat, score);
+                UpdateScore(lb, stat, cardDeck.GetValue(strlinst[1]), blAce); // display the current hand value
                 rtb.Text += tmpCards;
             }
 
@@ -142,13 +152,21 @@ namespace CardShuffle
             }
         }
 
-        private void UpdateScore(Label lb, Label stat, int score)
+        private void UpdateScore(Label lb, Label stat, int score, bool blAce)
         {
             //int tmpScore = 0;
             if (lb.Text != "")
             {
-                score += Convert.ToInt32(lb.Text); // + tmpScore;
+                if (blAce && score < 11)
+                {
+                    score += Convert.ToInt32(lb.Text) + 10;
+                }
+                else
+                {
+                    score += Convert.ToInt32(lb.Text);
+                }
             }
+            
             
 
             if (score > 21)
