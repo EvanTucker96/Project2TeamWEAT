@@ -44,16 +44,16 @@
             this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.Size = new System.Drawing.Size(86, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(96, 15);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(132, 22);
+            this.txtUsername.Size = new System.Drawing.Size(132, 26);
             this.txtUsername.TabIndex = 1;
             // 
             // label2
@@ -62,22 +62,22 @@
             this.label2.Location = new System.Drawing.Point(272, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 16);
+            this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Password";
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(351, 15);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(132, 22);
+            this.txtPassword.Size = new System.Drawing.Size(132, 26);
             this.txtPassword.TabIndex = 3;
             // 
             // btnProducts
             // 
             this.btnProducts.Location = new System.Drawing.Point(96, 62);
-            this.btnProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProducts.Margin = new System.Windows.Forms.Padding(4);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(304, 28);
             this.btnProducts.TabIndex = 4;
@@ -87,7 +87,7 @@
             // btnSuppliers
             // 
             this.btnSuppliers.Location = new System.Drawing.Point(96, 110);
-            this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuppliers.Name = "btnSuppliers";
             this.btnSuppliers.Size = new System.Drawing.Size(304, 28);
             this.btnSuppliers.TabIndex = 5;
@@ -97,7 +97,7 @@
             // btnTravelPkgs
             // 
             this.btnTravelPkgs.Location = new System.Drawing.Point(96, 160);
-            this.btnTravelPkgs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTravelPkgs.Margin = new System.Windows.Forms.Padding(4);
             this.btnTravelPkgs.Name = "btnTravelPkgs";
             this.btnTravelPkgs.Size = new System.Drawing.Size(304, 28);
             this.btnTravelPkgs.TabIndex = 6;
@@ -116,7 +116,7 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 243);
             this.Controls.Add(this.btnExit);
@@ -128,9 +128,10 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.Text = "Travel Items";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

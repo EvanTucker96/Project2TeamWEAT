@@ -45,7 +45,7 @@ namespace Workshop4_team3
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddEdit addForm = new frmAddEdit();
+            frmAddEdit2 addForm = new frmAddEdit2();
             DialogResult result = addForm.ShowDialog();
         }
     }

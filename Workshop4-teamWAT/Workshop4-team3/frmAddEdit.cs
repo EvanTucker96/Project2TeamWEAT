@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Workshop4_team3
 {
-    public partial class frmAddEdit : Form
+    public partial class frmAddEdit2 : Form
     {
-        public frmAddEdit()
+        public frmAddEdit2()
         {
             InitializeComponent();
         }

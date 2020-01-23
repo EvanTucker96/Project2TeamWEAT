@@ -1,6 +1,6 @@
 ﻿namespace Workshop4_team3
 {
-    partial class frmAddEdit
+    partial class frmAddEdit2
     {
         /// <summary>
         /// Required designer variable.

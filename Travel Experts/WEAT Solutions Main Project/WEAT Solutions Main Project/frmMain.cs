@@ -21,5 +21,10 @@ namespace WEAT_Solutions_Main_Project
         {
             this.Close();
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
