@@ -25,6 +25,7 @@ namespace Workshop4_team3
 
         public void LoadDGV()
         {
+            
             packageDataGridView.DataSource = teContext.Packages;           
             // select full row instead of a single cell
             packageDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

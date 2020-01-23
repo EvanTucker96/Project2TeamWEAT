@@ -26,5 +26,24 @@ namespace Workshop4_team3
         {
             // add validation and Save entity code
         }
+
+        private void frmAddEdit_Load(object sender, EventArgs e)
+        {
+            TravelExpertsDataContext teSuppliers = new TravelExpertsDataContext();
+            List<Supplier> suppliers = new List<Supplier>();
+            Supplier tempSup = new Supplier();
+
+            foreach(Supplier sup in teSuppliers.Suppliers)
+            {
+                tempSup.SupName = sup.SupName;
+                tempSup.SupplierId = sup.SupplierId;
+               
+                suppliers.Add(tempSup);
+            }
+
+
+            
+            
+        }
     }
 }
