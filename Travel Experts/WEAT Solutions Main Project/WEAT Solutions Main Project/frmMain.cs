@@ -26,5 +26,34 @@ namespace WEAT_Solutions_Main_Project
         {
 
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
+            string uName, uPass;
+            Agent dbAgent;
+            uName = txtUsername.Text;
+            uPass = txtPassword.Text;
+            dbAgent = (Agent)(from agt in dbContext.Agents
+                              where agt.AgtFirstName == uName && agt.Password == uPass
+                              select agt).Single();
+            if (dbAgent.Password == uPass)
+            {
+                btnProducts.Enabled = true;
+                btnSuppliers.Enabled = true;
+                btnTravelPkgs.Enabled = true;
+                btnLogin.Enabled = false;
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+                txtUsername.Visible = false;
+                txtPassword.Visible = false;
+                lblWelcome.Visible = true;
+                lblWelcome.Text = "Welcome " + uName;
+            }
+            else
+            {
+                MessageBox.Show("Invaild Username or password.");
+            }
+        }
     }
 }

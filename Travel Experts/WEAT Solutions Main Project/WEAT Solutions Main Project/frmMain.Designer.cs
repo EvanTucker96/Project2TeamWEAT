@@ -36,6 +36,8 @@
             this.btnSuppliers = new System.Windows.Forms.Button();
             this.btnTravelPkgs = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -71,11 +73,13 @@
             this.txtPassword.Location = new System.Drawing.Point(351, 15);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(132, 26);
             this.txtPassword.TabIndex = 3;
             // 
             // btnProducts
             // 
+            this.btnProducts.Enabled = false;
             this.btnProducts.Location = new System.Drawing.Point(96, 62);
             this.btnProducts.Margin = new System.Windows.Forms.Padding(4);
             this.btnProducts.Name = "btnProducts";
@@ -86,6 +90,7 @@
             // 
             // btnSuppliers
             // 
+            this.btnSuppliers.Enabled = false;
             this.btnSuppliers.Location = new System.Drawing.Point(96, 110);
             this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuppliers.Name = "btnSuppliers";
@@ -96,6 +101,7 @@
             // 
             // btnTravelPkgs
             // 
+            this.btnTravelPkgs.Enabled = false;
             this.btnTravelPkgs.Location = new System.Drawing.Point(96, 160);
             this.btnTravelPkgs.Margin = new System.Windows.Forms.Padding(4);
             this.btnTravelPkgs.Name = "btnTravelPkgs";
@@ -106,19 +112,39 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(396, 208);
+            this.btnExit.Location = new System.Drawing.Point(506, 62);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(96, 23);
+            this.btnExit.Size = new System.Drawing.Size(96, 26);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(506, 8);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(96, 33);
+            this.btnLogin.TabIndex = 8;
+            this.btnLogin.Text = "&Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.Location = new System.Drawing.Point(15, 18);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(485, 25);
+            this.lblWelcome.TabIndex = 9;
+            this.lblWelcome.Visible = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 243);
+            this.ClientSize = new System.Drawing.Size(641, 243);
+            this.Controls.Add(this.lblWelcome);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnTravelPkgs);
             this.Controls.Add(this.btnSuppliers);
@@ -147,6 +173,8 @@
         private System.Windows.Forms.Button btnSuppliers;
         private System.Windows.Forms.Button btnTravelPkgs;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label lblWelcome;
     }
 }
 
