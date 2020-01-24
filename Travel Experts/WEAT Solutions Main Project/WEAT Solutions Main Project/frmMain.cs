@@ -29,9 +29,9 @@ namespace WEAT_Solutions_Main_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text !="" && txtPassword.Text!="" &&  btnLogin.Text == "Login")
+            if (txtUsername.Text !="" && txtPassword.Text!="" &&  btnLogin.Text == "&Login")
             {
-                btnLogin.Text = "Logout";
+                btnLogin.Text = "&Logout";
                 TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
                 string uName, uPass;
                 Agent dbAgent;
@@ -48,14 +48,12 @@ namespace WEAT_Solutions_Main_Project
                         btnProducts.Enabled = true;
                         btnSuppliers.Enabled = true;
                         btnTravelPkgs.Enabled = true;
-
                         txtUsername.Text = "";
                         txtPassword.Text = "";
                         txtUsername.Visible = false;
                         txtPassword.Visible = false;
                         lblWelcome.Visible = true;
                         lblWelcome.Text = "Welcome " + uName;
-                
                     }
                     else
                     {
@@ -66,30 +64,24 @@ namespace WEAT_Solutions_Main_Project
                 {
                     MessageBox.Show(ex.Message);
                 }
-            
-                
             }else
             {
                 btnProducts.Enabled = false;
                 btnSuppliers.Enabled = false;
                 btnTravelPkgs.Enabled = false;
-                btnLogin.Text = "Login";
+                btnLogin.Text = "&Login";
                 txtUsername.Text = "";
                 txtPassword.Text = "";
                 txtUsername.Visible = true;
                 txtPassword.Visible = true;
                 lblWelcome.Visible = false;
                 lblWelcome.Text = "";
+                btnLogin.Enabled = false;
             }
         }
-
-        
-
-        
-
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtUsername.Text != "" && txtPassword.Text != "")
+            if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
             {
                 btnLogin.Enabled = true;
             }
@@ -101,7 +93,7 @@ namespace WEAT_Solutions_Main_Project
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            if (txtUsername.Text != "" && txtPassword.Text != "")
+            if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
             {
                 btnLogin.Enabled = true;
             }
