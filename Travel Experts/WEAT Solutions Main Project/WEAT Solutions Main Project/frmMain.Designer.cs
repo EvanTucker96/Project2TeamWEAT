@@ -80,10 +80,10 @@
             // btnProducts
             // 
             this.btnProducts.Enabled = false;
-            this.btnProducts.Location = new System.Drawing.Point(96, 62);
+            this.btnProducts.Location = new System.Drawing.Point(96, 58);
             this.btnProducts.Margin = new System.Windows.Forms.Padding(4);
             this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(304, 28);
+            this.btnProducts.Size = new System.Drawing.Size(304, 32);
             this.btnProducts.TabIndex = 4;
             this.btnProducts.Text = "Add/Edit &Products";
             this.btnProducts.UseVisualStyleBackColor = true;
@@ -94,7 +94,7 @@
             this.btnSuppliers.Location = new System.Drawing.Point(96, 110);
             this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Size = new System.Drawing.Size(304, 28);
+            this.btnSuppliers.Size = new System.Drawing.Size(304, 31);
             this.btnSuppliers.TabIndex = 5;
             this.btnSuppliers.Text = "Add/Edit &Suppliers";
             this.btnSuppliers.UseVisualStyleBackColor = true;
@@ -105,16 +105,16 @@
             this.btnTravelPkgs.Location = new System.Drawing.Point(96, 160);
             this.btnTravelPkgs.Margin = new System.Windows.Forms.Padding(4);
             this.btnTravelPkgs.Name = "btnTravelPkgs";
-            this.btnTravelPkgs.Size = new System.Drawing.Size(304, 28);
+            this.btnTravelPkgs.Size = new System.Drawing.Size(304, 31);
             this.btnTravelPkgs.TabIndex = 6;
             this.btnTravelPkgs.Text = "Add/Edit &Travel Packages";
             this.btnTravelPkgs.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(506, 62);
+            this.btnExit.Location = new System.Drawing.Point(506, 58);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(96, 26);
+            this.btnExit.Size = new System.Drawing.Size(96, 32);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
