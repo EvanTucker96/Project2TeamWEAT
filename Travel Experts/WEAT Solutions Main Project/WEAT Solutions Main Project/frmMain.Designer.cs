@@ -89,6 +89,7 @@
             this.btnProducts.TabIndex = 4;
             this.btnProducts.Text = "Add/Edit &Products";
             this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
             // btnSuppliers
             // 
@@ -100,6 +101,7 @@
             this.btnSuppliers.TabIndex = 5;
             this.btnSuppliers.Text = "Add/Edit &Suppliers";
             this.btnSuppliers.UseVisualStyleBackColor = true;
+            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
             // 
             // btnTravelPkgs
             // 
@@ -111,6 +113,7 @@
             this.btnTravelPkgs.TabIndex = 6;
             this.btnTravelPkgs.Text = "Add/Edit &Travel Packages";
             this.btnTravelPkgs.UseVisualStyleBackColor = true;
+            this.btnTravelPkgs.Click += new System.EventHandler(this.btnTravelPkgs_Click);
             // 
             // btnExit
             // 

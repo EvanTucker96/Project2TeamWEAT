@@ -43,7 +43,7 @@ namespace WEAT_Solutions_Main_Project
                                       where agt.AgtFirstName == uName && agt.Password == uPass
                                       select agt).Single();
 
-                    if (dbAgent.Password == uPass)
+                    if (dbAgent.Password.ToLower() == uPass.ToLower())
                     {
                         btnProducts.Enabled = true;
                         btnSuppliers.Enabled = true;
@@ -101,6 +101,21 @@ namespace WEAT_Solutions_Main_Project
             {
                 btnLogin.Enabled = false;
             }
+        }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSuppliers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTravelPkgs_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
