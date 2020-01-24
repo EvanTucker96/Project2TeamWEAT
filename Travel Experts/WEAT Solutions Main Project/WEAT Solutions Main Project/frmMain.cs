@@ -29,7 +29,7 @@ namespace WEAT_Solutions_Main_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (btnLogin.Text == "Login")
+            if (txtUsername.Text !="" && txtPassword.Text!="" &&  btnLogin.Text == "Login")
             {
                 btnLogin.Text = "Logout";
                 TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
@@ -37,26 +37,37 @@ namespace WEAT_Solutions_Main_Project
                 Agent dbAgent;
                 uName = txtUsername.Text;
                 uPass = txtPassword.Text;
-                dbAgent = (Agent)(from agt in dbContext.Agents
-                                  where agt.AgtFirstName == uName && agt.Password == uPass
-                                  select agt).Single();
-                if (dbAgent.Password == uPass)
+                try
                 {
-                    btnProducts.Enabled = true;
-                    btnSuppliers.Enabled = true;
-                    btnTravelPkgs.Enabled = true;
-                    
-                    txtUsername.Text = "";
-                    txtPassword.Text = "";
-                    txtUsername.Visible = false;
-                    txtPassword.Visible = false;
-                    lblWelcome.Visible = true;
-                    lblWelcome.Text = "Welcome " + uName;
+                    dbAgent = (Agent)(from agt in dbContext.Agents
+                                      where agt.AgtFirstName == uName && agt.Password == uPass
+                                      select agt).Single();
+
+                    if (dbAgent.Password == uPass)
+                    {
+                        btnProducts.Enabled = true;
+                        btnSuppliers.Enabled = true;
+                        btnTravelPkgs.Enabled = true;
+
+                        txtUsername.Text = "";
+                        txtPassword.Text = "";
+                        txtUsername.Visible = false;
+                        txtPassword.Visible = false;
+                        lblWelcome.Visible = true;
+                        lblWelcome.Text = "Welcome " + uName;
+                
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invaild Username or password.");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Invaild Username or password.");
+                    MessageBox.Show(ex.Message);
                 }
+            
+                
             }else
             {
                 btnProducts.Enabled = false;
@@ -69,6 +80,34 @@ namespace WEAT_Solutions_Main_Project
                 txtPassword.Visible = true;
                 lblWelcome.Visible = false;
                 lblWelcome.Text = "";
+            }
+        }
+
+        
+
+        
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsername.Text != "" && txtPassword.Text != "")
+            {
+                btnLogin.Enabled = true;
+            }
+            else
+            {
+                btnLogin.Enabled = false;
+            }
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsername.Text != "" && txtPassword.Text != "")
+            {
+                btnLogin.Enabled = true;
+            }
+            else
+            {
+                btnLogin.Enabled = false;
             }
         }
     }
