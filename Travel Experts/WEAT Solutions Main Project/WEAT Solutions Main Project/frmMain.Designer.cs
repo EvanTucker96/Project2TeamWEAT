@@ -46,8 +46,8 @@
             this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
-            this.label1.TabIndex = 0;
+            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.TabIndex = 7;
             this.label1.Text = "Username";
             // 
             // txtUsername
@@ -55,9 +55,10 @@
             this.txtUsername.Location = new System.Drawing.Point(96, 15);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(132, 26);
-            this.txtUsername.TabIndex = 1;
+            this.txtUsername.Size = new System.Drawing.Size(132, 22);
+            this.txtUsername.TabIndex = 0;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyUp);
             // 
             // label2
             // 
@@ -65,8 +66,8 @@
             this.label2.Location = new System.Drawing.Point(272, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
-            this.label2.TabIndex = 2;
+            this.label2.Size = new System.Drawing.Size(68, 16);
+            this.label2.TabIndex = 8;
             this.label2.Text = "Password";
             // 
             // txtPassword
@@ -75,9 +76,10 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(132, 26);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.Size = new System.Drawing.Size(132, 22);
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
             // btnProducts
             // 
@@ -86,7 +88,7 @@
             this.btnProducts.Margin = new System.Windows.Forms.Padding(4);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(304, 32);
-            this.btnProducts.TabIndex = 4;
+            this.btnProducts.TabIndex = 3;
             this.btnProducts.Text = "Add/Edit &Products";
             this.btnProducts.UseVisualStyleBackColor = true;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
@@ -98,7 +100,7 @@
             this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuppliers.Name = "btnSuppliers";
             this.btnSuppliers.Size = new System.Drawing.Size(304, 31);
-            this.btnSuppliers.TabIndex = 5;
+            this.btnSuppliers.TabIndex = 4;
             this.btnSuppliers.Text = "Add/Edit &Suppliers";
             this.btnSuppliers.UseVisualStyleBackColor = true;
             this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
@@ -110,7 +112,7 @@
             this.btnTravelPkgs.Margin = new System.Windows.Forms.Padding(4);
             this.btnTravelPkgs.Name = "btnTravelPkgs";
             this.btnTravelPkgs.Size = new System.Drawing.Size(304, 31);
-            this.btnTravelPkgs.TabIndex = 6;
+            this.btnTravelPkgs.TabIndex = 5;
             this.btnTravelPkgs.Text = "Add/Edit &Travel Packages";
             this.btnTravelPkgs.UseVisualStyleBackColor = true;
             this.btnTravelPkgs.Click += new System.EventHandler(this.btnTravelPkgs_Click);
@@ -120,7 +122,7 @@
             this.btnExit.Location = new System.Drawing.Point(506, 58);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(96, 32);
-            this.btnExit.TabIndex = 7;
+            this.btnExit.TabIndex = 6;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -131,7 +133,7 @@
             this.btnLogin.Location = new System.Drawing.Point(506, 8);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(96, 33);
-            this.btnLogin.TabIndex = 8;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -146,7 +148,7 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 243);
             this.Controls.Add(this.lblWelcome);

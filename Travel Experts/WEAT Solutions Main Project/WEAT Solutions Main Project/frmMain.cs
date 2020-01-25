@@ -29,9 +29,13 @@ namespace WEAT_Solutions_Main_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text !="" && txtPassword.Text!="" &&  btnLogin.Text == "&Login")
+            Login();
+        }
+        public void Login()
+        {
+            if (txtUsername.Text != "" && txtPassword.Text != "" && btnLogin.Text == "&Login")
             {
-                btnLogin.Text = "&Logout";
+
                 TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
                 string uName, uPass;
                 Agent dbAgent;
@@ -54,17 +58,24 @@ namespace WEAT_Solutions_Main_Project
                         txtPassword.Visible = false;
                         lblWelcome.Visible = true;
                         lblWelcome.Text = "Welcome " + uName;
+                        btnLogin.Text = "&Logout";
                     }
                     else
                     {
                         MessageBox.Show("Invaild Username or password.");
                     }
                 }
+                catch (InvalidOperationException ioe)
+                {
+                    MessageBox.Show(ioe.Message + ": " + ioe.ToString());
+                }
+
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message + ": " + ex.ToString());
                 }
-            }else
+            }
+            else
             {
                 btnProducts.Enabled = false;
                 btnSuppliers.Enabled = false;
@@ -115,7 +126,30 @@ namespace WEAT_Solutions_Main_Project
 
         private void btnTravelPkgs_Click(object sender, EventArgs e)
         {
+            frmAddEditPackages frmAddEditPackages = new frmAddEditPackages();
+            DialogResult = frmAddEditPackages.ShowDialog();
+        }
 
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
+            {
+                if(e.KeyCode == Keys.Enter)
+                {
+                    Login();
+                }
+            }
+        }
+
+        private void txtUsername_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    Login();
+                }
+            }
         }
     }
 }
