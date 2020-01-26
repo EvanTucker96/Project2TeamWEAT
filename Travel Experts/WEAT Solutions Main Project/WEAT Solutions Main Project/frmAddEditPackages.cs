@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,7 @@ namespace WEAT_Solutions_Main_Project
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // don't allow more than one row to be selected
             dataGridView1.MultiSelect = false;
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             // set column names and display format
             dataGridView1.Columns[0].HeaderText = "Package ID";
             dataGridView1.Columns[1].HeaderText = "Package Name";
@@ -47,16 +49,13 @@ namespace WEAT_Solutions_Main_Project
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            isAdd = false;
             int rowNum = Convert.ToInt32(dataGridView1.CurrentCell.RowIndex);
             int pkgNum = Convert.ToInt32(dataGridView1[0, rowNum].Value);
             Package tmpPackage;
-            Product tmpProd;
+            //Product tmpProd;
             List<string> products = new List<string>();
-         
-            
             List<string> names = new List<string>();
-            //Packages_Products_Supplier pps =  new Packages_Products_Supplier;
-            //Products_Supplier ps = new Products_Supplier;
             lbAvail.Items.Clear();
             lbAssigned.Items.Clear();
             using (TravelExpertsDataContext dbContext = new TravelExpertsDataContext())
@@ -71,7 +70,6 @@ namespace WEAT_Solutions_Main_Project
                           join pkg in dbContext.Packages on pps.PackageId equals pkg.PackageId
                           where pkg.PackageId == pkgNum
                           select pd.ProdName).ToList();
-
 
                 products = (from pd in dbContext.Products
                           select pd.ProdName).ToList();
@@ -106,9 +104,6 @@ namespace WEAT_Solutions_Main_Project
             dtpPkgStart.Value = (DateTime)tmpPackage.PkgStartDate;
             dtpPkgEnd.Value = (DateTime)tmpPackage.PkgEndDate;
 
-          
-
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -118,7 +113,7 @@ namespace WEAT_Solutions_Main_Project
 
         private void btnAddProd_Click(object sender, EventArgs e)
         {
-            bool isAdded=false;
+            //bool isAdded=false;
             if(lbAvail.SelectedIndex != -1)
             {
                 lbAssigned.Items.Add(lbAvail.SelectedItem);
@@ -137,6 +132,101 @@ namespace WEAT_Solutions_Main_Project
                 lbAssigned.Items.Remove(lbAssigned.SelectedItem);
                 lbAvail.Sorted=true;
                 lbAssigned.Sorted = true;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            List<string> products = new List<string>();
+            List<Product> prods = new List<Product>();
+            List<Products_Supplier> addProds = new List<Products_Supplier>();
+            Packages_Products_Supplier ppsd =  new Packages_Products_Supplier();
+            List<Packages_Products_Supplier> ppsdList = new List<Packages_Products_Supplier>();
+            Product ppd = new Product();
+            Products_Supplier ps = new Products_Supplier();
+            int tmpID;
+            // need to save existign data to packages and an any new or changed products to 
+            // Packages_Products_Suppliers
+            if (!isAdd)
+            {
+                TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
+               
+                try
+                {
+                    // get productID for each entry in List
+                    foreach (string item in lbAssigned.Items) 
+                    {
+                        ppd = new Product();
+                        tmpID = Convert.ToInt32((from p in dbContext.Products
+                                        where p.ProdName == item
+                                        select p.ProductId).Single());
+                        ppd.ProductId = tmpID;
+                        ppd.ProdName = item;
+                        prods.Add(ppd);
+
+                    }
+                    // get ProductSupplierID based on ProductID
+                    foreach(Product pd  in prods)
+                    {
+                        ps = new Products_Supplier();
+                        ps.ProductSupplierId = Convert.ToInt32((from p in dbContext.Products_Suppliers
+                                               where p.ProductId == pd.ProductId
+                                               select p.ProductSupplierId).First());
+                        ps.ProductId = pd.ProductId;
+                        addProds.Add(ps);
+                    }
+                    // create Product_Pacakes_Suppliers entities from each list item
+                    foreach(Products_Supplier prodsup in addProds)
+                    {
+                        ppsd = new Packages_Products_Supplier();
+                        ppsd.ProductSupplierId = prodsup.ProductSupplierId;
+                        ppsd.PackageId = Convert.ToInt32(txtPackageID.Text);
+                        ppsdList.Add(ppsd);
+                    }
+
+
+                    // for each entry save the product info to Packages_Products_Suppliers
+                    foreach (Packages_Products_Supplier pw in ppsdList) 
+                    {
+                        
+                       if((from ppst in dbContext.Packages_Products_Suppliers
+                                where ppst.PackageId == pw.PackageId && ppst.ProductSupplierId == pw.ProductSupplierId
+                                select ppst.ProductSupplierId).Count() < 1)
+                        {
+                            Packages_Products_Supplier insItem = new Packages_Products_Supplier();
+                            insItem.PackageId = Convert.ToInt32(txtPackageID.Text);
+                            insItem.ProductSupplierId = pw.ProductSupplierId;
+                            dbContext.Packages_Products_Suppliers.InsertOnSubmit(insItem);
+                            dbContext.SubmitChanges();
+                        }
+                        
+                        
+
+                    }
+                    
+                    Package pkg = dbContext.Packages.Single(p => p.PackageId == Convert.ToInt32(txtPackageID.Text));
+                    pkg.PkgName = txtPkgName.Text;
+                    pkg.PkgDesc = txtPkgDesc.Text;
+                    pkg.PkgStartDate = dtpPkgStart.Value;
+                    pkg.PkgEndDate = dtpPkgEnd.Value;
+                    pkg.PkgBasePrice = Convert.ToDecimal(txtPkgBase.Text.Remove(0,1));
+                    pkg.PkgAgencyCommission = Convert.ToDecimal(txtPakComm.Text.Remove(0,1));
+                    dbContext.SubmitChanges();
+                }
+                catch (ChangeConflictException)
+                {
+                    dbContext.ChangeConflicts.ResolveAll(RefreshMode.KeepChanges);
+                    dbContext.SubmitChanges();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message + " - " + ex.ToString());
+                }
+
+            }
+            else
+            {
+
             }
         }
     }
