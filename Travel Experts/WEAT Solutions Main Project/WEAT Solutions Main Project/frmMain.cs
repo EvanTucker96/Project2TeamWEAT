@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+/// <summary>
+/// Main form design Angela Lambert, login and validation code by Wade Grimm
+/// </summary>
 namespace WEAT_Solutions_Main_Project
 {
     public partial class frmMain : Form

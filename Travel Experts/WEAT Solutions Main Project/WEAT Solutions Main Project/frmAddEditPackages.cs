@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+/// <summary>
+/// Add/Edit Packages - Author Wade Grimm (WG)
+/// </summary>
 namespace WEAT_Solutions_Main_Project
 {
     public partial class frmAddEditPackages : Form
     {
         public bool isAdd;
+        List<string> rmvProd = new List<string>();
 
         public frmAddEditPackages()
         {
@@ -50,6 +53,7 @@ namespace WEAT_Solutions_Main_Project
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             isAdd = false;
+            rmvProd.Clear();
             int rowNum = Convert.ToInt32(dataGridView1.CurrentCell.RowIndex);
             int pkgNum = Convert.ToInt32(dataGridView1[0, rowNum].Value);
             Package tmpPackage;
@@ -128,10 +132,12 @@ namespace WEAT_Solutions_Main_Project
         {
             if(lbAssigned.SelectedIndex != -1)
             {
+                rmvProd.Add(lbAssigned.SelectedItem.ToString());
                 lbAvail.Items.Add(lbAssigned.SelectedItem);
                 lbAssigned.Items.Remove(lbAssigned.SelectedItem);
                 lbAvail.Sorted=true;
                 lbAssigned.Sorted = true;
+                
             }
         }
 
@@ -147,6 +153,7 @@ namespace WEAT_Solutions_Main_Project
             int tmpID;
             // need to save existign data to packages and an any new or changed products to 
             // Packages_Products_Suppliers
+            // need to add code to remove products from tables
             if (!isAdd)
             {
                 TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
@@ -226,7 +233,7 @@ namespace WEAT_Solutions_Main_Project
             }
             else
             {
-
+                // Add new Package code here
             }
         }
     }
