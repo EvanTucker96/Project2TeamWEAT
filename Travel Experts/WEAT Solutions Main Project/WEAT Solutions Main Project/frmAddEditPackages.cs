@@ -17,6 +17,9 @@ namespace WEAT_Solutions_Main_Project
     {
         public bool isAdd;
         List<string> rmvProd = new List<string>();
+        List<Product> products = new List<Product>();
+        List<Product> prodAssigned = new List<Product>();
+        List<Product> prodAvailable = new List<Product>();
 
         public frmAddEditPackages()
         {
@@ -27,6 +30,59 @@ namespace WEAT_Solutions_Main_Project
         {
             LoadDGV();
         }
+        public void GetProducts()
+        {
+            List<Product> listProds = new List<Product>();
+            Product tmpProd;
+            TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
+            products.Clear();
+            var listProducts = dbContext.Products.GroupBy(item => item.ProductId,
+                               (key, group) => new {
+                                   ProductId = key,
+                                   prodName = group.First().ProdName}).ToList();
+
+            for (int i = 0; i < listProducts.Count; i++)
+            {
+                tmpProd = new Product();
+                tmpProd.ProdName = listProducts[i].prodName;
+                tmpProd.ProductId = listProducts[i].ProductId;
+                products.Add(tmpProd);
+            }
+        }
+        public void GetAssigned(int id)
+        {
+            TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
+            List<Product> tmplist = new List<Product>();
+            prodAssigned.Clear();
+
+            var names = (from pd in dbContext.Products
+                     join ps in dbContext.Products_Suppliers on pd.ProductId equals ps.ProductId
+                     join pps in dbContext.Packages_Products_Suppliers on ps.ProductSupplierId equals pps.ProductSupplierId
+                     join pkg in dbContext.Packages on pps.PackageId equals pkg.PackageId
+                     where pkg.PackageId == id
+                     select pd).Distinct();
+            
+            tmplist = names.ToList();
+            
+            for (int i = 0; i < tmplist.Count; i++)
+            {
+                Product tmpProd = new Product();
+                tmpProd.ProdName = tmplist[i].ProdName;
+                tmpProd.ProductId = tmplist[i].ProductId;
+               prodAssigned.Add(tmpProd);
+            }
+        }
+        public void GetAvailable()
+        {
+            prodAvailable.Clear();
+            foreach(Product item in products)
+            {
+                if (!item.IfExists(prodAssigned))
+                    prodAvailable.Add(item);
+
+            }
+        }
+
         public void LoadDGV()
         {
 
@@ -57,43 +113,32 @@ namespace WEAT_Solutions_Main_Project
             int rowNum = Convert.ToInt32(dataGridView1.CurrentCell.RowIndex);
             int pkgNum = Convert.ToInt32(dataGridView1[0, rowNum].Value);
             Package tmpPackage;
-            //Product tmpProd;
-            List<string> products = new List<string>();
-            List<string> names = new List<string>();
             lbAvail.Items.Clear();
             lbAssigned.Items.Clear();
             using (TravelExpertsDataContext dbContext = new TravelExpertsDataContext())
             {
                 tmpPackage = (from p in dbContext.Packages
-                                           where p.PackageId == pkgNum
-                                           select p).Single();
+                              where p.PackageId == pkgNum
+                              select p).Single();
 
-                names =  (from pd in dbContext.Products
-                          join ps in dbContext.Products_Suppliers on pd.ProductId equals ps.ProductId
-                          join pps in dbContext.Packages_Products_Suppliers on ps.ProductSupplierId equals pps.ProductSupplierId
-                          join pkg in dbContext.Packages on pps.PackageId equals pkg.PackageId
-                          where pkg.PackageId == pkgNum
-                          select pd.ProdName).ToList();
+                GetProducts();
+                GetAssigned(pkgNum);
+                GetAvailable();
 
-                products = (from pd in dbContext.Products
-                          select pd.ProdName).ToList();
-                                     
-                foreach(string item in names)
+
+
+                foreach (Product item in prodAssigned)
                 {
-                    if (products.Contains(item))
-                    {
-                        products.Remove(item);
-                    }
+                    lbAssigned.Items.Add(item.ProdName );
                 }
+                foreach(Product item in prodAvailable)
+                {
+                    lbAvail.Items.Add(item.ProdName);
+                }
+
                 
-                foreach(string item in names)
-                {
-                    lbAssigned.Items.Add(item);
-                }
-                foreach(string item in products)
-                {
-                    lbAvail.Items.Add(item);
-                }
+
+
 
                 lbAvail.Sorted = true;
                 lbAssigned.Sorted = true;

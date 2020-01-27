@@ -745,6 +745,25 @@ namespace WEAT_Solutions_Main_Project
 			OnCreated();
 		}
 		
+		public bool IsEqual(Product p)
+		{
+			if (ProductId == p.ProductId && ProdName == p.ProdName)
+				return true;
+
+			return false;
+		}
+
+		public bool IfExists(List<Product> list)
+		{
+			//bool exists=false;
+			foreach(Product item in list)
+			{
+				if (ProdName == item.ProdName && ProductId == item.ProductId)
+							return true;
+			}
+			return false;
+		}
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ProductId
 		{
