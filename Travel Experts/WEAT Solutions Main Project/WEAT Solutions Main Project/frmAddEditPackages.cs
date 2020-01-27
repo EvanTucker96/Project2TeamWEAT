@@ -16,7 +16,8 @@ namespace WEAT_Solutions_Main_Project
     public partial class frmAddEditPackages : Form
     {
         public bool isAdd;
-        List<string> rmvProd = new List<string>();
+        List<Product> rmvProd = new List<Product>();
+        List<Product> addProd = new List<Product>();
         List<Product> products = new List<Product>();
         List<Product> prodAssigned = new List<Product>();
         List<Product> prodAvailable = new List<Product>();
@@ -135,11 +136,6 @@ namespace WEAT_Solutions_Main_Project
                 {
                     lbAvail.Items.Add(item.ProdName);
                 }
-
-                
-
-
-
                 lbAvail.Sorted = true;
                 lbAssigned.Sorted = true;
 
@@ -177,7 +173,7 @@ namespace WEAT_Solutions_Main_Project
         {
             if(lbAssigned.SelectedIndex != -1)
             {
-                rmvProd.Add(lbAssigned.SelectedItem.ToString());
+                //rmvProd.Add(lbAssigned.SelectedItem.ToString());
                 lbAvail.Items.Add(lbAssigned.SelectedItem);
                 lbAssigned.Items.Remove(lbAssigned.SelectedItem);
                 lbAvail.Sorted=true;
@@ -280,6 +276,20 @@ namespace WEAT_Solutions_Main_Project
             {
                 // Add new Package code here
             }
+        }
+
+      
+
+        private void lbAvail_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (lbAssigned.SelectedIndex > 0)
+                lbAssigned.SelectedIndex = -1;
+        }
+
+        private void lbAssigned_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (lbAvail.SelectedIndex > 0)
+                lbAvail.SelectedIndex = -1;
         }
     }
 }
