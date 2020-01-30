@@ -763,7 +763,7 @@ namespace WEAT_Solutions_Main_Project
 			}
 			return false;
 		}
-
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ProductId
 		{
