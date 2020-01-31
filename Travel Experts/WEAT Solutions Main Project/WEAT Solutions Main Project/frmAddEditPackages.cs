@@ -340,14 +340,13 @@ namespace WEAT_Solutions_Main_Project
             Packages_Products_Supplier ppsd =  new Packages_Products_Supplier();
             List<Packages_Products_Supplier> ppsdList = new List<Packages_Products_Supplier>();
             Products_Supplier ps = new Products_Supplier();
+            TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
 
             // need to save existing data to packages and an any new or changed products to 
             // Packages_Products_Suppliers
             // need to add code to remove products from tables
             if (!isAdd)
             {
-                TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
-               
                 try
                 {
                     // Add new products
@@ -430,6 +429,45 @@ namespace WEAT_Solutions_Main_Project
             else
             {
                 // Add new Package code here
+
+                //if (addProd.Count > 0)
+                //{
+                addProds = GetProducts_Suppliers(addProd);
+                ppsdList = GetPackages_Products_Suppliers(addProds);
+                allGoodAdd = Save_Packages_Products_Suppliers(ppsdList, true);
+                //}
+                decimal basePrice, agcyComm;
+                Package pkg = dbContext.Packages.Single(p => p.PackageId == Convert.ToInt32(txtPackageID.Text));
+                pkg.PkgName = txtPkgName.Text;
+                pkg.PkgDesc = txtPkgDesc.Text;
+                pkg.PkgStartDate = dtpPkgStart.Value;
+                pkg.PkgEndDate = dtpPkgEnd.Value;
+                if (txtPkgBase.Text.StartsWith("$"))
+                {
+                    basePrice = Convert.ToDecimal(txtPkgBase.Text.Remove(0, 1));
+                }
+                else
+                {
+                    basePrice = Convert.ToDecimal(txtPkgBase.Text);
+                }
+                if (txtPakComm.Text.StartsWith("$"))
+                {
+                    agcyComm = Convert.ToDecimal(txtPakComm.Text.Remove(0, 1));
+                }
+                else
+                {
+                    agcyComm = Convert.ToDecimal(txtPakComm.Text);
+                }
+                pkg.PkgBasePrice = basePrice;
+                pkg.PkgAgencyCommission = agcyComm;
+                if (basePrice > agcyComm)
+                {
+                    dbContext.SubmitChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Agency Commision is too high");
+                }
             }
             LoadEditRecordDetails();
         }
