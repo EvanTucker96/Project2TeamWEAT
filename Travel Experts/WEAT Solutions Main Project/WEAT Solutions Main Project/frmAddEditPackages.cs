@@ -230,12 +230,7 @@ namespace WEAT_Solutions_Main_Project
                 prod = GetProductByName(name);
                 if(!prod.IfExists(prodAvailable))
                     rmvProd.Add(prod);
-                if (isAdd)
-                {
-                    addProd.Remove(addProd.Find(p=>prod.ProdName==name));
-                }
-                //addProd.Remove(prod);
-                
+                addProd.Remove(addProd.Find(p=>prod.ProdName==name));
                 lbAvail.Sorted=true;
                 lbAssigned.Sorted = true;
                 
