@@ -38,6 +38,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblWelcome = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -119,11 +120,11 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(506, 58);
+            this.btnExit.Location = new System.Drawing.Point(506, 109);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(96, 32);
             this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "E&xit";
+            this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -146,11 +147,23 @@
             this.lblWelcome.TabIndex = 9;
             this.lblWelcome.Visible = false;
             // 
+            // btnClear
+            // 
+            this.btnClear.Enabled = false;
+            this.btnClear.Location = new System.Drawing.Point(506, 58);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(96, 32);
+            this.btnClear.TabIndex = 10;
+            this.btnClear.Text = "&Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 243);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnExit);
@@ -183,6 +196,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

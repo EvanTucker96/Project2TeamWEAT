@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 /// <summary>
-/// Main form design Angela Lambert, login and validation code by Wade Grimm
+/// inital form design Angela Lambert, login, clear and validation code by Wade Grimm
 /// </summary>
 namespace WEAT_Solutions_Main_Project
 {
@@ -31,40 +31,51 @@ namespace WEAT_Solutions_Main_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Login();
+            Login(); // call the Login method
         }
+        /// <summary>
+        /// Author Wade Grimm (WG)
+        /// Method to compare the supplied user name and password against DB values
+        /// </summary>
         public void Login()
-        {
+        {// make sure data is present and button action is login not Logout
             if (txtUsername.Text != "" && txtPassword.Text != "" && btnLogin.Text == "&Login")
             {
-
+                // set up data access entity
                 TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
-                string uName, uPass;
-                Agent dbAgent;
-                uName = txtUsername.Text;
+                string uName, uPass; // variables for username and password
+                Agent dbAgent; // instatiate a Agent object
+                uName = txtUsername.Text; // set the variables from textbox control values
                 uPass = txtPassword.Text;
                 try
-                {
+                {// query the DB for a match
                     dbAgent = (Agent)(from agt in dbContext.Agents
                                       where agt.AgtFirstName == uName && agt.Password == uPass
-                                      select agt).Single();
-
-                    if (dbAgent.Password.ToLower() == uPass.ToLower())
+                                      select agt).SingleOrDefault();
+                   
+                    if (dbAgent != null) // will be Null if no matches found
                     {
-                        btnProducts.Enabled = true;
-                        btnSuppliers.Enabled = true;
-                        btnTravelPkgs.Enabled = true;
-                        txtUsername.Text = "";
-                        txtPassword.Text = "";
-                        txtUsername.Visible = false;
-                        txtPassword.Visible = false;
-                        lblWelcome.Visible = true;
-                        lblWelcome.Text = "Welcome " + uName;
-                        btnLogin.Text = "&Logout";
+                        // compare the passwords
+                        if (dbAgent.Password.ToLower() == uPass.ToLower())
+                        {
+                            btnProducts.Enabled = true;
+                            btnSuppliers.Enabled = true;
+                            btnTravelPkgs.Enabled = true;
+                            txtUsername.Text = "";
+                            txtPassword.Text = "";
+                            txtUsername.Visible = false;
+                            txtPassword.Visible = false;
+                            lblWelcome.Visible = true;
+                            lblWelcome.Text = "Welcome " + uName;
+                            btnLogin.Text = "&Logout";// set the Button text so we can logout with same control
+                            btnLogin.Enabled = true;
+                            btnClear.Enabled = false;
+                        }
                     }
-                    else
+                    else // no match
                     {
-                        MessageBox.Show("Invaild Username or password.");
+                        MessageBox.Show("Invaild Username or password.","Login falied",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        ClearForm();// reset form to try again
                     }
                 }
                 catch (InvalidOperationException ioe)
@@ -79,19 +90,14 @@ namespace WEAT_Solutions_Main_Project
             }
             else
             {
-                btnProducts.Enabled = false;
-                btnSuppliers.Enabled = false;
-                btnTravelPkgs.Enabled = false;
-                btnLogin.Text = "&Login";
-                txtUsername.Text = "";
-                txtPassword.Text = "";
-                txtUsername.Visible = true;
-                txtPassword.Visible = true;
-                lblWelcome.Visible = false;
-                lblWelcome.Text = "";
-                btnLogin.Enabled = false;
+                ClearForm(); // reset form
             }
         }
+        /// <summary>
+        /// Author Wade Grimm (WG)
+        /// Checks if all controls have data and that we are not already logged in
+        /// if so then enable login button
+        /// </summary>     
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
@@ -103,7 +109,11 @@ namespace WEAT_Solutions_Main_Project
                 btnLogin.Enabled = false;
             }
         }
-
+        /// <summary>
+        /// Author Wade Grimm (WG)
+        /// Checks if all controls have data and that we are not already logged in
+        /// if so then enable login button
+        /// </summary>
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
             if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
@@ -115,23 +125,36 @@ namespace WEAT_Solutions_Main_Project
                 btnLogin.Enabled = false;
             }
         }
-
+        /// <summary>
+        /// Will be used for loading the Products Add/Edit form
+        /// </summary>
         private void btnProducts_Click(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// Will be used for loading the Suppliers Add/Edit form
+        /// </summary>
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// Author Wade Grimm (WG)
+        /// Load the Packages Add/Edit form
+        /// </summary>
         private void btnTravelPkgs_Click(object sender, EventArgs e)
         {
+            //initalize a new form object, load it as a dialog
             frmAddEditPackages frmAddEditPackages = new frmAddEditPackages();
             DialogResult = frmAddEditPackages.ShowDialog();
         }
-
+        /// <summary>
+        /// Author Wade Grimm (WG)
+        /// Checks the Keypress in the control field, if it's the Enter key
+        /// and all fields have data and we are not already logged in
+        /// then call the login method and/or just enables the Clear button
+        /// </summary>
         private void txtPassword_KeyUp(object sender, KeyEventArgs e)
         {
             if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
@@ -141,8 +164,21 @@ namespace WEAT_Solutions_Main_Project
                     Login();
                 }
             }
+            if (txtPassword.Text != "")
+            {
+                btnClear.Enabled = true;
+            }
+            else
+            {
+                btnClear.Enabled = false;
+            }
         }
-
+        /// <summary>
+        /// Author Wade Grimm (WG)
+        /// Checks the Keypress in the control field, if it's the Enter key
+        /// and all fields have data and we are not already logged in
+        /// then call the login method and/or just enables the Clear button
+        /// </summary>
         private void txtUsername_KeyUp(object sender, KeyEventArgs e)
         {
             if (btnLogin.Text != "&Login" || txtUsername.Text != "" && txtPassword.Text != "")
@@ -152,6 +188,38 @@ namespace WEAT_Solutions_Main_Project
                     Login();
                 }
             }
+            if (txtUsername.Text != "")
+            {
+                btnClear.Enabled = true;
+            }
+            else
+            {
+                btnClear.Enabled = false;
+            }
+        }
+        // Calls the ClearForm method
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+        /// <summary>
+        /// Author Wade Grimm (WG)
+        /// Reset the controls on the form
+        /// </summary>
+        public void ClearForm()
+        {
+            btnProducts.Enabled = false;
+            btnSuppliers.Enabled = false;
+            btnTravelPkgs.Enabled = false;
+            btnLogin.Text = "&Login";
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtUsername.Visible = true;
+            txtPassword.Visible = true;
+            lblWelcome.Visible = false;
+            lblWelcome.Text = "";
+            btnLogin.Enabled = false;
+            btnClear.Enabled = false;
         }
     }
 }
