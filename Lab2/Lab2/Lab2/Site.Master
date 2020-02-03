@@ -14,7 +14,7 @@
         <div>
             <header class="jumbotron"></header>
             <main>
-                <asp:ContentPlaceHolder ID="mainContentPlaceHolder" runat="server">
+                <asp:ContentPlaceHolder ID="main" runat="server">
                 </asp:ContentPlaceHolder>
             </main>
         </div>

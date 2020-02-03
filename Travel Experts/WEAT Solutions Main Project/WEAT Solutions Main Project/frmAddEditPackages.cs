@@ -125,6 +125,8 @@ namespace WEAT_Solutions_Main_Project
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             //remove blank row at the bottom
             dataGridView1.AllowUserToAddRows = false;
+            //Prevent user from removing rows in the display
+            dataGridView1.AllowUserToDeleteRows = false;
             // set column names and display format
             dataGridView1.Columns[0].HeaderText = "Package ID";
             dataGridView1.Columns[1].HeaderText = "Package Name";
@@ -378,7 +380,14 @@ namespace WEAT_Solutions_Main_Project
                              select ppst.ProductSupplierId).Count() < 1)
                         {
                             Packages_Products_Supplier insItem = new Packages_Products_Supplier();
-                            insItem.PackageId = Convert.ToInt32(txtPackageID.Text);
+                            if (txtPackageID.Text != "")
+                            {
+                                insItem.PackageId = Convert.ToInt32(txtPackageID.Text);
+                            }
+                            else
+                            {
+                                insItem.PackageId = currPkg.PackageId;
+                            }
                             insItem.ProductSupplierId = pw.ProductSupplierId;
                             dbContext.Packages_Products_Suppliers.InsertOnSubmit(insItem);
                             dbContext.SubmitChanges();
@@ -485,8 +494,8 @@ namespace WEAT_Solutions_Main_Project
                         // set the various attributes of the object from form controls
                         pkg.PkgName = txtPkgName.Text;
                         pkg.PkgDesc = txtPkgDesc.Text;
-                        pkg.PkgStartDate = dtpPkgStart.Value;
-                        pkg.PkgEndDate = dtpPkgEnd.Value;
+                        pkg.PkgStartDate = dtpPkgStart.Value.Date;
+                        pkg.PkgEndDate = dtpPkgEnd.Value.Date;
                         //if (pkg.PkgStartDate < pkg.PkgEndDate)
                         //{
                             if (txtPkgBase.Text.StartsWith("$")) // remove the leading $ if it exists
@@ -549,8 +558,8 @@ namespace WEAT_Solutions_Main_Project
                 // set object attributes based on form controls
                 pkg.PkgName = txtPkgName.Text;
                 pkg.PkgDesc = txtPkgDesc.Text;
-                pkg.PkgStartDate = dtpPkgStart.Value;
-                pkg.PkgEndDate = dtpPkgEnd.Value;
+                pkg.PkgStartDate = dtpPkgStart.Value.Date;
+                pkg.PkgEndDate = dtpPkgEnd.Value.Date;
                 //if (pkg.PkgStartDate < pkg.PkgEndDate)
                 //{
                     if (txtPkgBase.Text.StartsWith("$")) // remove the leading $ if it exists
@@ -576,11 +585,19 @@ namespace WEAT_Solutions_Main_Project
                     {
                         dbContext.Packages.InsertOnSubmit(pkg);
                         dbContext.SubmitChanges(); // submit the changes to the DB
+                    
+                    currPkg = (from pk in dbContext.Packages
+                              where pk.PkgName == pkg.PkgName
+                              select pk).Single();
                     }
                     else
                     {
                         MessageBox.Show("Agency Commision is too high");
                     }
+               // need to retrieve the newly created package ID     
+                prodsToAdd = GetProducts_Suppliers(addProd);
+                ppsdList = GetPackages_Products_Suppliers(prodsToAdd);
+                allGoodAdd = Save_Packages_Products_Suppliers(ppsdList, true);
                 //}
             }
             LoadDGV();
@@ -617,8 +634,8 @@ namespace WEAT_Solutions_Main_Project
                 if (txtPkgName.Text != currPkg.PkgName || txtPkgDesc.Text != currPkg.PkgDesc ||
                     txtPkgBase.Text != currPkg.PkgBasePrice.ToString("c") ||
                     txtPakComm.Text != Convert.ToDecimal(currPkg.PkgAgencyCommission).ToString("c") ||
-                    dtpPkgStart.Value != currPkg.PkgStartDate && dtpPkgStart.Value < currPkg.PkgEndDate  
-                    || dtpPkgEnd.Value != currPkg.PkgEndDate && dtpPkgEnd.Value > currPkg.PkgStartDate
+                    dtpPkgStart.Value.Date != currPkg.PkgStartDate && dtpPkgStart.Value.Date < currPkg.PkgEndDate  
+                    || dtpPkgEnd.Value.Date != currPkg.PkgEndDate && dtpPkgEnd.Value.Date > currPkg.PkgStartDate
                     || addProd.Count > 0 || rmvProd.Count > 0)
                 {
                     btnSave.Enabled = true;
@@ -633,7 +650,7 @@ namespace WEAT_Solutions_Main_Project
                
                 if (txtPkgName.Text != "" && txtPkgDesc.Text != "" &&
                     txtPkgBase.Text != "" && txtPakComm.Text != "" &&
-                    dtpPkgStart.Value !=null && dtpPkgEnd.Value >= dtpPkgStart.Value.AddDays(1) && addProd.Count > 0)
+                    dtpPkgStart.Value.Date >= DateTime.Now.Date && dtpPkgEnd.Value.Date >= dtpPkgStart.Value.AddDays(1).Date && addProd.Count > 0)
                 {
                     btnSave.Enabled = true;
                 }
@@ -686,9 +703,9 @@ namespace WEAT_Solutions_Main_Project
             txtPkgBase.Text = "";
             txtPakComm.Text = "";
             // set the start date to today
-            dtpPkgStart.Value = DateTime.Now;
+            dtpPkgStart.Value = DateTime.Now.Date;
             //set end date to 7 days from today
-            dtpPkgEnd.Value = DateTime.Now.AddDays(7);
+            dtpPkgEnd.Value = DateTime.Now.AddDays(7).Date;
             // clear lists
             addProd.Clear();
             rmvProd.Clear();

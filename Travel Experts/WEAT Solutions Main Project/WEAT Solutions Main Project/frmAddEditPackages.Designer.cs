@@ -61,6 +61,11 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.gbDetails = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             packageIdLabel = new System.Windows.Forms.Label();
             pkgAgencyCommissionLabel = new System.Windows.Forms.Label();
             pkgBasePriceLabel = new System.Windows.Forms.Label();
@@ -76,63 +81,70 @@
             // packageIdLabel
             // 
             packageIdLabel.AutoSize = true;
-            packageIdLabel.Location = new System.Drawing.Point(25, 25);
+            packageIdLabel.Location = new System.Drawing.Point(33, 31);
+            packageIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             packageIdLabel.Name = "packageIdLabel";
-            packageIdLabel.Size = new System.Drawing.Size(65, 13);
+            packageIdLabel.Size = new System.Drawing.Size(82, 17);
             packageIdLabel.TabIndex = 15;
             packageIdLabel.Text = "Package Id:";
             // 
             // pkgAgencyCommissionLabel
             // 
             pkgAgencyCommissionLabel.AutoSize = true;
-            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(385, 106);
+            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(513, 130);
+            pkgAgencyCommissionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pkgAgencyCommissionLabel.Name = "pkgAgencyCommissionLabel";
-            pkgAgencyCommissionLabel.Size = new System.Drawing.Size(104, 13);
+            pkgAgencyCommissionLabel.Size = new System.Drawing.Size(138, 17);
             pkgAgencyCommissionLabel.TabIndex = 9;
             pkgAgencyCommissionLabel.Text = "Agency Commission:";
             // 
             // pkgBasePriceLabel
             // 
             pkgBasePriceLabel.AutoSize = true;
-            pkgBasePriceLabel.Location = new System.Drawing.Point(385, 80);
+            pkgBasePriceLabel.Location = new System.Drawing.Point(513, 98);
+            pkgBasePriceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pkgBasePriceLabel.Name = "pkgBasePriceLabel";
-            pkgBasePriceLabel.Size = new System.Drawing.Size(61, 13);
+            pkgBasePriceLabel.Size = new System.Drawing.Size(80, 17);
             pkgBasePriceLabel.TabIndex = 10;
             pkgBasePriceLabel.Text = "Base Price:";
             // 
             // pkgDescLabel
             // 
             pkgDescLabel.AutoSize = true;
-            pkgDescLabel.Location = new System.Drawing.Point(25, 80);
+            pkgDescLabel.Location = new System.Drawing.Point(33, 98);
+            pkgDescLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pkgDescLabel.Name = "pkgDescLabel";
-            pkgDescLabel.Size = new System.Drawing.Size(63, 13);
+            pkgDescLabel.Size = new System.Drawing.Size(83, 17);
             pkgDescLabel.TabIndex = 13;
             pkgDescLabel.Text = "Description:";
             // 
             // pkgEndDateLabel
             // 
             pkgEndDateLabel.AutoSize = true;
-            pkgEndDateLabel.Location = new System.Drawing.Point(385, 52);
+            pkgEndDateLabel.Location = new System.Drawing.Point(513, 64);
+            pkgEndDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pkgEndDateLabel.Name = "pkgEndDateLabel";
-            pkgEndDateLabel.Size = new System.Drawing.Size(55, 13);
+            pkgEndDateLabel.Size = new System.Drawing.Size(71, 17);
             pkgEndDateLabel.TabIndex = 11;
             pkgEndDateLabel.Text = "End Date:";
             // 
             // pkgNameLabel
             // 
             pkgNameLabel.AutoSize = true;
-            pkgNameLabel.Location = new System.Drawing.Point(25, 54);
+            pkgNameLabel.Location = new System.Drawing.Point(33, 66);
+            pkgNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pkgNameLabel.Name = "pkgNameLabel";
-            pkgNameLabel.Size = new System.Drawing.Size(84, 13);
+            pkgNameLabel.Size = new System.Drawing.Size(108, 17);
             pkgNameLabel.TabIndex = 14;
             pkgNameLabel.Text = "Package Name:";
             // 
             // pkgStartDateLabel
             // 
             pkgStartDateLabel.AutoSize = true;
-            pkgStartDateLabel.Location = new System.Drawing.Point(385, 26);
+            pkgStartDateLabel.Location = new System.Drawing.Point(513, 32);
+            pkgStartDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             pkgStartDateLabel.Name = "pkgStartDateLabel";
-            pkgStartDateLabel.Size = new System.Drawing.Size(58, 13);
+            pkgStartDateLabel.Size = new System.Drawing.Size(76, 17);
             pkgStartDateLabel.TabIndex = 12;
             pkgStartDateLabel.Text = "Start Date:";
             // 
@@ -140,9 +152,10 @@
             // 
             this.txtPackageID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PackageId", true));
             this.txtPackageID.Enabled = false;
-            this.txtPackageID.Location = new System.Drawing.Point(157, 22);
+            this.txtPackageID.Location = new System.Drawing.Point(209, 27);
+            this.txtPackageID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPackageID.Name = "txtPackageID";
-            this.txtPackageID.Size = new System.Drawing.Size(200, 20);
+            this.txtPackageID.Size = new System.Drawing.Size(265, 22);
             this.txtPackageID.TabIndex = 2;
             // 
             // packageBindingSource
@@ -152,9 +165,10 @@
             // txtPakComm
             // 
             this.txtPakComm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgAgencyCommission", true));
-            this.txtPakComm.Location = new System.Drawing.Point(517, 102);
+            this.txtPakComm.Location = new System.Drawing.Point(689, 126);
+            this.txtPakComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPakComm.Name = "txtPakComm";
-            this.txtPakComm.Size = new System.Drawing.Size(200, 20);
+            this.txtPakComm.Size = new System.Drawing.Size(265, 22);
             this.txtPakComm.TabIndex = 8;
             this.txtPakComm.TextChanged += new System.EventHandler(this.txtPakComm_TextChanged);
             this.txtPakComm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPakComm_KeyPress);
@@ -162,9 +176,10 @@
             // txtPkgBase
             // 
             this.txtPkgBase.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgBasePrice", true));
-            this.txtPkgBase.Location = new System.Drawing.Point(517, 76);
+            this.txtPkgBase.Location = new System.Drawing.Point(689, 94);
+            this.txtPkgBase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPkgBase.Name = "txtPkgBase";
-            this.txtPkgBase.Size = new System.Drawing.Size(200, 20);
+            this.txtPkgBase.Size = new System.Drawing.Size(265, 22);
             this.txtPkgBase.TabIndex = 7;
             this.txtPkgBase.TextChanged += new System.EventHandler(this.txtPkgBase_TextChanged);
             this.txtPkgBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPkgBase_KeyPress);
@@ -172,37 +187,41 @@
             // txtPkgDesc
             // 
             this.txtPkgDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgDesc", true));
-            this.txtPkgDesc.Location = new System.Drawing.Point(157, 76);
+            this.txtPkgDesc.Location = new System.Drawing.Point(209, 94);
+            this.txtPkgDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPkgDesc.Multiline = true;
             this.txtPkgDesc.Name = "txtPkgDesc";
-            this.txtPkgDesc.Size = new System.Drawing.Size(200, 57);
+            this.txtPkgDesc.Size = new System.Drawing.Size(265, 54);
             this.txtPkgDesc.TabIndex = 4;
             this.txtPkgDesc.TextChanged += new System.EventHandler(this.txtPkgDesc_TextChanged);
             // 
             // dtpPkgEnd
             // 
             this.dtpPkgEnd.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgEndDate", true));
-            this.dtpPkgEnd.Location = new System.Drawing.Point(517, 48);
+            this.dtpPkgEnd.Location = new System.Drawing.Point(689, 59);
+            this.dtpPkgEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpPkgEnd.Name = "dtpPkgEnd";
-            this.dtpPkgEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpPkgEnd.Size = new System.Drawing.Size(265, 22);
             this.dtpPkgEnd.TabIndex = 6;
             this.dtpPkgEnd.ValueChanged += new System.EventHandler(this.dtpPkgEnd_ValueChanged);
             // 
             // txtPkgName
             // 
             this.txtPkgName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgName", true));
-            this.txtPkgName.Location = new System.Drawing.Point(157, 50);
+            this.txtPkgName.Location = new System.Drawing.Point(209, 62);
+            this.txtPkgName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPkgName.Name = "txtPkgName";
-            this.txtPkgName.Size = new System.Drawing.Size(200, 20);
+            this.txtPkgName.Size = new System.Drawing.Size(265, 22);
             this.txtPkgName.TabIndex = 3;
             this.txtPkgName.TextChanged += new System.EventHandler(this.txtPkgName_TextChanged);
             // 
             // dtpPkgStart
             // 
             this.dtpPkgStart.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgStartDate", true));
-            this.dtpPkgStart.Location = new System.Drawing.Point(517, 22);
+            this.dtpPkgStart.Location = new System.Drawing.Point(689, 27);
+            this.dtpPkgStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpPkgStart.Name = "dtpPkgStart";
-            this.dtpPkgStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpPkgStart.Size = new System.Drawing.Size(265, 22);
             this.dtpPkgStart.TabIndex = 5;
             this.dtpPkgStart.ValueChanged += new System.EventHandler(this.dtpPkgStart_ValueChanged);
             // 
@@ -219,10 +238,11 @@
             this.pkgBasePriceDataGridViewTextBoxColumn,
             this.pkgAgencyCommissionDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.packageBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 15);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1034, 226);
+            this.dataGridView1.Size = new System.Drawing.Size(1379, 278);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -284,9 +304,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(963, 474);
+            this.btnExit.Location = new System.Drawing.Point(1284, 583);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 33);
+            this.btnExit.Size = new System.Drawing.Size(100, 41);
             this.btnExit.TabIndex = 16;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -294,9 +315,10 @@
             // 
             // btnAddProd
             // 
-            this.btnAddProd.Location = new System.Drawing.Point(402, 139);
+            this.btnAddProd.Location = new System.Drawing.Point(536, 177);
+            this.btnAddProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddProd.Name = "btnAddProd";
-            this.btnAddProd.Size = new System.Drawing.Size(75, 23);
+            this.btnAddProd.Size = new System.Drawing.Size(100, 28);
             this.btnAddProd.TabIndex = 19;
             this.btnAddProd.Text = "<<";
             this.btnAddProd.UseVisualStyleBackColor = true;
@@ -304,9 +326,10 @@
             // 
             // btnRmvProd
             // 
-            this.btnRmvProd.Location = new System.Drawing.Point(402, 214);
+            this.btnRmvProd.Location = new System.Drawing.Point(536, 269);
+            this.btnRmvProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRmvProd.Name = "btnRmvProd";
-            this.btnRmvProd.Size = new System.Drawing.Size(75, 23);
+            this.btnRmvProd.Size = new System.Drawing.Size(100, 28);
             this.btnRmvProd.TabIndex = 20;
             this.btnRmvProd.Text = ">>";
             this.btnRmvProd.UseVisualStyleBackColor = true;
@@ -315,27 +338,32 @@
             // lbAvail
             // 
             this.lbAvail.FormattingEnabled = true;
-            this.lbAvail.Location = new System.Drawing.Point(517, 139);
+            this.lbAvail.ItemHeight = 16;
+            this.lbAvail.Location = new System.Drawing.Point(689, 177);
+            this.lbAvail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbAvail.Name = "lbAvail";
-            this.lbAvail.Size = new System.Drawing.Size(200, 95);
+            this.lbAvail.Size = new System.Drawing.Size(265, 116);
             this.lbAvail.TabIndex = 21;
             this.lbAvail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbAvail_MouseClick);
             // 
             // lbAssigned
             // 
             this.lbAssigned.FormattingEnabled = true;
-            this.lbAssigned.Location = new System.Drawing.Point(157, 139);
+            this.lbAssigned.ItemHeight = 16;
+            this.lbAssigned.Location = new System.Drawing.Point(209, 177);
+            this.lbAssigned.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbAssigned.Name = "lbAssigned";
-            this.lbAssigned.Size = new System.Drawing.Size(200, 95);
+            this.lbAssigned.Size = new System.Drawing.Size(265, 116);
             this.lbAssigned.TabIndex = 22;
             this.lbAssigned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbAssigned_MouseClick);
             // 
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(963, 413);
+            this.btnSave.Location = new System.Drawing.Point(1284, 508);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 33);
+            this.btnSave.Size = new System.Drawing.Size(100, 41);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -344,9 +372,10 @@
             // btnReset
             // 
             this.btnReset.Enabled = false;
-            this.btnReset.Location = new System.Drawing.Point(402, 174);
+            this.btnReset.Location = new System.Drawing.Point(536, 220);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 26);
+            this.btnReset.Size = new System.Drawing.Size(100, 32);
             this.btnReset.TabIndex = 24;
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -354,9 +383,10 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(962, 362);
+            this.btnNew.Location = new System.Drawing.Point(1283, 446);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 33);
+            this.btnNew.Size = new System.Drawing.Size(100, 41);
             this.btnNew.TabIndex = 25;
             this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -364,6 +394,11 @@
             // 
             // gbDetails
             // 
+            this.gbDetails.Controls.Add(this.label5);
+            this.gbDetails.Controls.Add(this.label4);
+            this.gbDetails.Controls.Add(this.label3);
+            this.gbDetails.Controls.Add(this.label2);
+            this.gbDetails.Controls.Add(this.label1);
             this.gbDetails.Controls.Add(this.txtPackageID);
             this.gbDetails.Controls.Add(this.dtpPkgStart);
             this.gbDetails.Controls.Add(this.btnReset);
@@ -384,25 +419,66 @@
             this.gbDetails.Controls.Add(this.txtPakComm);
             this.gbDetails.Controls.Add(pkgAgencyCommissionLabel);
             this.gbDetails.Enabled = false;
-            this.gbDetails.Location = new System.Drawing.Point(12, 254);
-            this.gbDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.gbDetails.Location = new System.Drawing.Point(16, 313);
+            this.gbDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbDetails.Name = "gbDetails";
-            this.gbDetails.Padding = new System.Windows.Forms.Padding(2);
-            this.gbDetails.Size = new System.Drawing.Size(885, 253);
+            this.gbDetails.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbDetails.Size = new System.Drawing.Size(1227, 311);
             this.gbDetails.TabIndex = 26;
             this.gbDetails.TabStop = false;
             this.gbDetails.Text = "Package Details";
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(961, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(260, 22);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Must be at least 1 day after start date";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(961, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(260, 22);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Must be at numbers only";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(961, 125);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(260, 22);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Must be at numbers only";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(686, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(260, 22);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Products available to this Package";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(206, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(260, 22);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Products assigned to this Package";
+            // 
             // frmAddEditPackages
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 530);
+            this.ClientSize = new System.Drawing.Size(1421, 652);
             this.Controls.Add(this.gbDetails);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAddEditPackages";
             this.Text = "frmAddEditPackages";
             this.Load += new System.EventHandler(this.frmAddEditPackages_Load);
@@ -441,5 +517,10 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.GroupBox gbDetails;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
