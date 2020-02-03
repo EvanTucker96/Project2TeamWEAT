@@ -380,13 +380,13 @@ namespace WEAT_Solutions_Main_Project
                              select ppst.ProductSupplierId).Count() < 1)
                         {
                             Packages_Products_Supplier insItem = new Packages_Products_Supplier();
-                            if (txtPackageID.Text != "")
+                            if (isAdd)
                             {
-                                insItem.PackageId = Convert.ToInt32(txtPackageID.Text);
+                                insItem.PackageId = currPkg.PackageId;
                             }
                             else
                             {
-                                insItem.PackageId = currPkg.PackageId;
+                                insItem.PackageId = Convert.ToInt32(txtPackageID.Text);
                             }
                             insItem.ProductSupplierId = pw.ProductSupplierId;
                             dbContext.Packages_Products_Suppliers.InsertOnSubmit(insItem);
@@ -394,7 +394,7 @@ namespace WEAT_Solutions_Main_Project
                             status = true;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         status = false;
                         //MessageBox.Show("Error encounctered saving data: \n" + ex.Message);
