@@ -598,10 +598,9 @@ namespace WEAT_Solutions_Main_Project
                 prodsToAdd = GetProducts_Suppliers(addProd);
                 ppsdList = GetPackages_Products_Suppliers(prodsToAdd);
                 allGoodAdd = Save_Packages_Products_Suppliers(ppsdList, true);
-                //}
+                NewOrClear();
             }
             LoadDGV();
-            //LoadEditRecordDetails();
         }
 
       
@@ -646,7 +645,7 @@ namespace WEAT_Solutions_Main_Project
                 }
             }
             else // new package
-            {   // make sure all fields have data and atleast 1 product added
+            {   // make sure all fields have data and at least 1 product added
                
                 if (txtPkgName.Text != "" && txtPkgDesc.Text != "" &&
                     txtPkgBase.Text != "" && txtPakComm.Text != "" &&
@@ -694,7 +693,11 @@ namespace WEAT_Solutions_Main_Project
         // setup for a New Package
         private void btnNew_Click(object sender, EventArgs e)
         {
+            NewOrClear();
             
+        }
+        public void NewOrClear()
+        {
             isAdd = true; // let other methods know we are adding a record
             // clear form controls
             txtPackageID.Text = "";
@@ -735,7 +738,7 @@ namespace WEAT_Solutions_Main_Project
             {
                 btnNew.Text = "&New";
             }
-            
+
         }
         // only accepts numbers and backspace keystrokes
         private void txtPkgBase_KeyPress(object sender, KeyPressEventArgs e)
