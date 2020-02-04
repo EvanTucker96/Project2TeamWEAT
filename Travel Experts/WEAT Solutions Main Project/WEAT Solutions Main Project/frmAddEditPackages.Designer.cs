@@ -61,11 +61,11 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.gbDetails = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             packageIdLabel = new System.Windows.Forms.Label();
             pkgAgencyCommissionLabel = new System.Windows.Forms.Label();
             pkgBasePriceLabel = new System.Windows.Forms.Label();
@@ -153,7 +153,7 @@
             this.txtPackageID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PackageId", true));
             this.txtPackageID.Enabled = false;
             this.txtPackageID.Location = new System.Drawing.Point(209, 27);
-            this.txtPackageID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPackageID.Margin = new System.Windows.Forms.Padding(4);
             this.txtPackageID.Name = "txtPackageID";
             this.txtPackageID.Size = new System.Drawing.Size(265, 22);
             this.txtPackageID.TabIndex = 2;
@@ -166,7 +166,7 @@
             // 
             this.txtPakComm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgAgencyCommission", true));
             this.txtPakComm.Location = new System.Drawing.Point(689, 126);
-            this.txtPakComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPakComm.Margin = new System.Windows.Forms.Padding(4);
             this.txtPakComm.Name = "txtPakComm";
             this.txtPakComm.Size = new System.Drawing.Size(265, 22);
             this.txtPakComm.TabIndex = 8;
@@ -177,7 +177,7 @@
             // 
             this.txtPkgBase.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgBasePrice", true));
             this.txtPkgBase.Location = new System.Drawing.Point(689, 94);
-            this.txtPkgBase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPkgBase.Margin = new System.Windows.Forms.Padding(4);
             this.txtPkgBase.Name = "txtPkgBase";
             this.txtPkgBase.Size = new System.Drawing.Size(265, 22);
             this.txtPkgBase.TabIndex = 7;
@@ -188,7 +188,7 @@
             // 
             this.txtPkgDesc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgDesc", true));
             this.txtPkgDesc.Location = new System.Drawing.Point(209, 94);
-            this.txtPkgDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPkgDesc.Margin = new System.Windows.Forms.Padding(4);
             this.txtPkgDesc.Multiline = true;
             this.txtPkgDesc.Name = "txtPkgDesc";
             this.txtPkgDesc.Size = new System.Drawing.Size(265, 54);
@@ -199,7 +199,7 @@
             // 
             this.dtpPkgEnd.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgEndDate", true));
             this.dtpPkgEnd.Location = new System.Drawing.Point(689, 59);
-            this.dtpPkgEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpPkgEnd.Margin = new System.Windows.Forms.Padding(4);
             this.dtpPkgEnd.Name = "dtpPkgEnd";
             this.dtpPkgEnd.Size = new System.Drawing.Size(265, 22);
             this.dtpPkgEnd.TabIndex = 6;
@@ -209,7 +209,7 @@
             // 
             this.txtPkgName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgName", true));
             this.txtPkgName.Location = new System.Drawing.Point(209, 62);
-            this.txtPkgName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPkgName.Margin = new System.Windows.Forms.Padding(4);
             this.txtPkgName.Name = "txtPkgName";
             this.txtPkgName.Size = new System.Drawing.Size(265, 22);
             this.txtPkgName.TabIndex = 3;
@@ -219,7 +219,7 @@
             // 
             this.dtpPkgStart.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgStartDate", true));
             this.dtpPkgStart.Location = new System.Drawing.Point(689, 27);
-            this.dtpPkgStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpPkgStart.Margin = new System.Windows.Forms.Padding(4);
             this.dtpPkgStart.Name = "dtpPkgStart";
             this.dtpPkgStart.Size = new System.Drawing.Size(265, 22);
             this.dtpPkgStart.TabIndex = 5;
@@ -239,7 +239,7 @@
             this.pkgAgencyCommissionDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.packageBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(16, 15);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1379, 278);
@@ -305,7 +305,7 @@
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(1284, 583);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 41);
             this.btnExit.TabIndex = 16;
@@ -316,7 +316,7 @@
             // btnAddProd
             // 
             this.btnAddProd.Location = new System.Drawing.Point(536, 177);
-            this.btnAddProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddProd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddProd.Name = "btnAddProd";
             this.btnAddProd.Size = new System.Drawing.Size(100, 28);
             this.btnAddProd.TabIndex = 19;
@@ -327,7 +327,7 @@
             // btnRmvProd
             // 
             this.btnRmvProd.Location = new System.Drawing.Point(536, 269);
-            this.btnRmvProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRmvProd.Margin = new System.Windows.Forms.Padding(4);
             this.btnRmvProd.Name = "btnRmvProd";
             this.btnRmvProd.Size = new System.Drawing.Size(100, 28);
             this.btnRmvProd.TabIndex = 20;
@@ -340,7 +340,7 @@
             this.lbAvail.FormattingEnabled = true;
             this.lbAvail.ItemHeight = 16;
             this.lbAvail.Location = new System.Drawing.Point(689, 177);
-            this.lbAvail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbAvail.Margin = new System.Windows.Forms.Padding(4);
             this.lbAvail.Name = "lbAvail";
             this.lbAvail.Size = new System.Drawing.Size(265, 116);
             this.lbAvail.TabIndex = 21;
@@ -351,7 +351,7 @@
             this.lbAssigned.FormattingEnabled = true;
             this.lbAssigned.ItemHeight = 16;
             this.lbAssigned.Location = new System.Drawing.Point(209, 177);
-            this.lbAssigned.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbAssigned.Margin = new System.Windows.Forms.Padding(4);
             this.lbAssigned.Name = "lbAssigned";
             this.lbAssigned.Size = new System.Drawing.Size(265, 116);
             this.lbAssigned.TabIndex = 22;
@@ -361,7 +361,7 @@
             // 
             this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(1284, 508);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 41);
             this.btnSave.TabIndex = 23;
@@ -373,7 +373,7 @@
             // 
             this.btnReset.Enabled = false;
             this.btnReset.Location = new System.Drawing.Point(536, 220);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(100, 32);
             this.btnReset.TabIndex = 24;
@@ -384,7 +384,7 @@
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(1283, 446);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(100, 41);
             this.btnNew.TabIndex = 25;
@@ -428,29 +428,13 @@
             this.gbDetails.TabStop = false;
             this.gbDetails.Text = "Package Details";
             // 
-            // label1
+            // label5
             // 
-            this.label1.Location = new System.Drawing.Point(961, 59);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 22);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Must be at least 1 day after start date";
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(961, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(260, 22);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Must be at numbers only";
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(961, 125);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(260, 22);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "Must be at numbers only";
+            this.label5.Location = new System.Drawing.Point(206, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(260, 22);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Products assigned to this Package";
             // 
             // label4
             // 
@@ -460,13 +444,29 @@
             this.label4.TabIndex = 30;
             this.label4.Text = "Products available to this Package";
             // 
-            // label5
+            // label3
             // 
-            this.label5.Location = new System.Drawing.Point(206, 152);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(260, 22);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Products assigned to this Package";
+            this.label3.Location = new System.Drawing.Point(961, 125);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(260, 22);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Must be at numbers only";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(961, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(260, 22);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Must be at numbers only";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(961, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(260, 22);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Must be at least 1 day after start date";
             // 
             // frmAddEditPackages
             // 
@@ -478,7 +478,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAddEditPackages";
             this.Text = "frmAddEditPackages";
             this.Load += new System.EventHandler(this.frmAddEditPackages_Load);

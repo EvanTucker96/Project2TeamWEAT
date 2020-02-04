@@ -744,7 +744,12 @@ namespace WEAT_Solutions_Main_Project
 			this._Products_Suppliers = new EntitySet<Products_Supplier>(new Action<Products_Supplier>(this.attach_Products_Suppliers), new Action<Products_Supplier>(this.detach_Products_Suppliers));
 			OnCreated();
 		}
-		
+
+		public override string ToString()
+		{
+			return ProdName;
+		}
+
 		public bool IsEqual(Product p)
 		{
 			if (ProductId == p.ProductId && ProdName == p.ProdName)
@@ -1250,6 +1255,8 @@ namespace WEAT_Solutions_Main_Project
 			this.SendPropertyChanging();
 			entity.Package = null;
 		}
+
+
 	}
 }
 #pragma warning restore 1591
