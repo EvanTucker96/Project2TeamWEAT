@@ -132,13 +132,17 @@ namespace WEAT_Solutions_Main_Project
         {
 
         }
+
         /// <summary>
-        /// Will be used for loading the Suppliers Add/Edit form
+        /// Load the Suppliers Add/Edit form
+        /// Author: Tom Hollis
         /// </summary>
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
-
+            frmAddEditSuppliers frmAddEditSuppliers = new frmAddEditSuppliers(); // initialize the dialog object
+            DialogResult = frmAddEditSuppliers.ShowDialog();                     // show the dialog and store its status
         }
+
         /// <summary>
         /// Author Wade Grimm (WG)
         /// Load the Packages Add/Edit form
