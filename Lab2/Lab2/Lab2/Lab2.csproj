@@ -89,6 +89,8 @@
     </Content>
     <Content Include="Web.config" />
     <Content Include="Registration.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Contact.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs">
@@ -132,6 +134,20 @@
     </Compile>
     <Compile Include="Slip.cs">
       <DependentUpon>InlandMarineData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

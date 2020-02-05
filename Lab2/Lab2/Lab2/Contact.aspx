@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Lab2.Contact" MasterPageFile="~/Site.Master" %>
-
-<asp:Content ID="contactMain" ContentPlaceHolderID="main" runat="server">
-    <p>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Lab2.WebForm3" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
 Inland Lake Marina
 Box 123
 Inland Lake, Arizona
@@ -11,5 +11,5 @@ Inland Lake, Arizona
 (fax) 928-450-2236
 Manager: Glenn Cooke
 Slip Manager: Kimberley Carson
-Contact email: info@inlandmarina.com</p>
+Contact email: info@inlandmarina.com
 </asp:Content>

@@ -24,7 +24,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light"></nav> <!-- navbar code from W3Schools then edited-->
                     <ul class="nav nav-pills navbar-right">
                         <li class="nav-item">
-                            <a class="nav-link btn btn-light" href="./Home.aspx">Home</a>
+                            <a class="nav-link btn btn-light" href="./Default.aspx">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn btn-light" href="./Contact.aspx">Contact Us</a>
