@@ -18,7 +18,27 @@
         <form id="form1" runat="server">
             <header class="jumbotron text-center">
                 <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" />
+                <nav class="navbar navbar-expand-lg navbar-light"></nav> <!-- navbar code from W3Schools then edited-->
+                    <ul class="nav nav-pills navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link btn" href="./Home.aspx">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn" href="./Contact.aspx">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn" href="./AvailableSlip.aspx">Available Slips</a>
+                        </li>   
+                        <li class="nav-item">
+                            <a class="nav-link btn" href="./Registration.aspx">Register</a>
+                        </li>                      
+                        <li class="nav-item">
+                            <a class="nav-link disabled btn" href="./LeaseSlip.aspx">Disabled</a>
+                        </li>
+                    </ul>
+                </nav>
             </header>
+
             <main>
                 <asp:ContentPlaceHolder ID="main" runat="server">
                 </asp:ContentPlaceHolder>
