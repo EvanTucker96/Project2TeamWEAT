@@ -16,6 +16,7 @@
           <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="512" Nullable="false" />
           <Property Name="EMail" Type="varchar" MaxLength="255" />
+          <Property Name="Salt" Type="varchar" MaxLength="512" />
         </EntityType>
         <EntityType Name="Dock">
           <Key>
@@ -113,6 +114,7 @@
           <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Salt" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Leases" Relationship="Self.FK_LeaseCustomer" FromRole="Customer" ToRole="Lease" />
         </EntityType>
         <EntityType Name="Dock">
@@ -182,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MarinaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MarinaEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Docks" EntityType="Self.Dock" />
           <EntitySet Name="Leases" EntityType="Self.Lease" />
@@ -205,7 +207,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MarinaModelStoreContainer" CdmEntityContainer="MarinaEntities">
+        <EntityContainerMapping StorageEntityContainer="MarinaModelStoreContainer" CdmEntityContainer="MarinaEntities1">
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="MarinaModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
@@ -216,6 +218,7 @@
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

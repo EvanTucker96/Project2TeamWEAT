@@ -13,10 +13,10 @@ namespace Lab2
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MarinaEntities : DbContext
+    public partial class MarinaEntities1 : DbContext
     {
-        public MarinaEntities()
-            : base("name=MarinaEntities")
+        public MarinaEntities1()
+            : base("name=MarinaEntities1")
         {
         }
     

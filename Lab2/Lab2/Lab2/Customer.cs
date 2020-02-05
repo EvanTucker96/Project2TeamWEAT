@@ -11,7 +11,9 @@ namespace Lab2
 {
     using System;
     using System.Collections.Generic;
-    
+    using BCrypt.Net;
+
+
     public partial class Customer
     {
         public Customer()
@@ -26,7 +28,22 @@ namespace Lab2
         public string City { get; set; }
         public string Password { get; set; }
         public string EMail { get; set; }
+        public string Salt { get; set; }
     
         public virtual ICollection<Lease> Leases { get; set; }
+
+        public string EncryptPassword(string plainPass)
+        {
+            string salt = BCrypt.GenerateSalt();
+            string passwordHash = BCrypt.HashPassword(plainPass,salt);
+            return passwordHash;
+        }
+
+        public bool VerifyPassword(string plainPass)
+        {
+            bool success = BCrypt.Verify(plainPass, Password);
+            return success;
+        }
+       
     }
 }
