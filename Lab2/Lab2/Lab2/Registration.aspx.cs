@@ -13,5 +13,19 @@ namespace Lab2
         {
 
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            Customer newCust = new Customer();
+            if (txtFName.Text != "" && txtLName.Text != "" && txtCity.Text != "" &&
+                txtPhone.Text != "" && txtEmail.Text != "")
+            {
+                newCust.FirstName = txtFName.Text;
+                newCust.LastName = txtLName.Text;
+                newCust.City = txtCity.Text;
+                newCust.Phone = txtPhone.Text;
+                
+            }
+        }
     }
 }

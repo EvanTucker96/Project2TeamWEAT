@@ -14,5 +14,12 @@
     </br>
      <asp:Label ID="Label4" runat="server" Text="City:"></asp:Label>
     <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
-    
+    </br>
+     <asp:Label ID="Label5" runat="server" Text="Email:"></asp:Label>
+    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+    </br>
+     <asp:Label ID="Label6" runat="server" Text="Password:"></asp:Label>
+    <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox>
+    </br>
+    <asp:Button ID="btnSubmit" runat="server" Text="Register" OnClick="btnSubmit_Click" />
 </asp:Content>
