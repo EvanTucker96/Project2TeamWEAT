@@ -412,11 +412,6 @@ namespace WEAT_Solutions_Main_Project
                     delItem = (from ppst in dbContext.Packages_Products_Suppliers
                                where ppst.PackageId == pw.PackageId && ppst.ProductSupplierId == pw.ProductSupplierId
                                select ppst).Single();
-                    //c = deleteDetails.ToList();
-                    //foreach (Packages_Products_Supplier item in c)
-                    //{
-                    //    delItem.PackageId = item.PackageId;
-                    //    delItem.ProductSupplierId = item.ProductSupplierId;
                     // delete the record
                         dbContext.Packages_Products_Suppliers.DeleteOnSubmit(delItem);
                     //}
