@@ -32,11 +32,19 @@ namespace Lab2
     
         public virtual ICollection<Lease> Leases { get; set; }
 
-        public string EncryptPassword(string plainPass)
+        public string EncryptPassword(string plainPass, string salt)
         {
-            string salt = BCrypt.GenerateSalt();
             string passwordHash = BCrypt.HashPassword(plainPass,salt);
             return passwordHash;
+        }
+
+        public string GetSalt()
+        {
+            if (Salt == "")
+            {
+                Salt = BCrypt.GenerateSalt();
+            }
+           return Salt;
         }
 
         public bool VerifyPassword(string plainPass)
