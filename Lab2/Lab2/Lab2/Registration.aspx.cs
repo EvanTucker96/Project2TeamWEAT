@@ -57,16 +57,34 @@ namespace Lab2
             
         }
 
-        //protected void btnVerify_Click(object sender, EventArgs e)
-        //{
-        //    MarinaEntities1 db = new MarinaEntities1();
-        //    //Customer newCust = new Customer();
-        //    var result = (from c in db.Customers
-        //                  where c.EMail == txtEmail.Text
-        //                  select c).Single();
-            
-           
-        //    lblVerify.Text= result.VerifyPassword(txtVerify.Text).ToString();
-        //}
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            MarinaEntities1 db = new MarinaEntities1();
+            lblStatus.Text = "";
+            var result = (from c in db.Customers
+                          where c.EMail == txtEmail2.Text
+                          select c).Single();
+            if (result.VerifyPassword(txtPassword2.Text))
+            {
+                Session["Authenticated"] = true;
+                Response.Redirect("LeaseSlip.aspx");
+            }
+            else
+            {
+                // Invalid password
+                lblStatus.Text = "Invalid username or password.";
+                
+            }
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtFName.Text = "";
+            txtLName.Text = "";
+            txtCity.Text = "";
+            txtEmail.Text = "";
+            txtPassword.Text = "";
+            txtPhone.Text = "";
+        }
     }
 }
