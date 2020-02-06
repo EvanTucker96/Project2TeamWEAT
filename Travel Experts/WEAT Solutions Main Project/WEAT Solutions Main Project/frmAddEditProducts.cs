@@ -28,7 +28,7 @@ namespace WEAT_Solutions_Main_Project
         }
 
         // loading data grid view for products
-        private void frmAddEditProducts_Load(object sender, EventArgs e)
+        private void frmAddEditProducts_Load_1(object sender, EventArgs e)
         {
             LoadProducts();
         }
@@ -119,5 +119,7 @@ namespace WEAT_Solutions_Main_Project
         {
 
         }
+
+       
     }
 }

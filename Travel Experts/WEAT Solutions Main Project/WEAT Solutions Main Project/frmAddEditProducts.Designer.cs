@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbProductDetails = new System.Windows.Forms.GroupBox();
             this.txtProdName = new System.Windows.Forms.TextBox();
@@ -41,13 +44,12 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.prodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.productBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.gbProductDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvProducts
@@ -57,11 +59,29 @@
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productIdDataGridViewTextBoxColumn,
             this.prodNameDataGridViewTextBoxColumn});
-            this.dgvProducts.DataSource = this.productBindingSource1;
+            this.dgvProducts.DataSource = this.productBindingSource2;
             this.dgvProducts.Location = new System.Drawing.Point(13, 13);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.Size = new System.Drawing.Size(626, 222);
             this.dgvProducts.TabIndex = 0;
+            // 
+            // productIdDataGridViewTextBoxColumn
+            // 
+            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
+            this.productIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // prodNameDataGridViewTextBoxColumn
+            // 
+            this.prodNameDataGridViewTextBoxColumn.DataPropertyName = "ProdName";
+            this.prodNameDataGridViewTextBoxColumn.HeaderText = "ProdName";
+            this.prodNameDataGridViewTextBoxColumn.Name = "prodNameDataGridViewTextBoxColumn";
+            this.prodNameDataGridViewTextBoxColumn.Width = 400;
+            // 
+            // productBindingSource1
+            // 
+            this.productBindingSource1.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
             // 
             // productBindingSource
             // 
@@ -158,23 +178,9 @@
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             // 
-            // prodNameDataGridViewTextBoxColumn
+            // productBindingSource2
             // 
-            this.prodNameDataGridViewTextBoxColumn.DataPropertyName = "ProdName";
-            this.prodNameDataGridViewTextBoxColumn.HeaderText = "ProdName";
-            this.prodNameDataGridViewTextBoxColumn.Name = "prodNameDataGridViewTextBoxColumn";
-            this.prodNameDataGridViewTextBoxColumn.Width = 400;
-            // 
-            // productIdDataGridViewTextBoxColumn
-            // 
-            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
-            this.productIdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // productBindingSource1
-            // 
-            this.productBindingSource1.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
+            this.productBindingSource2.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
             // 
             // frmAddEditProducts
             // 
@@ -190,11 +196,13 @@
             this.Controls.Add(this.dgvProducts);
             this.Name = "frmAddEditProducts";
             this.Text = "Add or Edit Products Available";
+            this.Load += new System.EventHandler(this.frmAddEditProducts_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.gbProductDetails.ResumeLayout(false);
             this.gbProductDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,5 +224,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource productBindingSource1;
+        private System.Windows.Forms.BindingSource productBindingSource2;
     }
 }
