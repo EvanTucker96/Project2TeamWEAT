@@ -53,6 +53,12 @@
     <Compile Include="frmAddEditPackages.Designer.cs">
       <DependentUpon>frmAddEditPackages.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddEditProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEditProducts.Designer.cs">
+      <DependentUpon>frmAddEditProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddEditSuppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <EmbeddedResource Include="frmAddEditPackages.resx">
       <DependentUpon>frmAddEditPackages.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddEditProducts.resx">
+      <DependentUpon>frmAddEditProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditSuppliers.resx">
       <DependentUpon>frmAddEditSuppliers.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +100,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\Package.datasource" />
+    <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\Supplier.datasource" />
     <None Include="Properties\DataSources\TravelExpertsDataContext.datasource" />
     <None Include="Properties\DataSources\WEAT_Solutions_Main_Project.Properties.Resources.datasource" />

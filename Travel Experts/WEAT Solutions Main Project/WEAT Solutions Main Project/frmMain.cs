@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 /// <summary>
-/// inital form design Angela Lambert, login, clear and validation code by Wade Grimm
+/// inital form design Angela Dunwoodie-Lambert, login, clear and validation code by Wade Grimm
 /// </summary>
 namespace WEAT_Solutions_Main_Project
 {
@@ -126,11 +126,13 @@ namespace WEAT_Solutions_Main_Project
             }
         }
         /// <summary>
-        /// Will be used for loading the Products Add/Edit form
+        /// Load the Products Add/Edit form
+        /// Author: Angela Dunwoodie-Lambert
         /// </summary>
         private void btnProducts_Click(object sender, EventArgs e)
         {
-
+            frmAddEditProducts frmAddEditProducts = new frmAddEditProducts();  //initialize the dialog object
+            DialogResult = frmAddEditProducts.ShowDialog();  //show dialog and store it's status
         }
 
         /// <summary>
