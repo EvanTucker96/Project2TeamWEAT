@@ -135,6 +135,7 @@
             this.btnReset.TabIndex = 24;
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // txtSuppName
             // 
@@ -151,6 +152,7 @@
             this.lbAssigned.Margin = new System.Windows.Forms.Padding(4);
             this.lbAssigned.Name = "lbAssigned";
             this.lbAssigned.Size = new System.Drawing.Size(265, 116);
+            this.lbAssigned.Sorted = true;
             this.lbAssigned.TabIndex = 22;
             // 
             // lbAvail
@@ -160,6 +162,7 @@
             this.lbAvail.Margin = new System.Windows.Forms.Padding(4);
             this.lbAvail.Name = "lbAvail";
             this.lbAvail.Size = new System.Drawing.Size(265, 116);
+            this.lbAvail.Sorted = true;
             this.lbAvail.TabIndex = 21;
             // 
             // btnRmvProd
@@ -171,6 +174,7 @@
             this.btnRmvProd.TabIndex = 20;
             this.btnRmvProd.Text = ">>";
             this.btnRmvProd.UseVisualStyleBackColor = true;
+            this.btnRmvProd.Click += new System.EventHandler(this.btnRmvProd_Click);
             // 
             // btnAddProd
             // 
@@ -181,6 +185,7 @@
             this.btnAddProd.TabIndex = 19;
             this.btnAddProd.Text = "<<";
             this.btnAddProd.UseVisualStyleBackColor = true;
+            this.btnAddProd.Click += new System.EventHandler(this.btnAddProd_Click);
             // 
             // btnNew
             // 
@@ -191,6 +196,7 @@
             this.btnNew.TabIndex = 30;
             this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnSave
             // 
@@ -202,6 +208,7 @@
             this.btnSave.TabIndex = 29;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnExit
             // 

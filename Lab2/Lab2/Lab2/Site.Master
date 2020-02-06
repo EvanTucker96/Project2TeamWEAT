@@ -5,19 +5,49 @@
 <html>
 <head runat="server">
     <title>Inland Marina Ltd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
         <%--put common styling here--%>
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <header class="jumbotron"></header>
+    <div class="container">
+        <form id="form1" runat="server">
+            <header class="jumbotron text-center">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" />
+                <nav class="navbar navbar-expand-lg navbar-light"></nav> <!-- navbar code from W3Schools then edited-->
+                    <ul class="nav nav-pills navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-light" href="./Default.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-light" href="./Contact.aspx">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-light" href="./AvailableSlip.aspx">Available Slips</a>
+                        </li>   
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-light" href="./Registration.aspx">Register</a>
+                        </li>                      
+<%--                        <li class="nav-item">
+                            <a class="nav-link disabled btn btn-light" href="./LeaseSlip.aspx">Lease a Slip</a>
+                        </li>--%>
+                    </ul>
+                </nav>
+            </header>
+
             <main>
                 <asp:ContentPlaceHolder ID="main" runat="server">
                 </asp:ContentPlaceHolder>
             </main>
-        </div>
-    </form>
+            <footer></footer>
+        </form>
+    </div>
 </body>
 </html>
