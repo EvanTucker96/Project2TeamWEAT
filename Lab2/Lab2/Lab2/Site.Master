@@ -5,15 +5,13 @@
 <html>
 <head runat="server">
     <title>Inland Marina Ltd</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/site.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-
     <asp:ContentPlaceHolder ID="head" runat="server">
-        <%--put common styling here--%>
     </asp:ContentPlaceHolder>
 </head>
 <body>
