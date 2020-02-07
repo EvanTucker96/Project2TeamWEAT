@@ -18,9 +18,9 @@ namespace WEAT_Solutions_Main_Project
     public partial class frmAddEditProducts : Form
     {
         public bool isAdd; //decider for if we are adding a new product
-
-
-
+        public int ProdID;
+        public string ProdName;
+        Product currentProduct;
 
         public frmAddEditProducts()
         {
@@ -31,6 +31,9 @@ namespace WEAT_Solutions_Main_Project
         private void frmAddEditProducts_Load_1(object sender, EventArgs e)
         {
             LoadProducts();
+            gbProductDetails.Enabled = false;
+            btnSave.Enabled = false;
+            btnReset.Enabled = false;
         }
 
         /// <summary>
@@ -115,11 +118,59 @@ namespace WEAT_Solutions_Main_Project
             this.Close();
         }
 
-        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnNew_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            gbProductDetails.Enabled = true;
+            txtProdName.Focus();
+            NewOrReset();
 
         }
 
-       
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            isAdd = false;
+            NewOrReset();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            EditRecords();
+        }
+
+        private void NewOrReset()
+        {
+            txtProdID.Text = "";
+            txtProdName.Text = "";
+            btnSave.Enabled = true;
+            btnReset.Enabled = true;
+        }
+
+        private void EditRecords()
+        {
+            isAdd = false;
+            int rowNum = Convert.ToInt32(dgvProducts.CurrentCell.RowIndex);
+            int prodNum = Convert.ToInt32(dgvProducts[0, rowNum].Value);
+            Product tempProd;
+
+            using(TravelExpertsDataContext dbContext = new TravelExpertsDataContext())
+            {
+                tempProd = (from p in dbContext.Products
+                            where p.ProductId == prodNum
+                            select p).Single();
+                currentProduct = tempProd;
+            }
+
+            txtProdID.Text = tempProd.ProductId.ToString();
+            txtProdName.Text = tempProd.ProdName;
+            gbProductDetails.Enabled = true;
+            txtProdName.Enabled = true;
+
+        }
+
+        private void dgvProducts_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditRecords();
+        }
     }
 }

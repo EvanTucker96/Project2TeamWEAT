@@ -32,6 +32,7 @@
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbProductDetails = new System.Windows.Forms.GroupBox();
@@ -44,12 +45,11 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.productBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.gbProductDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvProducts
@@ -64,6 +64,7 @@
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.Size = new System.Drawing.Size(626, 222);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentDoubleClick);
             // 
             // productIdDataGridViewTextBoxColumn
             // 
@@ -78,6 +79,10 @@
             this.prodNameDataGridViewTextBoxColumn.HeaderText = "ProdName";
             this.prodNameDataGridViewTextBoxColumn.Name = "prodNameDataGridViewTextBoxColumn";
             this.prodNameDataGridViewTextBoxColumn.Width = 400;
+            // 
+            // productBindingSource2
+            // 
+            this.productBindingSource2.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
             // 
             // productBindingSource1
             // 
@@ -120,6 +125,7 @@
             // 
             this.txtProdID.Location = new System.Drawing.Point(97, 22);
             this.txtProdID.Name = "txtProdID";
+            this.txtProdID.ReadOnly = true;
             this.txtProdID.Size = new System.Drawing.Size(137, 20);
             this.txtProdID.TabIndex = 1;
             // 
@@ -140,6 +146,7 @@
             this.btnNew.TabIndex = 2;
             this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnSave
             // 
@@ -168,6 +175,7 @@
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "E&dit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnReset
             // 
@@ -177,10 +185,7 @@
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
-            // 
-            // productBindingSource2
-            // 
-            this.productBindingSource2.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // frmAddEditProducts
             // 
@@ -198,11 +203,11 @@
             this.Text = "Add or Edit Products Available";
             this.Load += new System.EventHandler(this.frmAddEditProducts_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.gbProductDetails.ResumeLayout(false);
             this.gbProductDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
