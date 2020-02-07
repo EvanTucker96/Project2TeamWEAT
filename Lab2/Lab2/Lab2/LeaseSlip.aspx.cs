@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace Lab2
 {
     public partial class WebForm4 : System.Web.UI.Page
@@ -16,8 +17,7 @@ namespace Lab2
             {
                 Response.Redirect("Registration.aspx");
             }
-            dgvLease.DataSource = from slip in db.Slips
-                                  join doc in db.Docks on slip.DockID == doc. 
+            
         }
     }
 }

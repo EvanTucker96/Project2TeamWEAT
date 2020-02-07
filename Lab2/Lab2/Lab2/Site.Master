@@ -33,7 +33,7 @@
                             <a class="nav-link btn btn-light" href="./AvailableSlip.aspx">Available Slips</a>
                         </li>   
                         <li class="nav-item">
-                            <a class="nav-link btn btn-light" href="./Registration.aspx">Register</a>
+                            <a class="nav-link btn btn-light" href="./Registration.aspx">Register / Login</a>
                         </li>                      
 <%--                        <li class="nav-item">
                             <a class="nav-link disabled btn btn-light" href="./LeaseSlip.aspx">Lease a Slip</a>

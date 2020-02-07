@@ -3,5 +3,5 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
     Lease Slip here
-    <asp:GridView ID="dgvLease" runat="server"></asp:GridView>
+    
 </asp:Content>
