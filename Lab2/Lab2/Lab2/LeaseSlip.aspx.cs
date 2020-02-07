@@ -11,7 +11,13 @@ namespace Lab2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            MarinaEntities1 db = new MarinaEntities1();
+            if (!(bool)Session["Authenticated"])
+            {
+                Response.Redirect("Registration.aspx");
+            }
+            dgvLease.DataSource = from slip in db.Slips
+                                  join doc in db.Docks on slip.DockID == doc. 
         }
     }
 }
