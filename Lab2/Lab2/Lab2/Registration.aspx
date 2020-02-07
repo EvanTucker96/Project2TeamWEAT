@@ -7,6 +7,8 @@
         <div class="col-md-6">
             <div class="form-group">
                 <asp:Label ID="Label9" CssClass="form-row" runat="server" Text="New Customer Registration" BorderStyle="None" Font-Size="X-Large"></asp:Label>
+                </br>
+                <asp:Label ID="lblRegStatus" CssClass="form-row" BorderStyle="None" runat="server" Text="" ForeColor="Red"></asp:Label></br>
                 <asp:Label ID="Label1" CssClass="form-row" runat="server" Text="First Name:"></asp:Label>
                 <asp:TextBox ID="txtFName" runat="server"></asp:TextBox>
                 <asp:Label ID="Label2" CssClass="form-row" runat="server" Text="Last Name:"></asp:Label>
@@ -26,6 +28,8 @@
         <div class="col-md-6">
             <div class="form-group">
                 <asp:Label ID="Label10" CssClass="form-row" runat="server" Text="Existing Customer Login" BorderStyle="None" Font-Size="X-Large"></asp:Label>
+                </br>
+                <asp:Label ID="lblLoginStatus" runat="server" BorderStyle="None" Text="" ForeColor="Red"></asp:Label>
                 <asp:Label ID="Label7" CssClass="form-row" runat="server" Text="Email:"></asp:Label>
                 <asp:TextBox ID="txtEmail2" runat="server"></asp:TextBox>
                 <asp:Label ID="Label8" CssClass="form-row" runat="server" Text="Password:"></asp:Label>

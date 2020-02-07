@@ -21,28 +21,28 @@ namespace Lab2
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            MarinaEntities1 db = new MarinaEntities1();
-            Customer newCust = new Customer();
-            bool exists;
-            try
+            MarinaEntities1 db = new MarinaEntities1(); // create the DataAccess entity
+            Customer newCust = new Customer(); // empty Customer object
+            bool exists; // used for determining if user exists or not
+            lblRegStatus.Text = "";
+            if (txtFName.Text != "" && txtLName.Text != "" && txtCity.Text != "" &&
+                    txtPhone.Text != "" && txtEmail.Text != "" && txtPassword.Text != "")
             {
-                newCust = (from c in db.Customers
-                           where c.EMail == txtEmail.Text
-                           select c).Single();
-                exists = true;
-            }
-            
-            catch (System.InvalidOperationException)
-            {
-                exists = false;
-            }
+                try
+                {// search the db for the email address
+                    newCust = (from c in db.Customers
+                               where c.EMail == txtEmail.Text
+                               select c).Single();
+                    exists = true; // yes we have an existing user
+                }
 
-            if (!exists) 
-            {
-                if (txtFName.Text != "" && txtLName.Text != "" && txtCity.Text != "" &&
-                    txtPhone.Text != "" && txtEmail.Text != "" && txtPassword.Text !="")
+                catch (System.InvalidOperationException)
+                { // error when no data exists
+                    exists = false; // no user found
+                }
+
+                if (!exists) // no user found, validate and create
                 {
-
                     newCust.FirstName = txtFName.Text;
                     newCust.LastName = txtLName.Text;
                     newCust.City = txtCity.Text;
@@ -53,27 +53,38 @@ namespace Lab2
                     db.Customers.Add(newCust);
                     db.SaveChanges();
                 }
+
+            }else
+            {
+                lblRegStatus.Text = "All fields required";
             }
-            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             MarinaEntities1 db = new MarinaEntities1();
             lblStatus.Text = "";
-            var result = (from c in db.Customers
-                          where c.EMail == txtEmail2.Text
-                          select c).Single();
-            if (result.VerifyPassword(txtPassword2.Text))
+            if (txtEmail2.Text != "" && txtPassword2.Text != "")
             {
-                Session["Authenticated"] = true;
-                Response.Redirect("LeaseSlip.aspx");
+                var result = (from c in db.Customers
+                              where c.EMail == txtEmail2.Text
+                              select c).Single();
+                if (result.VerifyPassword(txtPassword2.Text))
+                {
+                    Session["Authenticated"] = true;
+                    Session["Username"] = txtEmail2.Text;
+                    Response.Redirect("LeaseSlip.aspx");
+                }
+                else
+                {
+                    // Invalid password
+                    lblStatus.Text = "Invalid username or password.";
+
+                }
             }
             else
             {
-                // Invalid password
-                lblStatus.Text = "Invalid username or password.";
-                
+                lblLoginStatus.Text = "All fields required";
             }
         }
 
@@ -85,6 +96,9 @@ namespace Lab2
             txtEmail.Text = "";
             txtPassword.Text = "";
             txtPhone.Text = "";
+            lblStatus.Text = "";
+            lblRegStatus.Text = "";
+            lblLoginStatus.Text = "";
         }
     }
 }
