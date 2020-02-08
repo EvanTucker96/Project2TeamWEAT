@@ -20,7 +20,7 @@
     <div class="container">
         <form id="form1" runat="server">
             <header class="jumbotron text-center">
-                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" />
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" width="100%"/>
                 <nav class="navbar navbar-expand-lg navbar-light"></nav> <!-- navbar code from W3Schools then edited-->
                     <ul class="nav nav-pills navbar-right">
                         <li class="nav-item">

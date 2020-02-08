@@ -76,6 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AvailableSlipDock.aspx" />
     <Content Include="images\inlandmarina_banner.jpg" />
     <Content Include="InlandMarineData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -93,6 +94,13 @@
     <Content Include="Contact.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvailableSlipDock.aspx.cs">
+      <DependentUpon>AvailableSlipDock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AvailableSlipDock.aspx.designer.cs">
+      <DependentUpon>AvailableSlipDock.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>InlandMarineData.tt</DependentUpon>
     </Compile>
