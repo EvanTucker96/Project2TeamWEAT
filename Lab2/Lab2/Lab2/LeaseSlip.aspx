@@ -13,6 +13,15 @@
     </asp:GridView>
     <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=MarinaEntities" DefaultContainerName="MarinaEntities" EnableFlattening="False" EntitySetName="Docks">
     </asp:EntityDataSource>
+    Width Min:
+    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+&nbsp;Width Max:
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;<br />
+    Length Min:
+    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+&nbsp;Length Max:<asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+    <br />
     <br />
     <asp:Label ID="lblDockID" runat="server" Text="Please select a dock you are interested in"></asp:Label>
 &nbsp;<asp:GridView ID="dgvSlips" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="EntityDataSource2" Visible="False">
