@@ -92,6 +92,7 @@
     <Content Include="Registration.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="LeaseSlip.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AvailableSlipDock.aspx.cs">
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseSlip.aspx.cs">
+      <DependentUpon>LeaseSlip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LeaseSlip.aspx.designer.cs">
+      <DependentUpon>LeaseSlip.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
