@@ -40,7 +40,7 @@ namespace Lab2
 
         public string GetSalt()
         {
-            if (Salt == "")
+            if (Salt == "" || Salt == null)
             {
                 Salt = BCrypt.GenerateSalt();
             }
