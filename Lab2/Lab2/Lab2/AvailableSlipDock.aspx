@@ -10,14 +10,14 @@
     <asp:SqlDataSource ID="SqlDataSourceDockNumber" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString %>" SelectCommand="SELECT DISTINCT [DockID] FROM [Slip]"></asp:SqlDataSource>
     <br />
 
-    <asp:SqlDataSource ID="SqlDataSourceAvailSlips" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString %>" SelectCommand="SELECT ID, Width, Length, DockID FROM Slip WHERE (ID NOT IN (SELECT SlipID FROM Lease))">
+    <asp:SqlDataSource ID="SqlDataSourceAvailSlips" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString %>" SelectCommand="SELECT * FROM [avilableSlips] WHERE ([DockID] = @DockID)">
         <SelectParameters>
-            <asp:ControlParameter ControlID="DropDownList1" Name="DockID" PropertyName ="SelectedValue" />
+            <asp:ControlParameter ControlID="DropDownList1" Name="DockID" PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:GridView ID="dgvAvailableSlips" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceAvailSlips">
         <Columns>
-            <asp:BoundField DataField ="ID" HeaderText="Slip ID" ReadOnly ="True" SortExpression="ID" />
+            <asp:BoundField DataField ="ID" HeaderText="ID" ReadOnly ="True" SortExpression="ID" InsertVisible="False" />
             <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
             <asp:BoundField DataField="Length" HeaderText="Length" SortExpression="Length" />
             <asp:BoundField DataField="DockID" HeaderText="DockID" SortExpression="DockID" />

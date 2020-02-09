@@ -9,15 +9,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:DropDownList ID="DropDownList1" runat="server" DataTextField="DockID" DataValueField="DockID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" DataSourceID="SqlDataSource3"></asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString2 %>" SelectCommand="SELECT DISTINCT [DockID] FROM [Slip]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString2 %>" SelectCommand="SELECT [ID], [Name] FROM [Dock]"></asp:SqlDataSource>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString3 %>" SelectCommand="SELECT ID, Width, Length, DockID FROM Slip WHERE (ID NOT IN (SELECT SlipID FROM Lease)) AND ([DockID] = @DockID) ORDER BY [ID]">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString3 %>" SelectCommand="SELECT * FROM [avilableSlips] WHERE ([DockID] = @DockID)">
             <SelectParameters>
-                <%--<asp:ControlParameter ControlID="DropDownList1" Name="DockID" PropertyName="SelectedValue" />--%>
-                <asp:ControlParameter ControlID="DropDownList1" DefaultValue="" Name="DockID" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="DropDownList1" Name="DockID" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="Name" DataValueField="ID"></asp:DropDownList>
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="ID" DataSourceID="SqlDataSource2">
