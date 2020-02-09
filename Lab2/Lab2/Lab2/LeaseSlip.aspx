@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
-    <h3>Available Slips</h3>
-    <br />
+    <h3>Lease a Slip</h3>
+    Browse for available slips, then submit your choice below.<br />
     <h4>Dock Number</h4>&nbsp;
     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceDockNumber" AutoPostBack="True" DataTextField="DockID" DataValueField="DockID" AppendDataBoundItems ="true">
         <asp:ListItem Selected ="True" Text="All Docks" Value="-1"></asp:ListItem>
