@@ -1,4 +1,4 @@
-﻿<%@ Page Title="AvailableSlipDock" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AvailableSlipDock.aspx.cs" Inherits="Lab2.AvailableSlipDock" %>
+﻿<%@ Page Title="AvailableSlipDock" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AvailableSlip.aspx.cs" Inherits="Lab2.AvailableSlipDock" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">

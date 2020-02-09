@@ -78,7 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AvailableSlipDock.aspx" />
+    <Content Include="AvailableSlip.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\fontawesome-free\css\all.css" />
     <Content Include="Content\fontawesome-free\css\all.min.css" />
@@ -203,12 +203,12 @@
     <Content Include="LeaseSlip.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AvailableSlipDock.aspx.cs">
-      <DependentUpon>AvailableSlipDock.aspx</DependentUpon>
+    <Compile Include="AvailableSlip.aspx.cs">
+      <DependentUpon>AvailableSlip.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AvailableSlipDock.aspx.designer.cs">
-      <DependentUpon>AvailableSlipDock.aspx</DependentUpon>
+    <Compile Include="AvailableSlip.aspx.designer.cs">
+      <DependentUpon>AvailableSlip.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>InlandMarineData.tt</DependentUpon>
