@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
-    <div class="row">
+    <div class="row mx-3">
         <div class="col-md-6">
             <div class="form-group">
                 <asp:Label ID="Label9" CssClass="form-row" runat="server" Text="New Customer Registration" BorderStyle="None" Font-Size="X-Large"></asp:Label>
