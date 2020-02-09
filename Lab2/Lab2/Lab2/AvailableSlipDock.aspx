@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
-    Available Slips<br />
+    <h3>Available Slips</h3><br />
     <br />
-    Dock Number&nbsp;
+    <h4>Dock Number</h4>&nbsp;
     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceDockNumber" AutoPostBack="True" DataTextField="DockID" DataValueField="DockID">
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSourceDockNumber" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString %>" SelectCommand="SELECT DISTINCT [DockID] FROM [Slip]"></asp:SqlDataSource>
