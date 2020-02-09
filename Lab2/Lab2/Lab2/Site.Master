@@ -35,19 +35,9 @@
 <body>
     <div class="container">
         <form id="form1" runat="server">
-
-
-            <!-- Masthead -->
-            <header>
-                <div class="container">
-                    <div class="row">
-                        <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" ImageAlign="Left" />
-                    </div>
-                </div>
-            </header>
-            <!-- Navigation -->
-            <nav class="navbar navbar-light bg-light static-top">
-                <div class="container">
+            <header class="jumbotron text-center">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" width="100%"/>
+                <nav class="navbar navbar-expand-lg navbar-light"></nav> <!-- navbar code from W3Schools then edited-->
                     <ul class="nav nav-pills navbar-right">
                         <li class="nav-item">
                             <a class="nav-link btn btn-light" href="./Default.aspx">Home</a>
@@ -61,7 +51,7 @@
                         <li class="nav-item">
                             <a class="nav-link btn btn-light" href="./Registration.aspx">Register / Login</a>
                         </li>
-                        <%--                        <li class="nav-item">
+<%--                        <li class="nav-item">
                             <a class="nav-link disabled btn btn-light" href="./LeaseSlip.aspx">Lease a Slip</a>
                         </li>--%>
                     </ul>

@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AvailableSlipDock.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\fontawesome-free\css\all.css" />
     <Content Include="Content\fontawesome-free\css\all.min.css" />
@@ -202,6 +203,13 @@
     <Content Include="LeaseSlip.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvailableSlipDock.aspx.cs">
+      <DependentUpon>AvailableSlipDock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AvailableSlipDock.aspx.designer.cs">
+      <DependentUpon>AvailableSlipDock.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>InlandMarineData.tt</DependentUpon>
     </Compile>
@@ -359,7 +367,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

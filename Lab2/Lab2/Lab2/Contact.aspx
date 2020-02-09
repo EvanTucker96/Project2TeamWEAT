@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
-    
+
     <div class="card border-primary mb-1" style="max-width: 20rem;">
         <div class="card-header">Inland Lake Marina</div>
         <div class="card-body">
