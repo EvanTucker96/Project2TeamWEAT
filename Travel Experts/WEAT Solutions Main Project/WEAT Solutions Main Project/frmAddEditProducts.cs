@@ -63,29 +63,8 @@ namespace WEAT_Solutions_Main_Project
 
         private void DataGridView_CellDoubleClick(object sender, EventArgs e)
         {
-            LoadEditRecordDetails();
+            EditRecords();
         }
-
-        private void LoadEditRecordDetails()
-        {
-            
-        }
-
-        /// <summary>
-        /// Make item editable in the Details when row clicked
-        /// </summary>
-
-        //private void dgvProducts_CellClick(object sender, EventArgs e)
-        //{
-        //    //get product ID from the first column of the table
-        //     int prodID = (int)dgvProducts[0, e.RowIndex].Value;
-
-        //    //make edit fields usable
-        //    ActivateDetails();
-
-        //    //Pass the id to details fields
-        //    LoadProductsDetails(prodID);
-        //}
 
         private void LoadProductsDetails(int prodID)
         {
@@ -110,8 +89,6 @@ namespace WEAT_Solutions_Main_Project
             btnReset.Enabled = true;
         }
 
-
-
         // close this form
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -123,14 +100,10 @@ namespace WEAT_Solutions_Main_Project
             isAdd = true;
             gbProductDetails.Enabled = true;
             txtProdName.Focus();
-            NewOrReset();
-
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            isAdd = false;
-            NewOrReset();
+            txtProdID.Text = "";
+            txtProdName.Text = "";
+            btnSave.Enabled = true;
+            btnReset.Enabled = true;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -138,12 +111,49 @@ namespace WEAT_Solutions_Main_Project
             EditRecords();
         }
 
-        private void NewOrReset()
+        private void btnReset_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             txtProdID.Text = "";
             txtProdName.Text = "";
-            btnSave.Enabled = true;
-            btnReset.Enabled = true;
+            gbProductDetails.Enabled = false;
+            btnNew.Enabled = true;
+            btnEdit.Enabled = true;
+            btnReset.Enabled = false;
+            btnSave.Enabled = false;
+            //ResetOrSave();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtProdName.Text != "")
+            {
+                using (TravelExpertsDataContext dbContext = new TravelExpertsDataContext())
+                {
+                    Product newItem = new Product();
+                    newItem.ProdName = txtProdName.Text;
+                    dbContext.Products.InsertOnSubmit(newItem);
+                    try
+                    {
+                        dbContext.SubmitChanges();
+                        MessageBox.Show("Product saved successfully");
+                        txtProdName.Text = "";
+                        btnReset.Enabled = false;
+                        btnSave.Enabled = false;
+                        gbProductDetails.Enabled = false;
+                        btnNew.Enabled = true;
+                        btnEdit.Enabled = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Save failed, please try again");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No information in Product Name field, save cancelled");
+            }
         }
 
         private void EditRecords()
@@ -165,6 +175,9 @@ namespace WEAT_Solutions_Main_Project
             txtProdName.Text = tempProd.ProdName;
             gbProductDetails.Enabled = true;
             txtProdName.Enabled = true;
+            txtProdName.Focus();
+            btnSave.Enabled = true;
+            btnReset.Enabled = true;
 
         }
 
@@ -172,5 +185,7 @@ namespace WEAT_Solutions_Main_Project
         {
             EditRecords();
         }
+
+
     }
 }
