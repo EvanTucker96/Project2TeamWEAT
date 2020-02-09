@@ -32,8 +32,6 @@ namespace WEAT_Solutions_Main_Project
         {
             LoadProducts();
             gbProductDetails.Enabled = false;
-            btnSave.Enabled = false;
-            btnReset.Enabled = false;
         }
 
         /// <summary>
@@ -61,40 +59,7 @@ namespace WEAT_Solutions_Main_Project
             dgvProducts.Columns[1].HeaderText = "Product Type";
         } //edn LoadProducts
 
-        private void DataGridView_CellDoubleClick(object sender, EventArgs e)
-        {
-            EditRecords();
-        }
-
-        private void LoadProductsDetails(int prodID)
-        {
-            using(TravelExpertsDataContext db = new TravelExpertsDataContext())
-            {
-                // get the selected product
-                Product currentProduct = db.Products.Where(product => product.ProductId == prodID).Single();
-
-                //fill in the fields
-                txtProdID.Text = currentProduct.ProductId.ToString();
-                txtProdName.Text = currentProduct.ProdName;
-            }
-        }
-
-        private void ActivateDetails()
-        {
-            //enable the group box in general
-            gbProductDetails.Enabled = true;
-
-            //enable reset and save buttons
-            btnSave.Enabled = true;
-            btnReset.Enabled = true;
-        }
-
-        // close this form
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        //opens the group box to enter a new product to the DB
         private void btnNew_Click(object sender, EventArgs e)
         {
             isAdd = true;
@@ -102,13 +67,36 @@ namespace WEAT_Solutions_Main_Project
             txtProdName.Focus();
             txtProdID.Text = "";
             txtProdName.Text = "";
-            btnSave.Enabled = true;
-            btnReset.Enabled = true;
         }
 
+        //activates the edit records
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EditRecords();
+        }
+
+        //deletes a product from the database and reloads the grid view to show as removed
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            isAdd = false;
+            int rowNum = Convert.ToInt32(dgvProducts.CurrentCell.RowIndex);
+            int prodNum = Convert.ToInt32(dgvProducts[0, rowNum].Value);
+            Product tempProd;
+
+            using (TravelExpertsDataContext dbContext = new TravelExpertsDataContext())
+            {
+                try
+                {
+                    DeleteProduct(prodNum, dbContext);
+                    dbContext.SubmitChanges();
+                    MessageBox.Show("Product Deleted");
+                    LoadProducts();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Delete product fail, item not in Database");
+                }
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -119,27 +107,31 @@ namespace WEAT_Solutions_Main_Project
             gbProductDetails.Enabled = false;
             btnNew.Enabled = true;
             btnEdit.Enabled = true;
-            btnReset.Enabled = false;
-            btnSave.Enabled = false;
-            //ResetOrSave();
         }
 
+
+    //checked to see if the product is new or edited, saves the data to the DB and reloads the grid view
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtProdName.Text != "")
             {
                 using (TravelExpertsDataContext dbContext = new TravelExpertsDataContext())
                 {
-                    Product newItem = new Product();
-                    newItem.ProdName = txtProdName.Text;
-                    dbContext.Products.InsertOnSubmit(newItem);
+                    if (isAdd == true)
+                    {
+                        NewProduct(txtProdName.Text, dbContext);
+                    }
+                    else
+                    {
+                        EditProduct(Convert.ToInt32(txtProdID.Text), txtProdName.Text, dbContext);
+                    }
+
                     try
                     {
                         dbContext.SubmitChanges();
+                        LoadProducts();
                         MessageBox.Show("Product saved successfully");
                         txtProdName.Text = "";
-                        btnReset.Enabled = false;
-                        btnSave.Enabled = false;
                         gbProductDetails.Enabled = false;
                         btnNew.Enabled = true;
                         btnEdit.Enabled = true;
@@ -156,6 +148,7 @@ namespace WEAT_Solutions_Main_Project
             }
         }
 
+        //function to load the information and edit the record
         private void EditRecords()
         {
             isAdd = false;
@@ -176,16 +169,42 @@ namespace WEAT_Solutions_Main_Project
             gbProductDetails.Enabled = true;
             txtProdName.Enabled = true;
             txtProdName.Focus();
-            btnSave.Enabled = true;
-            btnReset.Enabled = true;
-
+            btnEdit.Enabled = false;
         }
 
-        private void dgvProducts_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //edit records from cell double click
+        private void dgvProducts_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             EditRecords();
         }
 
+        // close this form
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //add new product information to the DB
+        private static void NewProduct(string prodName, TravelExpertsDataContext dbContext)
+        {
+            Product newItem = new Product();
+            newItem.ProdName = prodName;
+            dbContext.Products.InsertOnSubmit(newItem);
+        }
+
+        //edit product information in the DB
+        private static void EditProduct(int prodID, string prodName, TravelExpertsDataContext dbContext)
+        {
+            var prod = dbContext.Products.Where(x => x.ProductId == prodID).SingleOrDefault();
+            prod.ProdName = prodName;
+        }
+
+        //delete product from the DB
+        private void DeleteProduct(int prodID, TravelExpertsDataContext dbContext)
+        {
+            var prod = dbContext.Products.Where(x => x.ProductId == prodID).SingleOrDefault();
+            dbContext.Products.DeleteOnSubmit(prod);
+        }
 
     }
 }
