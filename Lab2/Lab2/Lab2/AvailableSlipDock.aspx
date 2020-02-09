@@ -2,30 +2,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
-    <h3>Available Slips</h3><br />
+    <h3>Available Slips</h3>
     <br />
     <h4>Dock Number</h4>&nbsp;
-    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceDockNumber" AutoPostBack="True" DataTextField="DockID" DataValueField="DockID">
+    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceDockNumber" AutoPostBack="True" DataTextField="DockID" DataValueField="DockID" AppendDataBoundItems ="true">
+        <asp:ListItem Selected ="True" Text="All Docks" Value="-1"></asp:ListItem>
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSourceDockNumber" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString %>" SelectCommand="SELECT DISTINCT [DockID] FROM [Slip]"></asp:SqlDataSource>
     <br />
 
-    <asp:SqlDataSource ID="SqlDataSourceAvailSlips" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString %>" SelectCommand="SELECT * FROM [avilableSlips] WHERE ([DockID] = @DockID)">
+    <asp:SqlDataSource ID="SqlDataSourceAvailSlips" runat="server" ConnectionString="<%$ ConnectionStrings:MarinaConnectionString %>" SelectCommand="SELECT * FROM [avilableSlips] WHERE ([DockID] = @DockID OR @DockID = -1)">
         <SelectParameters>
-            <asp:ControlParameter ControlID="DropDownList1" Name="DockID" PropertyName="SelectedValue" Type="Int32" />
+            <asp:ControlParameter ControlID="DropDownList1" Name="DockID" PropertyName="SelectedValue" Type="Int32" DefaultValue="" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:GridView ID="dgvAvailableSlips" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceAvailSlips">
-        <Columns>
-            <asp:BoundField DataField ="ID" HeaderText="ID" ReadOnly ="True" SortExpression="ID" InsertVisible="False" />
-            <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
-            <asp:BoundField DataField="Length" HeaderText="Length" SortExpression="Length" />
-            <asp:BoundField DataField="DockID" HeaderText="DockID" SortExpression="DockID" />
-        </Columns>
-    </asp:GridView>
+    
     <br />
-    <%--
-    <asp:ListView ID="lvAvailableSlips" runat="server" DataKeyNames="ID" DataSourceID="SqlDataSourceAvailSlips">
+    
+    <asp:ListView ID="lvAvailableSlips" runat="server" DataKeyNames="ID" DataSourceID="SqlDataSourceAvailSlips" >
         <AlternatingItemTemplate>
             <tr style="background-color: #FFFFFF;color: #284775;">
                 <td>
@@ -146,5 +140,5 @@
                 </td>
             </tr>
         </SelectedItemTemplate>
-    </asp:ListView>--%>
+    </asp:ListView>
 </asp:Content>

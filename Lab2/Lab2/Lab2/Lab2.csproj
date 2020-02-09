@@ -88,7 +88,6 @@
       <DependentUpon>InlandMarineData.edmx</DependentUpon>
       <LastGenOutput>InlandMarineData.cs</LastGenOutput>
     </Content>
-    <Content Include="SlipsAvailable.aspx" />
     <Content Include="Web.config" />
     <Content Include="Registration.aspx" />
     <Content Include="Default.aspx" />
@@ -165,13 +164,6 @@
     </Compile>
     <Compile Include="LeaseSlip.aspx.designer.cs">
       <DependentUpon>LeaseSlip.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SlipsAvailable.aspx.cs">
-      <DependentUpon>SlipsAvailable.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SlipsAvailable.aspx.designer.cs">
-      <DependentUpon>SlipsAvailable.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
