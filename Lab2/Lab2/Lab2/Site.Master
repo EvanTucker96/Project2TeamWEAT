@@ -39,10 +39,9 @@
 
             <!-- Masthead -->
             <header>
-
                 <div class="container">
                     <div class="row">
-                         <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" ImageAlign="Left" />
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/images/inlandmarina_banner.jpg" ImageAlign="Left" />
                     </div>
                 </div>
             </header>
@@ -70,7 +69,7 @@
             </nav>
 
             <!-- Icons Grid -->
-            <section >
+            <section>
                 <asp:ContentPlaceHolder ID="main" runat="server">
                 </asp:ContentPlaceHolder>
             </section>
