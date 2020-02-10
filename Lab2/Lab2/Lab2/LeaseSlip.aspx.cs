@@ -57,7 +57,12 @@ namespace Lab2
 
         protected void btnLease_Click(object sender, EventArgs e)
         {
-            int chosenSlip = Convert.ToInt32(txtChosen.Text); // get the customer's choice of slip to lease
+            
+
+        }
+        public void DoLease(int slipNum)
+        {
+            //int chosenSlip = Convert.ToInt32(txtChosen.Text); // get the customer's choice of slip to lease
 
 
             using (MarinaEntities1 db = new MarinaEntities1())
@@ -70,16 +75,14 @@ namespace Lab2
                 // create a new lease with the customer and slip ID
                 Lease leased = new Lease();
                 leased.CustomerID = cust.ID;
-                leased.SlipID = chosenSlip;
+                leased.SlipID = slipNum;
 
                 // save to the database
                 db.Leases.Add(leased);
                 db.SaveChanges();
                 GetLeases(username);
             }
-
         }
-
         protected void btnLogout_Click(object sender, EventArgs e)
         { 
             Session["Username"]=null;
@@ -89,7 +92,7 @@ namespace Lab2
 
         protected void lvAvailableSlips_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtChosen.Text = lvAvailableSlips.SelectedValue.ToString();
+            DoLease(Convert.ToInt32(lvAvailableSlips.SelectedValue));
         }
     }    
 }

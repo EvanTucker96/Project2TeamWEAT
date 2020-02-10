@@ -103,7 +103,7 @@
                             <asp:Label ID="DockIDLabel" runat="server" Text='<%# Eval("DockID") %>' />
                         </td>
                         <td>
-                            <asp:Button ID="SelectButton" runat="server" Text="Select" CommandName="Select" />
+                            <asp:Button ID="SelectButton" runat="server" Text="Lease" CommandName="Lease" />
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -157,10 +157,10 @@
             <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Logout" />
             <br />
             <br />
-            You have selected Slip:<br />
-            <asp:TextBox ID="txtChosen" runat="server" Enabled="False"></asp:TextBox>
+<%--            You have selected Slip:<br />--%>
+            <asp:TextBox ID="txtChosen" runat="server" Enabled="False" Visible="False"></asp:TextBox>
             <br />
-            <asp:Button ID="btnLease" runat="server" OnClick="btnLease_Click" Text="Lease" />
+            <asp:Button ID="btnLease" runat="server" OnClick="btnLease_Click" Text="Lease" Visible="False" />
             <br />
             <br />
             <br />
