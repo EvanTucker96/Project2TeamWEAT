@@ -29,8 +29,8 @@ namespace Lab2
             }
             // get the username from the session data
             username = (string)Session["Username"];
-
-            GetLeases(username);
+            if(username != null && (bool)Session["Authenticated"] ==true)
+                GetLeases(username);
 
         }
 
@@ -87,7 +87,14 @@ namespace Lab2
                 db.SaveChanges();
                 GetLeases(username);
             }
-            
+
         }
-    }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        { 
+            Session["Username"]=null;
+            Session["Authenticated"] = false;
+            Response.Redirect("Default.aspx");
+        }
+    }    
 }

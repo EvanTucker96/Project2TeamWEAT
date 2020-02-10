@@ -1,5 +1,13 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Lab2.Site" %>
+<%-- 
+    Lab 2 - Angela Lambert, Tom Hollis and Wade Grimm
+    - 'Theming' by WG, Site Master, Home, Contact, Registration, and Entity Database 
+      custom methods for Customer by WG
+    - Avaiable slips by AL
+    - Lease slip by TH
 
+    
+    --%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,9 +60,9 @@
                         <li class="nav-item">
                             <a class="nav-link btn btn-light" href="./Registration.aspx">Register / Login</a>
                         </li>
-                        <%--                        <li class="nav-item">
-                            <a class="nav-link disabled btn btn-light" href="./LeaseSlip.aspx">Lease a Slip</a>
-                        </li>--%>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-light" href="./LeaseSlip.aspx">Lease a Slip</a>
+                        </li>
                     </ul>
 
                 </nav>

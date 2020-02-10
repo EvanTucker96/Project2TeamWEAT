@@ -148,6 +148,7 @@
             </div>
         
         <div class="col-md-6">
+            <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Logout" />
             <br />
             <asp:Label ID="lblChosen" runat="server" Text="Slip to Lease:"></asp:Label>
             <br />
