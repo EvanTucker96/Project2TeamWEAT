@@ -34,13 +34,15 @@ namespace Lab2
 
         public string EncryptPassword(string plainPass, string salt)
         {
+            if (salt == null)
+                salt = GetSalt();
             string passwordHash = BCrypt.HashPassword(plainPass,salt);
             return passwordHash;
         }
 
         public string GetSalt()
         {
-            if (Salt == "")
+            if (Salt == "" || Salt == null)
             {
                 Salt = BCrypt.GenerateSalt();
             }

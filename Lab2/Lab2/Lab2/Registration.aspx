@@ -20,7 +20,7 @@
                 <asp:Label ID="Label5" CssClass="form-row" runat="server" Text="Email:"></asp:Label>
                 <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
                 <asp:Label ID="Label6" CssClass="form-row" runat="server" Text="Password:"></asp:Label>
-                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Width="90px"></asp:TextBox>
                 <asp:Button ID="btnSubmit" runat="server" Text="Register" OnClick="btnSubmit_Click" />
                 <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/>
             </div>

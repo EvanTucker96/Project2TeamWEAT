@@ -52,6 +52,9 @@ namespace Lab2
                     newCust.Password = newCust.EncryptPassword(txtPassword.Text, newCust.Salt);
                     db.Customers.Add(newCust);
                     db.SaveChanges();
+                    Session["Authenticated"] = true;
+                    Session["Username"] = txtEmail.Text;
+                    Response.Redirect("LeaseSlip.aspx");
                 }
 
             }else
@@ -66,26 +69,36 @@ namespace Lab2
             lblStatus.Text = "";
             if (txtEmail2.Text != "" && txtPassword2.Text != "")
             {
-                var result = (from c in db.Customers
-                              where c.EMail == txtEmail2.Text
-                              select c).Single();
-                if (result.VerifyPassword(txtPassword2.Text))
+                try
                 {
-                    Session["Authenticated"] = true;
-                    Session["Username"] = txtEmail2.Text;
-                    Response.Redirect("LeaseSlip.aspx");
-                }
-                else
-                {
-                    // Invalid password
-                    lblStatus.Text = "Invalid username or password.";
+                    var result = (from c in db.Customers
+                                  where c.EMail == txtEmail2.Text
+                                  select c).Single();
 
+                    if (result.VerifyPassword(txtPassword2.Text))
+                    {
+                        Session["Authenticated"] = true;
+                        Session["Username"] = txtEmail2.Text;
+                        Response.Redirect("LeaseSlip.aspx");
+                    }
+                    else
+                    {
+                        // Invalid password
+                        lblStatus.Text = "Invalid username or password.";
+
+                    }
+                }
+                catch (Exception)
+                {
+                    lblLoginStatus.Text = "No user exists, please register.";
                 }
             }
             else
             {
                 lblLoginStatus.Text = "All fields required";
             }
+            
+            
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
