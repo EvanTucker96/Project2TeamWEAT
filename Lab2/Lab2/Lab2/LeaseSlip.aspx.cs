@@ -81,6 +81,7 @@ namespace Lab2
                 db.Leases.Add(leased);
                 db.SaveChanges();
                 GetLeases(username);
+                lvAvailableSlips.SelectedIndex = -1;
             }
         }
         protected void btnLogout_Click(object sender, EventArgs e)
