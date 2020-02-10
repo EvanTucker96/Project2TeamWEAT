@@ -48,7 +48,6 @@ namespace Lab2
                                   select slip).ToList();
 
             // put the list of this customer's leases in the DGV
-            // this isn't working for some reason
             dgvLeases.DataSource = null;
             dgvLeases.DataSource = history;
             dgvLeases.DataBind();
@@ -58,7 +57,6 @@ namespace Lab2
 
         protected void btnLease_Click(object sender, EventArgs e)
         {
-            lblUnavailable.Visible = false; // reset the "unavailable" error message
             int chosenSlip = Convert.ToInt32(txtChosen.Text); // get the customer's choice of slip to lease
 
 
@@ -68,14 +66,6 @@ namespace Lab2
                 List<int> leaseList = (from lease in db.Leases select lease.SlipID).ToList();
                 List<int> availList = (from slip in db.Slips select slip.ID).ToList();
 
-
-                // check whether the lease number is unavailable (if it's already leased or not a valid number)
-                if (!availList.Contains(chosenSlip) || leaseList.Contains(chosenSlip))
-                {
-                    lblUnavailable.Visible = true; // make the unavailable error visible
-                    return; // don't do anything more
-                }
-                // otherwise continue
 
                 // create a new lease with the customer and slip ID
                 Lease leased = new Lease();
@@ -95,6 +85,11 @@ namespace Lab2
             Session["Username"]=null;
             Session["Authenticated"] = false;
             Response.Redirect("Default.aspx");
+        }
+
+        protected void lvAvailableSlips_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtChosen.Text = lvAvailableSlips.SelectedValue.ToString();
         }
     }    
 }

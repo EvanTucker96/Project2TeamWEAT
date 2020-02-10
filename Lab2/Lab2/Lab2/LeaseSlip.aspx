@@ -23,7 +23,7 @@
 
             <br />
 
-            <asp:ListView ID="lvAvailableSlips" runat="server" DataKeyNames="ID" DataSourceID="SqlDataSourceAvailSlips">
+            <asp:ListView ID="lvAvailableSlips" runat="server" DataKeyNames="ID" DataSourceID="SqlDataSourceAvailSlips" OnSelectedIndexChanged="lvAvailableSlips_SelectedIndexChanged">
                 <AlternatingItemTemplate>
                     <tr style="background-color: #FFFFFF; color: #284775;">
                         <td>
@@ -37,6 +37,9 @@
                         </td>
                         <td>
                             <asp:Label ID="DockIDLabel" runat="server" Text='<%# Eval("DockID") %>' />
+                        </td>
+                        <td>
+                            <asp:Button ID="SelectButton" runat="server" Text="Select" CommandName="Select" />
                         </td>
                     </tr>
                 </AlternatingItemTemplate>
@@ -99,6 +102,9 @@
                         <td>
                             <asp:Label ID="DockIDLabel" runat="server" Text='<%# Eval("DockID") %>' />
                         </td>
+                        <td>
+                            <asp:Button ID="SelectButton" runat="server" Text="Select" CommandName="Select" />
+                        </td>
                     </tr>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -150,15 +156,13 @@
         <div class="col-md-6">
             <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Logout" />
             <br />
-            <asp:Label ID="lblChosen" runat="server" Text="Slip to Lease:"></asp:Label>
             <br />
-            <asp:TextBox ID="txtChosen" runat="server"></asp:TextBox>
+            You have selected Slip:<br />
+            <asp:TextBox ID="txtChosen" runat="server" Enabled="False"></asp:TextBox>
             <br />
             <asp:Button ID="btnLease" runat="server" OnClick="btnLease_Click" Text="Lease" />
             <br />
-            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtChosen" Display="Dynamic" ErrorMessage="RangeValidator" ForeColor="#FF3300" MaximumValue="999" MinimumValue="1" Type="Integer">Slip ID must be a 1 to 3 digit number</asp:RangeValidator>
             <br />
-            <asp:Label ID="lblUnavailable" runat="server" ForeColor="#FF3300" Text="That slip is not available, please select another" Visible="False"></asp:Label>
             <br />
             <br />
             Your Leases:<asp:GridView ID="dgvLeases" runat="server">
