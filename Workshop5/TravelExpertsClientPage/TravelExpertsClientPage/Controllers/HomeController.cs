@@ -27,5 +27,20 @@ namespace TravelExpertsClientPage.Controllers
 
             return View();
         }
+
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Your Registration page.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Customer cust)
+        {
+            ViewBag.Message = "Your Registration page.";
+
+            return View(cust);
+        }
     }
 }

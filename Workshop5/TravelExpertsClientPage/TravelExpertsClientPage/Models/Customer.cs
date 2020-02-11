@@ -11,7 +11,8 @@ namespace TravelExpertsClientPage.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         public Customer()
@@ -22,15 +23,51 @@ namespace TravelExpertsClientPage.Models
         }
     
         public int CustomerId { get; set; }
+        [Required]
+        [StringLength(25)]
+        [Display(Name ="First Name")]
         public string CustFirstName { get; set; }
+        [Required]
+        [StringLength(25)]
+        [Display(Name = "Last Name")]
         public string CustLastName { get; set; }
+        [Required]
+        [StringLength(75)]
+        [Display(Name = "Address")]
         public string CustAddress { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "City")]
         public string CustCity { get; set; }
+        [Required]
+        [StringLength(2)]
+        [Display(Name = "Province")]
         public string CustProv { get; set; }
+        [Required]
+        [StringLength(7)]
+        [Display(Name = "Postal Code")]
+        [RegularExpression(@"^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$", ErrorMessage ="Invalid Postal Code")]
         public string CustPostal { get; set; }
+        [Required]
+        [StringLength(25)]
+        [Display(Name = "Country")]
         public string CustCountry { get; set; }
+        [Required]
+        [StringLength(20),MinLength(10)]
+        [Display(Name = "Home Phone")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
+                   ErrorMessage = "Entered phone format is not valid.")]
         public string CustHomePhone { get; set; }
+        
+        [StringLength(20),MinLength(10)]
+        [Display(Name = "Business Phone")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
+                   ErrorMessage = "Entered phone format is not valid.")]
         public string CustBusPhone { get; set; }
+       
+        [StringLength(50)]
+        [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string CustEmail { get; set; }
         public Nullable<int> AgentId { get; set; }
     
