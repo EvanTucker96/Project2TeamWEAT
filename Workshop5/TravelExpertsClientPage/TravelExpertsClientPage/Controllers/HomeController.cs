@@ -66,13 +66,14 @@ namespace TravelExpertsClientPage.Controllers
                     cust.ComparePassword = cust.Password;
                     db.Customers.Add(cust); // add the Customer record
                     db.SaveChanges(); // comit the changes
-                    ViewBag.Status = "Registration Successful"; // set the Result status
+                    TempData["Status"] = "Registration Successful"; // set the Result status
                     return RedirectToAction("Index"); // go back to 'Home'
                 }
                 else 
                 {
-                    ViewBag.Status = "User Exists"; // set the Result status
-                    return RedirectToAction("Index"); // go back to 'Home'
+                    TempData["Status"] = "User Exists"; // set the Result status
+                    return View();
+                    //return RedirectToAction("Regi"); // go back to 'Home'
                 }
             }
             else
