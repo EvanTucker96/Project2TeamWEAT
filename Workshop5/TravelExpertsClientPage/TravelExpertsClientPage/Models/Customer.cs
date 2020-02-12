@@ -13,6 +13,7 @@ namespace TravelExpertsClientPage.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using BCrypt.Net;
 
     public partial class Customer
     {
@@ -91,5 +92,19 @@ namespace TravelExpertsClientPage.Models
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<CreditCard> CreditCards { get; set; }
         public virtual ICollection<Customers_Rewards> Customers_Rewards { get; set; }
-    }
+
+        public string EncryptPassword(string plainPass)
+        {
+            string passwordHash = BCrypt.HashPassword(plainPass);
+            return passwordHash;
+        }
+
+        public bool VerifyPassword(string plainPass)
+        {
+            bool success = BCrypt.Verify(plainPass, Password);
+            return success;
+        }
+
+    
+}
 }

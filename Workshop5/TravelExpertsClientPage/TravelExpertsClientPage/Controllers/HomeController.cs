@@ -44,9 +44,13 @@ namespace TravelExpertsClientPage.Controllers
                 List<Customer> customers = db.Customers.ToList();
                 int found = Convert.ToInt32((from c in customers
                              where c.CustEmail == cust.CustEmail
+                             && c.CustFirstName==cust.CustFirstName
+                             && c.CustLastName==cust.CustLastName
                              select c.CustomerId).SingleOrDefault());
                 if (found == 0)
                 {
+                    cust.Password = cust.EncryptPassword(cust.Password);
+                    cust.ComparePassword = cust.Password;
                     db.Customers.Add(cust);
                     db.SaveChanges();
                     ViewBag.Status = "Registration Successful";
