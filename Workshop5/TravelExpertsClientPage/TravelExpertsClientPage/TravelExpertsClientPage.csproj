@@ -129,6 +129,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Models\Affiliation.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
@@ -138,9 +145,6 @@
     <Compile Include="Models\Agent.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Models\Booking.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
@@ -150,7 +154,6 @@
     <Compile Include="Models\Class.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\CreditCard.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
@@ -166,9 +169,6 @@
     <Compile Include="Models\Fee.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\Package.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
@@ -178,7 +178,6 @@
     <Compile Include="Models\Products_Suppliers.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Region.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
@@ -212,12 +211,23 @@
     <Compile Include="Models\TripType.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\TravelExpertsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
+      <LastGenOutput>TravelExpertsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TravelExpertsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
+      <LastGenOutput>TravelExpertsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -235,6 +245,13 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <EntityDeploy Include="Models\TravelExpertsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TravelExpertsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TravelExpertsModel.edmx.diagram">
+      <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -246,16 +263,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Models\TravelExpertsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TravelExpertsModel.Context.cs</LastGenOutput>
-      <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\TravelExpertsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
-      <LastGenOutput>TravelExpertsModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -341,13 +348,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <EntityDeploy Include="Models\TravelExpertsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TravelExpertsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TravelExpertsModel.edmx.diagram">
-      <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />

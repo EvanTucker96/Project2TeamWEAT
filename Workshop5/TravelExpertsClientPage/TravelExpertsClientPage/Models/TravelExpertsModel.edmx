@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TravelExpertsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TravelExpertsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Affiliations">
           <Key>
             <PropertyRef Name="AffilitationId" />
@@ -101,9 +101,10 @@
           <Property Name="CustPostal" Type="nvarchar" MaxLength="7" Nullable="false" />
           <Property Name="CustCountry" Type="nvarchar" MaxLength="25" />
           <Property Name="CustHomePhone" Type="nvarchar" MaxLength="20" />
-          <Property Name="CustBusPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CustBusPhone" Type="nvarchar" MaxLength="20" />
           <Property Name="CustEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AgentId" Type="int" />
+          <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Customers_Rewards">
           <Key>
@@ -485,13 +486,13 @@ warning 6002: The table/view 'TravelExperts.dbo.Employees' does not have a prima
           <EntitySet Name="TripTypes" EntityType="Self.TripTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-[Employees].[EmpFirstName] AS [EmpFirstName], 
-[Employees].[EmpMiddleInitial] AS [EmpMiddleInitial], 
-[Employees].[EmpLastName] AS [EmpLastName], 
-[Employees].[EmpBusPhone] AS [EmpBusPhone], 
-[Employees].[EmpEmail] AS [EmpEmail], 
-[Employees].[EmpPosition] AS [EmpPosition]
-FROM [dbo].[Employees] AS [Employees]</DefiningQuery>
+    [Employees].[EmpFirstName] AS [EmpFirstName], 
+    [Employees].[EmpMiddleInitial] AS [EmpMiddleInitial], 
+    [Employees].[EmpLastName] AS [EmpLastName], 
+    [Employees].[EmpBusPhone] AS [EmpBusPhone], 
+    [Employees].[EmpEmail] AS [EmpEmail], 
+    [Employees].[EmpPosition] AS [EmpPosition]
+    FROM [dbo].[Employees] AS [Employees]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="Bookings_FK00" Association="Self.Bookings_FK00">
             <End Role="Customers" EntitySet="Customers" />
@@ -686,9 +687,10 @@ FROM [dbo].[Employees] AS [Employees]</DefiningQuery>
           <Property Name="CustPostal" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CustCountry" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="CustHomePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="CustBusPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustBusPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CustEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AgentId" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Agent" Relationship="Self.FK_Customers_Agents" FromRole="Customers" ToRole="Agents" />
           <NavigationProperty Name="Bookings" Relationship="Self.Bookings_FK00" FromRole="Customers" ToRole="Bookings" />
           <NavigationProperty Name="CreditCards" Relationship="Self.CreditCards_FK00" FromRole="Customers" ToRole="CreditCards" />
@@ -1038,7 +1040,7 @@ FROM [dbo].[Employees] AS [Employees]</DefiningQuery>
           <End Role="Packages" Type="Self.Package" Multiplicity="*" />
           <End Role="Products_Suppliers" Type="Self.Products_Suppliers" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="TravelExpertsEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TravelExpertsEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Affiliations" EntityType="Self.Affiliation" />
           <EntitySet Name="Agencies" EntityType="Self.Agency" />
           <EntitySet Name="Agents" EntityType="Self.Agent" />
@@ -1137,7 +1139,7 @@ FROM [dbo].[Employees] AS [Employees]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TravelExpertsModelStoreContainer" CdmEntityContainer="TravelExpertsEntities">
+        <EntityContainerMapping StorageEntityContainer="TravelExpertsModelStoreContainer" CdmEntityContainer="TravelExpertsEntities1">
           <EntitySetMapping Name="Affiliations">
             <EntityTypeMapping TypeName="TravelExpertsModel.Affiliation">
               <MappingFragment StoreEntitySet="Affiliations">
@@ -1243,6 +1245,7 @@ FROM [dbo].[Employees] AS [Employees]</DefiningQuery>
                 <ScalarProperty Name="CustBusPhone" ColumnName="CustBusPhone" />
                 <ScalarProperty Name="CustEmail" ColumnName="CustEmail" />
                 <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1396,7 +1399,7 @@ FROM [dbo].[Employees] AS [Employees]</DefiningQuery>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

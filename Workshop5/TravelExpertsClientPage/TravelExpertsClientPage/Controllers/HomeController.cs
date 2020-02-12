@@ -38,9 +38,32 @@ namespace TravelExpertsClientPage.Controllers
         [HttpPost]
         public ActionResult Register(Customer cust)
         {
-            ViewBag.Message = "Your Registration page.";
+            TravelExpertsEntities1 db = new TravelExpertsEntities1();
+            if (cust != null)
+            {
+                List<Customer> customers = db.Customers.ToList();
+                int found = Convert.ToInt32((from c in customers
+                             where c.CustEmail == cust.CustEmail
+                             select c.CustomerId).SingleOrDefault());
+                if (found == 0)
+                {
+                    db.Customers.Add(cust);
+                    db.SaveChanges();
+                    ViewBag.Status = "Registration Successful";
+                    return RedirectToAction("Index");
+                }
+                else 
+                {
+                    ViewBag.Status = "User Exists";
+                    return RedirectToAction("Index");
+                }
 
-            return View(cust);
+
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

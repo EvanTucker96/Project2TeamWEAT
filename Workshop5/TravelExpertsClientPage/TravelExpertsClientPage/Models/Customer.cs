@@ -22,11 +22,11 @@ namespace TravelExpertsClientPage.Models
             this.CreditCards = new HashSet<CreditCard>();
             this.Customers_Rewards = new HashSet<Customers_Rewards>();
         }
-    
+
         public int CustomerId { get; set; }
-        [Required(ErrorMessage ="First Name is required")]
+        [Required(ErrorMessage = "First Name is required")]
         [StringLength(25)]
-        [Display(Name ="First Name")]
+        [Display(Name = "First Name")]
         public string CustFirstName { get; set; }
         [Required(ErrorMessage = "Last Name is required")]
         [StringLength(25)]
@@ -47,46 +47,46 @@ namespace TravelExpertsClientPage.Models
         [Required(ErrorMessage = "Postal Code is required")]
         [StringLength(7)]
         [Display(Name = "Postal Code")]
-        [RegularExpression(@"^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$", ErrorMessage ="Invalid Postal Code")]
+        [RegularExpression(@"^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$", ErrorMessage = "Invalid Postal Code")]
         public string CustPostal { get; set; }
         [Required(ErrorMessage = "Country is required")]
         [StringLength(25)]
         [Display(Name = "Country")]
         public string CustCountry { get; set; }
         [Required(ErrorMessage = "Home Phone is required")]
-        [StringLength(20),MinLength(10)]
+        [StringLength(20), MinLength(10)]
         [Display(Name = "Home Phone")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
                    ErrorMessage = "Entered phone format is not valid.")]
         public string CustHomePhone { get; set; }
-        
-        [StringLength(20),MinLength(10)]
+
+        [StringLength(20), MinLength(10)]
         [Display(Name = "Business Phone")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
                    ErrorMessage = "Entered phone format is not valid.")]
         public string CustBusPhone { get; set; }
-       
+
         [StringLength(50)]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         public string CustEmail { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
-        [StringLength(128),MinLength(8)]
+        [StringLength(128), MinLength(8)]
         [Display(Name = "Password (Min 8 characters)")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [NotMapped]
         [Required(ErrorMessage = "Please confirm the password")]
-        [StringLength(128),MinLength(8)]
+        [StringLength(128), MinLength(8)]
         [Display(Name = "Confirm Password")]
-        [Compare("Password",ErrorMessage ="Passwords do not match")]
+        [Compare("Password", ErrorMessage = "Passwords do not match")]
         [DataType(DataType.Password)]
         public string ComparePassword { get; set; }
 
         public Nullable<int> AgentId { get; set; }
-    
+
         public virtual Agent Agent { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<CreditCard> CreditCards { get; set; }
