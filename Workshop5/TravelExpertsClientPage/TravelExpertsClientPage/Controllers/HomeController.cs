@@ -24,7 +24,7 @@ namespace TravelExpertsClientPage.Controllers
         public ActionResult Contact()
         {
             //get a list of agencies
-            List<Agency> agencies = new TravelExpertsEntities().Agencies.ToList();
+            List<Agency> agencies = new TravelExpertsEntities1().Agencies.ToList();
  
             //pass it to the contact page
             return View(agencies);
