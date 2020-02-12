@@ -1,17 +1,31 @@
-﻿@{
+﻿@model IEnumerable<TravelExpertsClientPage.Models.Agency>
+
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<h2>Contact</h2>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+
+@foreach (var item in Model)
+{
+
+    <address class="agency">
+        @Html.DisplayFor(modelItem => item.AgncyAddress)<br />
+        @Html.DisplayFor(modelItem => item.AgncyCity) @Html.DisplayFor(modelItem => item.AgncyProv) @Html.DisplayFor(modelItem => item.AgncyPostal)<br />
+        <abbr title="Phone">P:</abbr>
+        @Html.DisplayFor(modelItem => item.AgncyPhone)<br />
+        <abbr title="Fax">F:</abbr>
+        @Html.DisplayFor(modelItem => item.AgncyFax)<br />
+    </address>
+
+    foreach (var agent in item.Agents)
+    {
+        <address class="agent">
+            @Html.DisplayFor(modelItem => agent.AgtFirstName) @Html.DisplayFor(modelItem => agent.AgtLastName), @Html.DisplayFor(modelItem => agent.AgtPosition)<br />
+            @Html.DisplayFor(modelItem => agent.AgtEmail) | @Html.DisplayFor(modelItem => agent.AgtBusPhone)
+        </address>
+    }
+
+}
