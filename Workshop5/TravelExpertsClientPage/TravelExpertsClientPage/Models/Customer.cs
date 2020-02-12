@@ -12,6 +12,7 @@ namespace TravelExpertsClientPage.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Customer
     {
@@ -23,36 +24,36 @@ namespace TravelExpertsClientPage.Models
         }
     
         public int CustomerId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="First Name is required")]
         [StringLength(25)]
         [Display(Name ="First Name")]
         public string CustFirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Last Name is required")]
         [StringLength(25)]
         [Display(Name = "Last Name")]
         public string CustLastName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Address is required")]
         [StringLength(75)]
         [Display(Name = "Address")]
         public string CustAddress { get; set; }
-        [Required]
+        [Required(ErrorMessage = "City is required")]
         [StringLength(50)]
         [Display(Name = "City")]
         public string CustCity { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Province is required")]
         [StringLength(2)]
         [Display(Name = "Province")]
         public string CustProv { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Postal Code is required")]
         [StringLength(7)]
         [Display(Name = "Postal Code")]
         [RegularExpression(@"^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$", ErrorMessage ="Invalid Postal Code")]
         public string CustPostal { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Country is required")]
         [StringLength(25)]
         [Display(Name = "Country")]
         public string CustCountry { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Home Phone is required")]
         [StringLength(20),MinLength(10)]
         [Display(Name = "Home Phone")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
@@ -69,6 +70,21 @@ namespace TravelExpertsClientPage.Models
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         public string CustEmail { get; set; }
+
+        [Required(ErrorMessage = "Password is required")]
+        [StringLength(128),MinLength(8)]
+        [Display(Name = "Password (Min 8 characters)")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [NotMapped]
+        [Required(ErrorMessage = "Please confirm the password")]
+        [StringLength(128),MinLength(8)]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password",ErrorMessage ="Passwords do not match")]
+        [DataType(DataType.Password)]
+        public string ComparePassword { get; set; }
+
         public Nullable<int> AgentId { get; set; }
     
         public virtual Agent Agent { get; set; }
