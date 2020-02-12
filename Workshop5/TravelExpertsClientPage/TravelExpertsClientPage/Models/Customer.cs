@@ -22,35 +22,43 @@ namespace TravelExpertsClientPage.Models
         }
 
         public int CustomerId { get; set; }
+
         [Required(ErrorMessage = "First Name is required")]
         [StringLength(25)]
         [Display(Name = "First Name")]
         public string CustFirstName { get; set; }
+
         [Required(ErrorMessage = "Last Name is required")]
         [StringLength(25)]
         [Display(Name = "Last Name")]
         public string CustLastName { get; set; }
+
         [Required(ErrorMessage = "Address is required")]
         [StringLength(75)]
         [Display(Name = "Address")]
         public string CustAddress { get; set; }
+
         [Required(ErrorMessage = "City is required")]
         [StringLength(50)]
         [Display(Name = "City")]
         public string CustCity { get; set; }
+
         [Required(ErrorMessage = "Province is required")]
         [StringLength(2)]
         [Display(Name = "Province")]
         public string CustProv { get; set; }
+
         [Required(ErrorMessage = "Postal Code is required")]
         [StringLength(7)]
         [Display(Name = "Postal Code")]
         [RegularExpression(@"^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$", ErrorMessage = "Invalid Postal Code")]
         public string CustPostal { get; set; }
+
         [Required(ErrorMessage = "Country is required")]
         [StringLength(25)]
         [Display(Name = "Country")]
         public string CustCountry { get; set; }
+
         [Required(ErrorMessage = "Home Phone is required")]
         [StringLength(20), MinLength(10)]
         [Display(Name = "Home Phone")]
@@ -64,6 +72,7 @@ namespace TravelExpertsClientPage.Models
                    ErrorMessage = "Entered phone format is not valid.")]
         public string CustBusPhone { get; set; }
 
+        [Required(ErrorMessage = "Email is required")]
         [StringLength(50)]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
