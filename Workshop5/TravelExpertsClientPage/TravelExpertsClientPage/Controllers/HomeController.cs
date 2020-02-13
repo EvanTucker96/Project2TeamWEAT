@@ -37,6 +37,13 @@ namespace TravelExpertsClientPage.Controllers
             return View();
         }
 
+        public ActionResult Packages()
+        {
+            ViewBag.Message = "View and order Packages";
+
+            return RedirectToAction("Index", "PackagesController");
+        }
+
 
         /// <summary>
         /// For Registering a new user
