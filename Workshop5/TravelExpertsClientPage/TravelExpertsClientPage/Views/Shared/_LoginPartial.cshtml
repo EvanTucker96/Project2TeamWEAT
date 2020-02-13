@@ -10,7 +10,7 @@
         
         
         <ul class="nav navbar-nav navbar-right">
-            Hello @Session["UserName"]
+            <li class="nav-item">@Html.ActionLink("Edit Account " +  @Session["UserName"], "Register", "Home", routeValues: null, htmlAttributes: new { id = "editLink", @class = "nav-link" })</li>
             <li class="nav-item">@Html.ActionLink("Log out", "Logout", "Home", routeValues: null, htmlAttributes: new { id = "logoutLink", @class = "nav-link" })</li>
         </ul>
     }

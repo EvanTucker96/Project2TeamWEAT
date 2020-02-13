@@ -1,3 +1,5 @@
+
+
 //------------------------------------------------------------------------------
 //    Some of this code was generated from a template.
 //
@@ -111,6 +113,7 @@ namespace TravelExpertsClientPage.Models
             return success;
         }
 
-    
+
+    }
 }
-}
+

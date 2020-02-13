@@ -1,10 +1,17 @@
 ﻿@model TravelExpertsClientPage.Models.Customer
 
 @{
-    ViewBag.Title = "Register";
+    if (Session["UserName"] != null)
+    {
+        ViewBag.Title = "Edit Account";
+    }
+    else
+    {
+        ViewBag.Title = "Register a New Account";
+    }
 }
 
-<h2>New Customer Registration</h2>
+<h2>@ViewBag.Title</h2>
 <h3>@TempData["Status"]</h3>
 
 @using (Html.BeginForm()) 
@@ -88,7 +95,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Submit" class="btn btn-default" />
             @Html.ActionLink("Clear", "Register", "Home", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
         </div>
     </div>
