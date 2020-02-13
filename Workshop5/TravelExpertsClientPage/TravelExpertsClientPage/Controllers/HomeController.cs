@@ -81,5 +81,52 @@ namespace TravelExpertsClientPage.Controllers
                 return View();// no data present, return to Regisrtation form
             }
         }
+        [HttpGet]
+        public ActionResult Login(string id)
+        {
+           
+            //TravelExpertsEntities1 db = new TravelExpertsEntities1();
+            //cust.VerifyPassword(cust.Password);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Customer cust)
+        {
+            TravelExpertsEntities1 db = new TravelExpertsEntities1();
+            bool confirmPass;
+            Customer temp;
+            try
+            {
+                temp= (from c in db.Customers
+                        where c.CustEmail == cust.CustEmail
+                        select c).Single();
+
+                confirmPass= temp.VerifyPassword(cust.Password);
+            }
+            catch
+            {
+                TempData["Status"] = "No user exists";
+                return View();
+            }
+            if (confirmPass) {
+                TempData["Authenticated"] = true;
+                TempData["UserName"] = cust.CustEmail;
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["Status"] = "Username or password is incorrect";
+                return View();
+            }
+        }
+        public ActionResult Logout()
+        {
+            
+            TempData["Authenticated"] = false;
+            TempData["UserName"] = null;
+            return RedirectToAction("Index");
+            
+        }
     }
 }
