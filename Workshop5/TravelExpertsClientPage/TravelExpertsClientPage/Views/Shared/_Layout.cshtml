@@ -16,15 +16,15 @@
             <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
             @*@Html.ActionLink("TravelExperts", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
 
-        <div id="navbarSupportedContent" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("About", "About", "Home", htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", htmlAttributes: new { @class = "nav-link" })</li>
-                @*<li class="nav-item">@Html.ActionLink("Register", "Register", "Home", htmlAttributes: new { @class = "nav-link" })</li>*@
-            </ul>
-            @Html.Partial("_LoginPartial")
-        </div>
+            <div id="navbarSupportedContent" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Packages", "Index", "Packages", htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Register", "Register", "Home", htmlAttributes: new { @class = "nav-link" })</li>
+                </ul>
+            </div>
         </div>
     </nav>
  
