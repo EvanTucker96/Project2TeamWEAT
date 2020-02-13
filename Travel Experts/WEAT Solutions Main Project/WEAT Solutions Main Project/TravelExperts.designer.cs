@@ -20,6 +20,7 @@ namespace WEAT_Solutions_Main_Project
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
+	using BCrypt.Net;
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="TravelExperts")]
@@ -361,7 +362,17 @@ namespace WEAT_Solutions_Main_Project
 				}
 			}
 		}
-		
+		public string EncryptPassword(string plainPass)
+		{
+			string passwordHash = BCrypt.HashPassword(plainPass);
+			return passwordHash;
+		}
+
+		public bool VerifyPassword(string plainPass)
+		{
+			bool success = BCrypt.Verify(plainPass, Password);
+			return success;
+		}
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
