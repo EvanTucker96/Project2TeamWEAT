@@ -67,6 +67,8 @@ namespace TravelExpertsClientPage.Controllers
                     db.Customers.Add(cust); // add the Customer record
                     db.SaveChanges(); // comit the changes
                     TempData["Status"] = "Registration Successful"; // set the Result status
+                    Session["Authenticated"] = true;
+                    Session["UserName"] = cust.CustEmail;
                     return RedirectToAction("Index"); // go back to 'Home'
                 }
                 else 
