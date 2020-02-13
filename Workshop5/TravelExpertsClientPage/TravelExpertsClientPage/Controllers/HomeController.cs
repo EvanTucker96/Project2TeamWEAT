@@ -30,11 +30,25 @@ namespace TravelExpertsClientPage.Controllers
             return View(agencies);
         }
 
+        /// <summary>
+        /// Go to the register page:
+        /// If logged in, pass the current customer object
+        /// If not, pass null
+        /// (The view will then display as either a new registration or an account edit)
+        /// Author: TH
+        /// </summary>
         public ActionResult Register()
         {
+ 
+            Customer cust = null;
             ViewBag.Message = "Customer registration page.";
-
-            return View();
+            if ((bool)Session["Authenticated"]) // if a customer is logged in
+            {
+                // get the customer from the DB that has the same email as the logged in customer
+                cust = new TravelExpertsEntities1().Customers.Where(c => c.CustEmail == (string)Session["Username"]).Single();
+            }
+            
+            return View(cust);
         }
 
 
