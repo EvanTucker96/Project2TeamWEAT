@@ -94,8 +94,6 @@ namespace TravelExpertsClientPage.Controllers
         public ActionResult Login(string id)
         {
            
-            //TravelExpertsEntities1 db = new TravelExpertsEntities1();
-            //cust.VerifyPassword(cust.Password);
             return View();
         }
 
@@ -132,8 +130,6 @@ namespace TravelExpertsClientPage.Controllers
         }
         public ActionResult Logout()
         {
-            
-           
             Session["Authenticated"] = false;
             Session["UserName"] = null;
             return RedirectToAction("Index");
