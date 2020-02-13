@@ -81,7 +81,7 @@ namespace WEAT_Solutions_Main_Project
             isAdd = false;
             int rowNum = Convert.ToInt32(dgvProducts.CurrentCell.RowIndex);
             int prodNum = Convert.ToInt32(dgvProducts[0, rowNum].Value);
-            Product tempProd;
+            //Product tempProd;
 
             using (TravelExpertsDataContext dbContext = new TravelExpertsDataContext())
             {
@@ -92,7 +92,7 @@ namespace WEAT_Solutions_Main_Project
                     MessageBox.Show("Product Deleted");
                     LoadProducts();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Delete product fail, item not in Database");
                 }
@@ -136,7 +136,7 @@ namespace WEAT_Solutions_Main_Project
                         btnNew.Enabled = true;
                         btnEdit.Enabled = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Save failed, please try again");
                     }

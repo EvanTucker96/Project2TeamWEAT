@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
+
 /// <summary>
 /// inital form design Angela Dunwoodie-Lambert, login, clear and validation code by Wade Grimm
 /// </summary>
@@ -50,27 +52,23 @@ namespace WEAT_Solutions_Main_Project
                 try
                 {// query the DB for a match
                     dbAgent = (Agent)(from agt in dbContext.Agents
-                                      where agt.AgtFirstName == uName && agt.Password == uPass
+                                      where agt.AgtFirstName == uName 
                                       select agt).SingleOrDefault();
                    
-                    if (dbAgent != null) // will be Null if no matches found
+                    if (dbAgent.VerifyPassword(uPass)) // will be Null if no matches found
                     {
-                        // compare the passwords
-                        if (dbAgent.Password.ToLower() == uPass.ToLower())
-                        {
-                            btnProducts.Enabled = true;
-                            btnSuppliers.Enabled = true;
-                            btnTravelPkgs.Enabled = true;
-                            txtUsername.Text = "";
-                            txtPassword.Text = "";
-                            txtUsername.Visible = false;
-                            txtPassword.Visible = false;
-                            lblWelcome.Visible = true;
-                            lblWelcome.Text = "Welcome " + uName;
-                            btnLogin.Text = "&Logout";// set the Button text so we can logout with same control
-                            btnLogin.Enabled = true;
-                            btnClear.Enabled = false;
-                        }
+                        btnProducts.Enabled = true;
+                        btnSuppliers.Enabled = true;
+                        btnTravelPkgs.Enabled = true;
+                        txtUsername.Text = "";
+                        txtPassword.Text = "";
+                        txtUsername.Visible = false;
+                        txtPassword.Visible = false;
+                        lblWelcome.Visible = true;
+                        lblWelcome.Text = "Welcome " + uName;
+                        btnLogin.Text = "&Logout";// set the Button text so we can logout with same control
+                        btnLogin.Enabled = true;
+                        btnClear.Enabled = false;
                     }
                     else // no match
                     {
@@ -82,7 +80,11 @@ namespace WEAT_Solutions_Main_Project
                 {
                     MessageBox.Show(ioe.Message + ": " + ioe.ToString());
                 }
-
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("User does not exist.", "User lookup failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ClearForm();// reset form to try again
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message + ": " + ex.ToString());

@@ -601,6 +601,8 @@ namespace WEAT_Solutions_Main_Project
                 NewOrClear();
             }
             LoadDGV();
+            lbAvail.Items.Clear();
+            gbDetails.Enabled = false;
         }
 
       
@@ -737,6 +739,9 @@ namespace WEAT_Solutions_Main_Project
             else
             {
                 btnNew.Text = "&New";
+                lbAvail.Items.Clear();
+                gbDetails.Enabled = false;
+
             }
 
         }
