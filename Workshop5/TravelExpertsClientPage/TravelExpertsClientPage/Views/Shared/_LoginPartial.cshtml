@@ -1,7 +1,7 @@
 ﻿@*Shared/_LoginPartial.cshtml*@
 
 @using Microsoft.AspNet.Identity
-@if (TempData["authenticated"] != null && (bool)TempData["Authenticated"])
+@if (Session["Authenticated"] != null && (bool)Session["Authenticated"])
 {
     using (Html.BeginForm())
     {
@@ -10,7 +10,7 @@
         
         
         <ul class="nav navbar-nav navbar-right">
-            Hello @TempData["UserName"]
+            Hello @Session["UserName"]
             <li class="nav-item">@Html.ActionLink("Log out", "Logout", "Home", routeValues: null, htmlAttributes: new { id = "logoutLink", @class = "nav-link" })</li>
         </ul>
     }

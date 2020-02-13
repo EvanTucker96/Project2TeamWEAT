@@ -110,8 +110,9 @@ namespace TravelExpertsClientPage.Controllers
                 return View();
             }
             if (confirmPass) {
-                TempData["Authenticated"] = true;
-                TempData["UserName"] = cust.CustEmail;
+                
+                Session["Authenticated"] = true;
+                Session["UserName"] = cust.CustEmail;
                 return RedirectToAction("Index");
             }
             else
@@ -123,8 +124,9 @@ namespace TravelExpertsClientPage.Controllers
         public ActionResult Logout()
         {
             
-            TempData["Authenticated"] = false;
-            TempData["UserName"] = null;
+           
+            Session["Authenticated"] = false;
+            Session["UserName"] = null;
             return RedirectToAction("Index");
             
         }
