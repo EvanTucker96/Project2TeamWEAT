@@ -67,10 +67,10 @@ namespace TravelExpertsClientPage.Controllers
                 if (found == 0) // if no records found
                 {
                     //Encrypt the password using BCrypt
-                    cust.Password = cust.EncryptPassword(cust.Password);
+//                    cust.Password = cust.EncryptPassword(cust.Password);
                     // set ComparePassword to encrypted password so validation passes
                     // we've already verified they were the same before submit
-                    cust.ComparePassword = cust.Password;
+//                    cust.ComparePassword = cust.Password;
                     db.Customers.Add(cust); // add the Customer record
                     db.SaveChanges(); // comit the changes
                     TempData["Status"] = "Registration Successful"; // set the Result status
@@ -109,13 +109,15 @@ namespace TravelExpertsClientPage.Controllers
                         where c.CustEmail == cust.CustEmail
                         select c).Single();
 
-                confirmPass= temp.VerifyPassword(cust.Password);
+                //                confirmPass= temp.VerifyPassword(cust.Password);
+                return null;
             }
             catch
             {
                 TempData["Status"] = "No user exists";
                 return View();
             }
+            /*
             if (confirmPass) {
                 TempData["Authenticated"] = true;
                 TempData["UserName"] = cust.CustEmail;
@@ -126,6 +128,7 @@ namespace TravelExpertsClientPage.Controllers
                 TempData["Status"] = "Username or password is incorrect";
                 return View();
             }
+            */
         }
         public ActionResult Logout()
         {

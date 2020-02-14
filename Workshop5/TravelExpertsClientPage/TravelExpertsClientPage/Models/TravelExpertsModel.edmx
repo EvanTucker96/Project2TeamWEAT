@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TravelExpertsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TravelExpertsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Affiliations">
           <Key>
             <PropertyRef Name="AffilitationId" />
@@ -152,6 +152,7 @@ warning 6002: The table/view 'TravelExperts.dbo.Employees' does not have a prima
           <Property Name="PkgDesc" Type="nvarchar" MaxLength="50" />
           <Property Name="PkgBasePrice" Type="money" Nullable="false" />
           <Property Name="PkgAgencyCommission" Type="money" />
+          <Property Name="PkgImageFile" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Packages_Products_Suppliers">
           <Key>
@@ -571,8 +572,7 @@ warning 6002: The table/view 'TravelExperts.dbo.Employees' does not have a prima
             <End Role="SupplierContacts" EntitySet="SupplierContacts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TravelExpertsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -730,6 +730,7 @@ warning 6002: The table/view 'TravelExperts.dbo.Employees' does not have a prima
           <Property Name="PkgAgencyCommission" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Bookings" Relationship="Self.Bookings_FK01" FromRole="Packages" ToRole="Bookings" />
           <NavigationProperty Name="Products_Suppliers" Relationship="Self.Packages_Products_Suppliers" FromRole="Packages" ToRole="Products_Suppliers" />
+          <Property Name="PkgImageFile" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -1271,6 +1272,7 @@ warning 6002: The table/view 'TravelExperts.dbo.Employees' does not have a prima
           <EntitySetMapping Name="Packages">
             <EntityTypeMapping TypeName="TravelExpertsModel.Package">
               <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="PkgImageFile" ColumnName="PkgImageFile" />
                 <ScalarProperty Name="PackageId" ColumnName="PackageId" />
                 <ScalarProperty Name="PkgName" ColumnName="PkgName" />
                 <ScalarProperty Name="PkgStartDate" ColumnName="PkgStartDate" />

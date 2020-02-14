@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - TravelExperts</title>
+    <link href="@Url.Content("~/Styles/site.css")" rel="stylesheet" type="text/css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -19,7 +20,7 @@
         <div id="navbarSupportedContent" class="navbar-collapse collapse">
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Packages", "Index", "Packages", htmlAttributes: new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Packages", "Index", "Packages", null, htmlAttributes: new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("About", "About", "Home", htmlAttributes: new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", htmlAttributes: new { @class = "nav-link" })</li>
                 @*<li class="nav-item">@Html.ActionLink("Register", "Register", "Home", htmlAttributes: new { @class = "nav-link" })</li>*@
