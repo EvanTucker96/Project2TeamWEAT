@@ -30,7 +30,7 @@ namespace TravelExpertsClientPage.Controllers
         {
             //get a list of agencies
             List<Agency> agencies = new TravelExpertsEntities1().Agencies.ToList();
- 
+
             //pass it to the contact page
             return View(agencies);
         }
@@ -44,9 +44,9 @@ namespace TravelExpertsClientPage.Controllers
         /// </summary>
         public ActionResult Register()
         {
- 
+
             Customer cust = null;
-            
+
             ViewBag.Message = "Customer registration page.";
             if (Session["Authenticated"] != null && (bool)Session["Authenticated"]) // if a customer is logged in
             {
@@ -55,7 +55,7 @@ namespace TravelExpertsClientPage.Controllers
                 // get the customer from the DB that has the same email as the logged in customer
                 cust = new TravelExpertsEntities1().Customers.Where(c => c.CustEmail == username).Single();
             }
-            
+
             return View(cust);
         }
 
@@ -112,12 +112,12 @@ namespace TravelExpertsClientPage.Controllers
                         custRecord.CustLastName = cust.CustLastName;
                         custRecord.CustPostal = cust.CustPostal;
                         custRecord.CustProv = cust.CustProv;
-                                                
+
                         // commit
                         db.SaveChanges();
-                        
+
                         Session["UserName"] = cust.CustEmail; // in case they updated their email
-                        TempData["Status"] = "User Account Successfully Edited"; // set the Result status  
+                        TempData["Status"] = "User Account Successfully Edited"; // set the Result status
                         return View(); // we're done here
                     }
                     else // this is a new user
@@ -137,9 +137,9 @@ namespace TravelExpertsClientPage.Controllers
                     }
                 }
                 else // email already in use
-                
+
                 {
-                    TempData["Status"] = "User Exists"; // set the Result status                  
+                    TempData["Status"] = "User Exists"; // set the Result status
                     return View();
                 }
 
@@ -152,7 +152,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult Login(string id)
         {
-           
+
             return View();
         }
 
@@ -168,15 +168,17 @@ namespace TravelExpertsClientPage.Controllers
                         where c.CustEmail == cust.CustEmail
                         select c).Single();
 
-                confirmPass= temp.VerifyPassword(cust.Password);
+                //                confirmPass= temp.VerifyPassword(cust.Password);
+                return null;
             }
             catch
             {
                 TempData["Status"] = "No user exists";
                 return View();
             }
+            /*
             if (confirmPass) {
-                
+
                 Session["Authenticated"] = true;
                 Session["UserName"] = cust.CustEmail;
                 return RedirectToAction("Index");
@@ -186,13 +188,14 @@ namespace TravelExpertsClientPage.Controllers
                 TempData["Status"] = "Username or password is incorrect";
                 return View();
             }
+            */
         }
         public ActionResult Logout()
         {
             Session["Authenticated"] = false;
             Session["UserName"] = null;
             return RedirectToAction("Index");
-            
+
         }
     }
 }

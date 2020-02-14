@@ -20,8 +20,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44304</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -228,6 +227,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\asia.jpg" />
+    <Content Include="Images\asia2.jpg" />
+    <Content Include="Images\caribbean.jpg" />
+    <Content Include="Images\Europe.jpg" />
+    <Content Include="Images\hawaii.jfif" />
     <Content Include="Models\TravelExpertsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
@@ -277,6 +281,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\site.css" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -376,7 +381,6 @@
     <Content Include="Views\Packages\Details.cshtml" />
     <Content Include="Views\Packages\Edit.cshtml" />
     <Content Include="Views\Packages\Index.cshtml" />
-    <Content Include="Views\Home\Packages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

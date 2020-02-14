@@ -11,7 +11,8 @@ namespace TravelExpertsClientPage.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Package
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,11 +24,18 @@ namespace TravelExpertsClientPage.Models
     
         public int PackageId { get; set; }
         public string PkgName { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> PkgStartDate { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> PkgEndDate { get; set; }
         public string PkgDesc { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:c}")]
         public decimal PkgBasePrice { get; set; }
         public Nullable<decimal> PkgAgencyCommission { get; set; }
+        public string PkgImageFile { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
