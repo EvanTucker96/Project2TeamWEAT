@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TravelExpertsClientPage.Models.Product>
+
+@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>Product List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ProductCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ProductEdit", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "ProductDelete", new { id=item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>

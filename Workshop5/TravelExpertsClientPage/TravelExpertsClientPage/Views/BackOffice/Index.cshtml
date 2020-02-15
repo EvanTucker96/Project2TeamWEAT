@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Back Office";
+}
+<!--
+Back office product management index page    
+    Author (where not auto-generated): TH
+-->
+<div class="jumbotron">
+    <h3>Travel Experts - Product Management</h3>
+    <p class="lead">Back office portal for maintaining product information</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Packages","PackageIndex")</h2>
+        <p>
+            Create, edit, and remove the packages that clients can select on the website
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Products", "ProductIndex")</h2>
+        <p>Create and edit the types of products that are available in packages</p>
+        <p><!--html.actionlink to product type list--></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Suppliers", "SupplierIndex")</h2>
+        <p>Create and edit our list of suppliers for the products</p>
+        <p><!--html.actionlink to supplier list--></p>
+    </div>
+</div>

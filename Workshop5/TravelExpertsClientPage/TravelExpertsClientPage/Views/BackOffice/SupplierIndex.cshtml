@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TravelExpertsClientPage.Models.Supplier>
+
+@{
+    ViewBag.Title = "Supplier List";
+}
+<!--
+Supplier list page
+    Author: Almost entirely auto-generated (Very minor tweaks by TH)
+-->
+<h2>Supplier List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SupplierCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SupName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "SupplierEdit", new { id = item.SupplierId }) |
+                @Html.ActionLink("Details", "SupplierDetails", new { id = item.SupplierId }) |
+                @Html.ActionLink("Delete", "SupplierDelete", new { id = item.SupplierId })
+            </td>
+        </tr>
+    }
+
+</table>

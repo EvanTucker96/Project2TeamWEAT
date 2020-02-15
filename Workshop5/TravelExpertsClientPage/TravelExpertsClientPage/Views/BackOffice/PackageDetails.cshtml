@@ -1,0 +1,77 @@
+﻿@model TravelExpertsClientPage.Models.Package
+
+@{
+    ViewBag.Title = "Package Details";
+}
+<!--
+Package detail page
+    Author: Almost entirely auto-generated (Very minor tweaks by TH)
+-->
+<h2>Package Details</h2>
+
+<div>
+    <h4>Package</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgBasePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgBasePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgAgencyCommission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgAgencyCommission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgImageFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgImageFile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "PackageEdit", new { id = Model.PackageId }) |
+    @Html.ActionLink("Back to List", "PackageIndex")
+</p>
