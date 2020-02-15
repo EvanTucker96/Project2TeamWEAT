@@ -22,6 +22,59 @@ Supplier detail page
         </dd>
 
     </dl>
+    <dl class="dl-horizontal">
+        <dt>Products Sold</dt>
+        @foreach (var ps in Model.Products_Suppliers.ToList())
+        {
+            <dd>
+                @Html.DisplayFor(item => ps.Product.ProdName)
+            </dd>
+        }
+    </dl>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierContacts.FirstOrDefault().SupConFirstName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierContacts.FirstOrDefault().SupConLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierContacts.FirstOrDefault().SupConCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierContacts.FirstOrDefault().SupConBusPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierContacts.FirstOrDefault().SupConEmail)
+            </th>
+        </tr>
+        @foreach (var contact in Model.SupplierContacts.ToList())
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(model => contact.SupConFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => contact.SupConLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => contact.SupConCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => contact.SupConBusPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => contact.SupConEmail)
+                </td>
+
+            </tr>
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "SupplierEdit", new { id = Model.SupplierId }) |

@@ -70,6 +70,31 @@ Package detail page
         </dd>
 
     </dl>
+
+    <h6>Products in this Package</h6>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => Model.Products_Suppliers.FirstOrDefault().Product.ProdName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => Model.Products_Suppliers.FirstOrDefault().Supplier.SupName)
+            </th>
+        </tr>
+        @foreach(var item in Model.Products_Suppliers.ToList())
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Product.ProdName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Supplier.SupName)
+            </td>
+        </tr>
+        }
+    </table>
+
+
 </div>
 <p>
     @Html.ActionLink("Edit", "PackageEdit", new { id = Model.PackageId }) |
