@@ -395,6 +395,7 @@
     <Content Include="Views\BackOffice\SupplierDetails.cshtml" />
     <Content Include="Views\BackOffice\SupplierEdit.cshtml" />
     <Content Include="Views\BackOffice\SupplierCreate.cshtml" />
+    <Content Include="Views\Packages\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

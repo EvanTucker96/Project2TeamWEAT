@@ -13,6 +13,7 @@ namespace TravelExpertsClientPage.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class Package
     {
@@ -57,6 +58,18 @@ namespace TravelExpertsClientPage.Models
         [Display(Name = "Image File Name")]
         [StringLength(30)]
         public string PkgImageFile { get; set; }
+
+
+            public int NumTravellers { get; set; }
+            public SelectList NumTravellersList { get; set; }
+
+            [Display(Name = "Travellers First and Last Name")]
+            [StringLength(50)]
+            public string TravellerName { get; set; }
+
+            public bool TravelIns { get; set; }
+
+
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
