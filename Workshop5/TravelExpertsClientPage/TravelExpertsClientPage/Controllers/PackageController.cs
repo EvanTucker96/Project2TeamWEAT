@@ -11,7 +11,7 @@ using System.Drawing.Imaging;
 
 namespace TravelExpertsClientPage.Controllers
 {
-    public class PackagesController : Controller
+    public class PackageController : Controller
     {
         private TravelExpertsEntities1 db = new TravelExpertsEntities1();
 
