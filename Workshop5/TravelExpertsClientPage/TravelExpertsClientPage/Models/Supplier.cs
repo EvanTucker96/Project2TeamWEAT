@@ -21,6 +21,7 @@ namespace TravelExpertsClientPage.Models
             this.SupplierContacts = new HashSet<SupplierContact>();
         }
     
+        [Display(Name ="Supplier ID")]
         public int SupplierId { get; set; }
         public string SupName { get; set; }
     
