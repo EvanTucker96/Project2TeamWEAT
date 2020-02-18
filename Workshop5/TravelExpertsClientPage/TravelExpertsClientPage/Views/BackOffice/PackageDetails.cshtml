@@ -10,7 +10,6 @@ Package detail page
 <h2>Package Details</h2>
 
 <div>
-    <h4>Package</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -97,6 +96,6 @@ Package detail page
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "PackageEdit", new { id = Model.PackageId }) |
-    @Html.ActionLink("Back to List", "PackageIndex")
+    @Html.ActionLink("Edit", "PackageEdit", new { id = Model.PackageId }, new { @class = "btn btn-primary" })&nbsp;
+    @Html.ActionLink("Back to List", "PackageIndex", null, new { @class = "btn btn-primary" })
 </p>

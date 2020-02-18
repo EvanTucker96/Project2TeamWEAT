@@ -31,7 +31,8 @@ Supplier detail page
             </dd>
         }
     </dl>
-
+    <hr />
+    <h5>Supplier Contacts</h5>
     <table class="table">
         <tr>
             <th>
@@ -77,6 +78,6 @@ Supplier detail page
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "SupplierEdit", new { id = Model.SupplierId }) |
-    @Html.ActionLink("Back to List", "SupplierIndex")
+    @Html.ActionLink("Edit", "SupplierEdit", new { id = Model.SupplierId }, new { @class = "btn btn-primary" })&nbsp;
+    @Html.ActionLink("Back to List", "SupplierIndex", null, new { @class = "btn btn-primary" })
 </p>

@@ -15,7 +15,6 @@ Package edit page
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Package</h4>
     <h3>@TempData["Status"]</h3>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -111,15 +110,13 @@ Package edit page
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-primary" />
+            <input type="submit" value="Save" class="btn btn-primary float-left" />&nbsp;
+            @Html.ActionLink("Back to List", "PackageIndex", null, new { @class = "btn btn-primary" })
         </div>
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "PackageIndex")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
