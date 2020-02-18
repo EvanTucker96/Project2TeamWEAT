@@ -25,6 +25,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             return View();
         }
 
@@ -34,6 +35,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult PackageIndex()
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             List<Package> packages = new TravelExpertsEntities1().Packages.ToList();
             return View(packages);
         }
@@ -44,6 +46,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult PackageDetails(int id)
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             Package package = new TravelExpertsEntities1().Packages.Where(p => p.PackageId == id).SingleOrDefault();
             return View(package);
         }
@@ -55,6 +58,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult PackageEdit(int id)
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
             {
                 Package package = db.Packages.Where(p => p.PackageId == id).SingleOrDefault();
@@ -176,6 +180,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult PackageCreate()
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
             {
                 ViewBag.Products = db.Products.OrderBy(p=>p.ProdName).ToList();  // pass a list of all products to the view
@@ -257,6 +262,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult ProductIndex()
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             List<Product> products = new TravelExpertsEntities1().Products.ToList();
             return View(products);
         }
@@ -267,6 +273,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult ProductDetails(int id)
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             Product product = new TravelExpertsEntities1().Products.Where(p => p.ProductId == id).SingleOrDefault();
             return View(product);
         }
@@ -278,6 +285,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult ProductEdit(int id)
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             Product product = new TravelExpertsEntities1().Products.Where(p => p.ProductId == id).SingleOrDefault();
             return View(product);
         }
@@ -313,6 +321,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult ProductCreate()
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             return View(); // just open the page
         }
 
@@ -349,6 +358,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult SupplierIndex()
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             List<Supplier> suppliers = new TravelExpertsEntities1().Suppliers.ToList();
             return View(suppliers);
         }
@@ -359,6 +369,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult SupplierDetails(int id)
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             Supplier supplier = new TravelExpertsEntities1().Suppliers.Where(s => s.SupplierId == id).SingleOrDefault();
             return View(supplier);
         }
@@ -370,6 +381,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult SupplierEdit(int id)
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
             {
                 Supplier supplier = db.Suppliers.Where(s => s.SupplierId == id).SingleOrDefault(); // get this supplier
@@ -452,6 +464,7 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult SupplierCreate()
         {
+            ViewBag.BackOffice = true; // tell the view to use the backoffice navbar
             using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
             {
                 TempData["Status"] = "";
