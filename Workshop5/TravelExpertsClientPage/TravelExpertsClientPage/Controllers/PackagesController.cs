@@ -36,9 +36,27 @@ namespace TravelExpertsClientPage.Controllers
             return View(package);
         }
 
-        // GET: Packages/Create
+        // GET: Packages/OrderDetails/5
+        public ActionResult OrderDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Package package = db.Packages.Find(id);
+            if (package == null)
+            {
+                return HttpNotFound();
+            }
+            return View(package);
+        }
+
+   
+    // GET: Packages/Create
         public ActionResult Create()
         {
+            List<int> numOfTravellers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
             return View();
         }
 

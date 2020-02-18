@@ -168,15 +168,15 @@ namespace TravelExpertsClientPage.Controllers
                         where c.CustEmail == cust.CustEmail
                         select c).Single();
 
-                //                confirmPass= temp.VerifyPassword(cust.Password);
-                return null;
+                confirmPass= temp.VerifyPassword(cust.Password);
+                
             }
             catch
             {
                 TempData["Status"] = "No user exists";
                 return View();
             }
-            /*
+            
             if (confirmPass) {
 
                 Session["Authenticated"] = true;
@@ -188,7 +188,7 @@ namespace TravelExpertsClientPage.Controllers
                 TempData["Status"] = "Username or password is incorrect";
                 return View();
             }
-            */
+            
         }
         public ActionResult Logout()
         {

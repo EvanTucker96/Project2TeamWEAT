@@ -1,0 +1,159 @@
+﻿@model TravelExpertsClientPage.Models.MultipleTableClass
+
+@{
+    ViewBag.Title = "MultipleOrdersView";
+}
+
+<h2>Order Details</h2>
+
+<p>@Html.ActionLink("Packages", "Index", "Packages", null, htmlAttributes: new { @class = "nav-link" })</p>
+
+<div class="container">
+    <div>
+        <h4>Package Details</h4>
+        <hr />
+
+        <table style="width:100%">
+            <tr>
+                <th>Package Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.packageDetails.PkgName)</td>
+                <td>@Html.DisplayFor(model => model.packageDetails.PkgStartDate)</td>
+                <td>@Html.DisplayFor(model => model.packageDetails.PkgEndDate)</td>
+            </tr>
+            <tr>
+                <td><br /></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <th>&nbsp;</th>
+                <th>Base Price</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.packageDetails.PkgDesc))</td>
+                <td>&nbsp;</td>
+                <td>@String.Format("{0:c}", Model.packageDetails.PkgBasePrice)</td>
+            </tr>
+            <tr>
+                <td><br /></td>
+            </tr>
+            <tr>
+                <th>Booking Fees</th>
+                <th>&nbsp;</th>
+                <th>Travel Insurance Fees (if selected)</th>
+            </tr>
+            <tr>
+                <td>@String.Format("{0:c}", Model.bookingFee)</td>
+                <td> &nbsp;</td>
+                <td>@String.Format("{0:c}", Model.InsurancePrice)</td>
+            </tr>
+        </table>
+    </div>
+
+    <br />
+    <hr noshade />
+    <br />
+
+    <div>
+        Number of Travellers:&nbsp;
+
+        <script>
+            function numTravellersChanged() {
+                var s = document.getElementById("NumberOfTravellers");
+                var value = s.options[s.selectedIndex].value;
+                createTable(value);
+            }
+        </script>
+
+        <select id="NumberOfTravellers" onchange="numTravellersChanged();">
+            @for (int i = 0; i <= 10; i++)
+            {
+                <option>@i</option>
+                ;
+            }
+        </select>
+
+        <br />
+
+        <form id="travellerForm" action="PostData" method="post">
+            <input type="hidden" name="packageID" value="@Model.packageDetails.PackageId" />
+            <div id="cont">
+                @* table will be rendered here...see script below *@
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-8">
+                    <span id="totalCost" align="right"></span>
+                    <p>
+                        <input id="submitBtn" type="submit" class="btn btn-primary" />
+                    </p>
+                </div>
+            </div>
+        </form>
+
+        @* script for creating dynamic table to enter customer name and request insurance *@
+        <script>
+            function createTable(value)
+            {
+                var cont = document.getElementById('cont');
+
+                //check for existing table and delete if one exists
+                var table = document.getElementById('passengerTable');
+                if (table != null)
+                {
+                    cont.innerHTML = "";
+                    //document.removeChild('table');
+                }
+
+                //create the table with headers
+                table = document.createElement('table');
+                table.setAttribute('id', 'passengerTable');
+
+                //create headers
+                var headerRow = table.insertRow(-1);
+                var th = document.createElement('th');
+                th.setAttribute('width', '40%');
+                th.innerHTML = 'Full Name';
+                headerRow.appendChild(th);
+
+                th = document.createElement('th');
+                th.setAttribute('width', '20%');
+                th.innerHTML = 'Travel Insurance';
+                headerRow.appendChild(th);
+
+                th = document.createElement('th');
+                th.setAttribute('width', '20%');
+                th.innerHTML = 'Base Price per Traveller';
+                headerRow.appendChild(th);
+
+                //loop through and create one row for each passenger
+                for (var i = 0; i < value; i++)
+                {
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+                    td.innerHTML = '<input name="FullName_' + i + '" type="text" />';
+                    tr.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.innerHTML = '<input name="Checkbox_' + i + '" type="checkbox" />';
+                    tr.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.innerHTML = '@String.Format("{0:c}", Model.packageDetails.PkgBasePrice)';
+                    tr.appendChild(td);
+
+                    table.appendChild(tr);
+                }
+                cont.appendChild(table);
+
+                totalCost.innerHTML =  "<b>Total Price</b> : " + value * @Model.packageDetails.PkgBasePrice;
+            }
+
+        </script>
+
+
+    </div>
+</div>
