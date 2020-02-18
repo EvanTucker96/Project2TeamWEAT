@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TravelExpertsClientPage.Models.Package>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vacation Packages</h2>
+
+
+<div class="container">
+    <div class="row">
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card text-center" style="width: 18rem;">
+                        <img class="card-img-top" src="~/Images/@Html.DisplayFor(modelItem => item.PkgImageFile)" alt="Image" />
+                    <div class="card-body">
+                        <h5 class="card-title"> @Html.DisplayFor(modelItem => item.PkgName)</h5>
+                        <h6 class="card-header">@Html.DisplayFor(modelItem => item.PkgStartDate)</h6>
+                        <h6 class="card-header">@Html.DisplayFor(modelItem => item.PkgEndDate)</h6>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.PkgDesc)</p>
+                        <h6 class="card-footer">@Html.DisplayFor(modelItem => item.PkgBasePrice)</h6>
+                        <a href="#" class="buttons">@Html.ActionLink("Order", "OrderDetails", new { id = item.PackageId }, new { @class = "btn btn-primary" })</a>
+                    </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
