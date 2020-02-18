@@ -55,8 +55,31 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult PackageEdit(int id)
         {
-            Package package = new TravelExpertsEntities1().Packages.Where(p => p.PackageId == id).SingleOrDefault();
-            return View(package);
+            using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
+            {
+                Package package = db.Packages.Where(p => p.PackageId == id).SingleOrDefault();
+                ViewBag.Products = db.Products.OrderBy(p => p.ProdName).ToList();  // pass a list of all products to the view
+
+                Dictionary<string, List<Supplier>> prodSupp = new Dictionary<string, List<Supplier>>(); // somewhere to put all the suppliers for each product
+                Dictionary<string, Supplier> currentProdSupp = new Dictionary<string, Supplier>(); // somewhere to put all the selected suppliers for the products it already has
+
+                foreach (Product p in (List<Product>)ViewBag.Products) // for each product, get the list of suppliers
+                {
+                    List<Supplier> s = db.Suppliers.Where(supp =>
+                        // suppliers where supplier ID is in the list of product_suppliers with p's product ID
+                        (from ps in db.Products_Suppliers where ps.ProductId == p.ProductId select ps.SupplierId).ToList().Contains(supp.SupplierId)).ToList();
+                    prodSupp.Add(p.ProdName, s); // add it to the dictionary
+                }
+
+                foreach(Products_Suppliers ps in (package.Products_Suppliers.ToList()))
+                {
+                    Supplier s = db.Suppliers.Where(supp => supp.SupplierId == ps.SupplierId).SingleOrDefault();
+                    currentProdSupp.Add(ps.Product.ProdName, s);
+                }
+                ViewBag.ProdSupp = prodSupp;
+                ViewBag.CurProdSupp = currentProdSupp;
+                return View(package);
+            }
         }
 
         /// <summary>
@@ -71,8 +94,9 @@ namespace TravelExpertsClientPage.Controllers
             {
                 using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
                 {
-                    Package editedPkg = db.Packages.Where(p => p.PackageId == id).Single();
+                    Package editedPkg = db.Packages.Where(p => p.PackageId == id).SingleOrDefault(); // get this record from the DB
 
+                    // update all the fields
                     editedPkg.PkgAgencyCommission = Convert.ToDecimal(collection["PkgAgencyCommission"]);
                     editedPkg.PkgBasePrice = Convert.ToDecimal(collection["PkgBasePrice"]);
                     editedPkg.PkgDesc = collection["PkgDesc"];
@@ -81,12 +105,53 @@ namespace TravelExpertsClientPage.Controllers
                     editedPkg.PkgName = collection["PkgName"];
                     editedPkg.PkgStartDate = Convert.ToDateTime(collection["PkgStartDate"]);
 
-                    db.SaveChanges();
+                    List<Products_Suppliers> changes = new List<Products_Suppliers>();// somewhere to put the changes we're making below
+
+                    // any product_supplier that's in the original package but not in the form selections, remove
+                    foreach(Products_Suppliers ps in editedPkg.Products_Suppliers)
+                    {
+                        int suppID = Convert.ToInt32(collection[ps.Product.ProdName]); // get the drop down matching that product name in the form
+                        if (!(suppID > 0)) // if a supplier wasn't selected
+                        {
+                            changes.Add(ps); // put on the list of things to remove
+                        }
+                    }
+
+                    foreach(Products_Suppliers ps in changes)// remove them from the db reference
+                    {
+                        editedPkg.Products_Suppliers.Remove(ps);
+                    }
+
+                    changes.Clear(); // clear the list for the next part
+
+                    // anything that's in the form selections but not in the original package, add 
+                    foreach(Product p in db.Products.ToList())
+                    {
+                        int suppID = Convert.ToInt32(collection[p.ProdName]); // get the drop down matching that product name in the form
+                        
+                        if (suppID > 0) // if a supplier was selected
+                        {
+                            // get that product_supplier from the DB
+                            Products_Suppliers testCase = db.Products_Suppliers.Where(ps => ps.SupplierId == suppID && ps.ProductId == p.ProductId).Single(); 
+                            if (!editedPkg.Products_Suppliers.Contains(testCase)) // if it's not in the original list
+                            {
+                                changes.Add(testCase); // add it to the list of changes
+                            }
+                        }
+                    }
+
+                    foreach(Products_Suppliers ps in changes)
+                    {
+                        editedPkg.Products_Suppliers.Add(ps); // add it to the db reference
+                    }
+
+                    db.SaveChanges(); // commit
                 }
                 return RedirectToAction("PackageIndex");
             }
-            catch
+            catch (Exception ex) // if something went wrong, return them to this page to try again
             {
+                TempData["Status"] = ex.GetType().ToString() + ": " + ex.Message;
                 return View();
             }
         }
@@ -97,7 +162,22 @@ namespace TravelExpertsClientPage.Controllers
         [HttpGet]
         public ActionResult PackageCreate()
         {
-            return View(); // just open the page
+            using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
+            {
+                ViewBag.Products = db.Products.OrderBy(p=>p.ProdName).ToList();  // pass a list of all products to the view
+
+                Dictionary<string,List<Supplier>> prodSupp = new Dictionary<string,List<Supplier>>(); // somewhere to put all the suppliers for each product
+
+                foreach(Product p in (List<Product>)ViewBag.Products) // for each product, get the list of suppliers
+                {
+                    List<Supplier> s = db.Suppliers.Where(supp =>
+                        // suppliers where supplier ID is in the list of product_suppliers with p's product ID
+                        (from ps in db.Products_Suppliers where ps.ProductId == p.ProductId select ps.SupplierId).ToList().Contains(supp.SupplierId)).ToList();
+                    prodSupp.Add(p.ProdName,s); // add it to the dictionary
+                }
+                ViewBag.ProdSupp = prodSupp;
+                return View(); // open the page
+            }
         }
 
         /// <summary>
@@ -112,8 +192,17 @@ namespace TravelExpertsClientPage.Controllers
             {
                 using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
                 {
+                    foreach(Product p in db.Products.ToList()) // for each product, see whether it was selected on the form
+                    {
+                        int? prodSupp = Convert.ToInt32(collection[p.ProdName]); // get the supplier selection from the dropdown
+                        if (prodSupp > 0) // if it was actually selected
+                        {
+                            // get the database record in products_suppliers that matches this productID and supplierID and add it to the package 
+                            pkg.Products_Suppliers.Add(db.Products_Suppliers.Where(ps=>ps.ProductId==p.ProductId&&ps.SupplierId==prodSupp).SingleOrDefault());
+                        }
+                    }                       
+
                     db.Packages.Add(pkg); // add the new package to the database
-                    //product supplier info goes in here
                     db.SaveChanges(); // commit
                 }
                 return RedirectToAction("PackageIndex"); // go back to the package listing
@@ -123,10 +212,6 @@ namespace TravelExpertsClientPage.Controllers
                 return View();
             }
         }
-
-        // package delete
-       
-
 
         //
         // PRODUCTS METHODS
@@ -174,7 +259,7 @@ namespace TravelExpertsClientPage.Controllers
             {
                 using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
                 {
-                    Product editedProd = db.Products.Where(p => p.ProductId == prod.ProductId).Single();
+                    Product editedProd = db.Products.Where(p => p.ProductId == prod.ProductId).SingleOrDefault();
 
                     editedProd.ProdName = prod.ProdName;
 
@@ -275,7 +360,7 @@ namespace TravelExpertsClientPage.Controllers
             {
                 using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
                 {
-                    Supplier editedSupp = db.Suppliers.Where(s => s.SupplierId == id).Single(); // get a reference to the record in the DB for editing
+                    Supplier editedSupp = db.Suppliers.Where(s => s.SupplierId == id).SingleOrDefault(); // get a reference to the record in the DB for editing
 
                     editedSupp.SupName = collection["SupName"]; // update the supplier name
 
@@ -337,6 +422,7 @@ namespace TravelExpertsClientPage.Controllers
             {
                 TempData["Status"] = "";
                 ViewBag.Products = db.Products.ToList();  // pass a list of all products to the view
+                ViewBag.NextId = (from suppliers in db.Suppliers select suppliers.SupplierId).Max()+1;
                 return View(); // open the page
             }
         }

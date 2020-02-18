@@ -33,12 +33,12 @@ namespace TravelExpertsClientPage.Models
 
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> PkgStartDate { get; set; }
 
         [Display(Name = "End Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> PkgEndDate { get; set; }
 
         [Display(Name = "Description")]
