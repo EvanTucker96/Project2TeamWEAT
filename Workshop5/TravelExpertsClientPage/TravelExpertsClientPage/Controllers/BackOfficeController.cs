@@ -90,6 +90,20 @@ namespace TravelExpertsClientPage.Controllers
         [HttpPost]
         public ActionResult PackageEdit(int id, FormCollection collection)
         {
+            TempData["Status"] = ""; // reset any error message
+
+            // first: make sure dates are valid
+            DateTime? start = Convert.ToDateTime(collection["PkgStartDate"]); // get the dates
+            DateTime? end = Convert.ToDateTime(collection["PkgEndDate"]);
+
+            // if the start is after the end
+            if (start > end)
+            {
+                TempData["Status"] = "Start date must come before end date";
+                return RedirectToAction("PackageEdit"); // go back to the page for correction
+            }
+
+            // then update the DB
             try
             {
                 using (TravelExpertsEntities1 db = new TravelExpertsEntities1())
@@ -188,6 +202,26 @@ namespace TravelExpertsClientPage.Controllers
         [HttpPost]
         public ActionResult PackageCreate(Package pkg, FormCollection collection)
         {
+            TempData["Status"] = ""; // reset any error message
+            
+            // first: make sure dates are valid
+            DateTime? start = Convert.ToDateTime(collection["PkgStartDate"]); // get the dates
+            DateTime? end = Convert.ToDateTime(collection["PkgEndDate"]);
+
+            // new packages must have dates after today
+            if (start < DateTime.Now || end < DateTime.Now)
+            {
+                TempData["Status"] = "Start and end dates must be in the future";
+                return RedirectToAction("PackageCreate"); // go back to the page for correction
+            }
+
+            // if the start is after the end
+            if (start > end)
+            {
+                TempData["Status"] = "Start date must come before end date";
+                return RedirectToAction("PackageCreate"); // go back to the page for correction
+            }
+
             try
             {
                 using (TravelExpertsEntities1 db = new TravelExpertsEntities1())

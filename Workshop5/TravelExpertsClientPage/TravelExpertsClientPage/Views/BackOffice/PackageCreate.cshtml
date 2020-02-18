@@ -13,7 +13,7 @@ Package creation page
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    <h3>@TempData["Status"]</h3>
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
