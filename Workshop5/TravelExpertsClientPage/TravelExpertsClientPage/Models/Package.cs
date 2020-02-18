@@ -5,12 +5,14 @@
 //     Manual changes to this file may cause unexpected behavior in your application.
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
+// Validation Markup by TH & AL
 //------------------------------------------------------------------------------
 
 namespace TravelExpertsClientPage.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Package
     {
@@ -21,7 +23,12 @@ namespace TravelExpertsClientPage.Models
             this.Products_Suppliers = new HashSet<Products_Suppliers>();
         }
 
+        [Display(Name = "Package ID")]
         public int PackageId { get; set; }
+
+        [Required(ErrorMessage = "Package Name is required")]
+        [Display(Name = "Package Name")]
+        [StringLength(50)]
         public string PkgName { get; set; }
 
         [Display(Name = "Start Date")]
@@ -33,11 +40,24 @@ namespace TravelExpertsClientPage.Models
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> PkgEndDate { get; set; }
-        public string PkgDesc { get; set; }
-        public decimal PkgBasePrice { get; set; }
-        public Nullable<decimal> PkgAgencyCommission { get; set; }
-        public string PkgImageFile { get; set; }
 
+        [Display(Name = "Description")]
+        [StringLength(50)]
+        public string PkgDesc { get; set; }
+
+        [Display(Name = "Base Price")]
+        [Required(ErrorMessage = "Base Price is required")]
+        [DisplayFormat(DataFormatString = "{0:c}")]
+        public decimal PkgBasePrice { get; set; }
+
+        [Display(Name = "Commission")]
+        [DisplayFormat(DataFormatString = "{0:c}")]
+        public Nullable<decimal> PkgAgencyCommission { get; set; }
+
+        [Display(Name = "Image File Name")]
+        [StringLength(30)]
+        public string PkgImageFile { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

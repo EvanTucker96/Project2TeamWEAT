@@ -100,8 +100,8 @@ namespace TravelExpertsClientPage.Controllers
                                                                select c).SingleOrDefault();
 
                         //update each field
-  //                      custRecord.Password = cust.EncryptPassword(cust.Password);
-  //                      custRecord.ComparePassword = custRecord.Password;
+                        custRecord.Password = cust.EncryptPassword(cust.Password);
+                        custRecord.ComparePassword = custRecord.Password;
                         custRecord.CustAddress = cust.CustAddress;
                         custRecord.CustBusPhone = cust.CustBusPhone;
                         custRecord.CustCity = cust.CustCity;
@@ -124,10 +124,10 @@ namespace TravelExpertsClientPage.Controllers
                     {
 
                         //Encrypt the password using BCrypt
-  //                      cust.Password = cust.EncryptPassword(cust.Password);
+                        cust.Password = cust.EncryptPassword(cust.Password);
                         // set ComparePassword to encrypted password so validation passes
                         // we've already verified they were the same before submit
-   //                     cust.ComparePassword = cust.Password;
+                        cust.ComparePassword = cust.Password;
                         db.Customers.Add(cust); // add the Customer record
                         db.SaveChanges(); // comit the changes
                         TempData["Status"] = "Registration Successful"; // set the Result status
@@ -160,7 +160,7 @@ namespace TravelExpertsClientPage.Controllers
         public ActionResult Login(Customer cust)
         {
             TravelExpertsEntities1 db = new TravelExpertsEntities1();
-  //          bool confirmPass;
+            bool confirmPass;
             Customer temp;
             try
             {
