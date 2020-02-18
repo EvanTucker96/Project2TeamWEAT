@@ -1,34 +1,48 @@
 ﻿@model IEnumerable<TravelExpertsClientPage.Models.Agency>
 
 @{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contact Us";
 }
 
-<h2>Contact</h2>
+<h2>Contact Us</h2>
 <!--
-Contact Page    
+Contact Page
     Author: TH
 -->
-
+<hr />
 
 @foreach (var item in Model)
 {
+    <div class="card text-center row">
+        <h5 class="card-title">
+            Branch #@Html.DisplayFor(modelItem => item.AgencyId)
+        </h5>
+        <div class="card-body">
+            <h6 class="card-text">@Html.DisplayFor(modelItem => item.AgncyAddress)</h6>
+            <h6 class="card-text">@Html.DisplayFor(modelItem => item.AgncyCity) @Html.DisplayFor(modelItem => item.AgncyProv) @Html.DisplayFor(modelItem => item.AgncyPostal)</h6>
+            <h6 class="card-header">Phone: @Html.DisplayFor(modelItem => item.AgncyPhone)</h6>
+            <h6 class="card-header">Fax: @Html.DisplayFor(modelItem => item.AgncyFax)</h6>
+        </div>
 
-    <address class="agency">
-        @Html.DisplayFor(modelItem => item.AgncyAddress)<br />
-        @Html.DisplayFor(modelItem => item.AgncyCity) @Html.DisplayFor(modelItem => item.AgncyProv) @Html.DisplayFor(modelItem => item.AgncyPostal)<br />
-        <abbr title="Phone">P:</abbr>
-        @Html.DisplayFor(modelItem => item.AgncyPhone)<br />
-        <abbr title="Fax">F:</abbr>
-        @Html.DisplayFor(modelItem => item.AgncyFax)<br />
-    </address>
+    </div>
 
-    foreach (var agent in item.Agents)
+    <div class="row">
+    @foreach (var agent in item.Agents)
     {
-        <address class="agent">
-            @Html.DisplayFor(modelItem => agent.AgtFirstName) @Html.DisplayFor(modelItem => agent.AgtLastName), @Html.DisplayFor(modelItem => agent.AgtPosition)<br />
-            @Html.DisplayFor(modelItem => agent.AgtEmail) | @Html.DisplayFor(modelItem => agent.AgtBusPhone)
-        </address>
-    }
+        
 
+        <div class="card text-center col-md-4">
+            <h5 class="card-title">
+                @Html.DisplayFor(modelItem => agent.AgtFirstName) @Html.DisplayFor(modelItem => agent.AgtLastName), @Html.DisplayFor(modelItem => agent.AgtPosition)
+            </h5>
+            <div class="card-body">
+                <h6 class="card-header">Email:<br />@Html.DisplayFor(modelItem => agent.AgtEmail)</h6>
+                <h6 class="card-header">Phone: @Html.DisplayFor(modelItem => agent.AgtBusPhone)</h6>
+                <a href="mailto:@agent.AgtEmail" class="btn btn-primary">Email</a>
+            </div>
+        </div>
+
+    }
+    </div>
+    <hr />
 }
