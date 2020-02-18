@@ -1,0 +1,98 @@
+﻿@model TravelExpertsClientPage.Models.Package
+
+
+@{
+    ViewBag.Title = "OrderDetails";
+}
+
+<h2>Order Details</h2>
+
+<p>@Html.ActionLink("Back to Packages", "Index")</p>
+<div class="container">
+    <div>
+        <h4>Package Details</h4>
+        <hr />
+        @* load table showing details of the package they have chosen from db *@
+        <table style="width:100%;">
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.PkgName)&nbsp;</td>
+                <td>@Html.DisplayNameFor(model => model.PkgStartDate)&nbsp;</td>
+                <td>@Html.DisplayNameFor(model => model.PkgEndDate)&nbsp;</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.PkgName)&nbsp;</td>
+                <td>@Html.DisplayFor(model => model.PkgStartDate)&nbsp;</td>
+                <td>@Html.DisplayFor(model => model.PkgEndDate)&nbsp;</td>
+            </tr>
+            <tr>
+                <td><br></td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.PkgDesc)&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Html.DisplayNameFor(model => model.PkgBasePrice)&nbsp;</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.PkgDesc)&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@Html.DisplayFor(model => model.PkgBasePrice)&nbsp;</td>
+            </tr>
+            <tr>
+                <td><br /></td>
+            </tr>
+            <tr>
+ @*               <td>@Html.DisplayNameFor(model => model.)&nbsp;</td>*@
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <hr noshade>
+    <br />
+
+    <div>
+        Number of Travellers:&nbsp;
+        @*@Html.DropDownListFor(m => m.NumTravellers, Model.NumTravellersList, "Please select")*@
+        <script>
+
+            function numTravellersChanged() {
+                var s = document.getElementById("NumberOfTravellers");
+                var value = s.options[s.selectedIndex].value;
+                createTable(value);
+            }
+        </script>
+        <select id="NumberOfTravellers" onchange="numTravellersChanged();">
+            @for (int i = 0; i <= 10; i++)
+            {
+                <option>@i</option>
+                ;
+            }
+        </select>
+        &nbsp;
+        <br />
+    </div>
+
+    <br />
+
+    <form id="travellerForm">
+        <div id="cont">
+            @* table will be rendered here...see script below *@
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-8">
+                <p>
+                    <input type="submit" class="btn btn-primary" />
+                    @*<a href="#" class="buttons">@Html.ActionLink("Order", "", new { id = Model.PackageId }, new { @class = "btn btn-primary" })</a>*@
+                </p>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+</div>
