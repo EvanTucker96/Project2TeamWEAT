@@ -57,12 +57,6 @@ namespace TravelExpertsClientPage.Controllers
         {
             List<int> numOfTravellers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-            Package model = new Package()
-            {
-                NumTravellers = 1,
-                NumTravellersList = new SelectList(numOfTravellers)
-            };
-
             return View();
         }
 

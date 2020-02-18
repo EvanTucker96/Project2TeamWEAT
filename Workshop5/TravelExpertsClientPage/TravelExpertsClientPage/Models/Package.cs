@@ -5,16 +5,13 @@
 //     Manual changes to this file may cause unexpected behavior in your application.
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
-// Validation Markup by TH & AL
 //------------------------------------------------------------------------------
 
 namespace TravelExpertsClientPage.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
-
+    
     public partial class Package
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,53 +20,15 @@ namespace TravelExpertsClientPage.Models
             this.Bookings = new HashSet<Booking>();
             this.Products_Suppliers = new HashSet<Products_Suppliers>();
         }
-
-        [Display(Name = "Package ID")]
+    
         public int PackageId { get; set; }
-
-        [Required(ErrorMessage = "Package Name is required")]
-        [Display(Name = "Package Name")]
-        [StringLength(50)]
         public string PkgName { get; set; }
-
-        [Display(Name = "Start Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> PkgStartDate { get; set; }
-
-        [Display(Name = "End Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> PkgEndDate { get; set; }
-
-        [Display(Name = "Description")]
-        [StringLength(50)]
         public string PkgDesc { get; set; }
-
-        [Display(Name = "Base Price")]
-        [Required(ErrorMessage = "Base Price is required")]
-        [DisplayFormat(DataFormatString = "{0:c}")]
         public decimal PkgBasePrice { get; set; }
-
-        [Display(Name = "Commission")]
-        [DisplayFormat(DataFormatString = "{0:c}")]
         public Nullable<decimal> PkgAgencyCommission { get; set; }
-
-        [Display(Name = "Image File Name")]
-        [StringLength(30)]
         public string PkgImageFile { get; set; }
-
-
-            public int NumTravellers { get; set; }
-            public SelectList NumTravellersList { get; set; }
-
-            [Display(Name = "Travellers First and Last Name")]
-            [StringLength(50)]
-            public string TravellerName { get; set; }
-
-            public bool TravelIns { get; set; }
-
-
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
