@@ -10,6 +10,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+ 
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
@@ -20,22 +21,26 @@
         <div id="navbarSupportedContent" class="navbar-collapse collapse">
             @if (ViewBag.BackOffice != null && (bool)ViewBag.BackOffice == true)
             {
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "BackOffice", htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Packages", "PackageIndex", "BackOffice", null, htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Products", "ProductIndex", "BackOffice", htmlAttributes: new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Suppliers", "SupplierIndex", "BackOffice", htmlAttributes: new { @class = "nav-link" })</li>
-            </ul>
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "BackOffice", null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Packages", "PackageIndex", "BackOffice", null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Products", "ProductIndex", "BackOffice", null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Suppliers", "SupplierIndex", "BackOffice", null, htmlAttributes: new { @class = "nav-link" })</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">@Html.ActionLink("Customer Page", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                </ul>
             }
             else
             {
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, htmlAttributes: new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Packages", "Index", "Package", null, htmlAttributes: new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, htmlAttributes: new { @class = "nav-link" })</li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             }
-            @Html.Partial("_LoginPartial")
+
         </div>
 
         </div>
