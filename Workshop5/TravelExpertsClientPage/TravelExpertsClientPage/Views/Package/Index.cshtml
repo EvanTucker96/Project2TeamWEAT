@@ -23,7 +23,7 @@
                         <h6 class="card-header">@Html.DisplayFor(modelItem => item.PkgEndDate)</h6>
                         <p class="card-text">@Html.DisplayFor(modelItem => item.PkgDesc)</p>
                         <h6 class="card-footer">@Html.DisplayFor(modelItem => item.PkgBasePrice)</h6>
-                        <a href="#" class="buttons">@Html.ActionLink("Order", "OrderDetails", new { id = item.PackageId }, new { @class = "btn btn-primary" })</a>
+                        <a href="#" class="buttons">@Html.ActionLink("Order", "MultipleOrdersView","MultipleTable", new { id = item.PackageId }, new { @class = "btn btn-primary" })</a>
                     </div>
                     </div>
                 </div>

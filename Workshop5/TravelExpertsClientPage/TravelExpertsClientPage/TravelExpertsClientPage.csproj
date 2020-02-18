@@ -230,9 +230,18 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\asia.jpg" />
     <Content Include="Images\asia2.jpg" />
+    <Content Include="Images\california.jpg" />
     <Content Include="Images\caribbean.jpg" />
+    <Content Include="Images\East-Coast-Canada-Road-Trip.jpg" />
     <Content Include="Images\Europe.jpg" />
+    <Content Include="Images\grandCanyon.jpg" />
     <Content Include="Images\hawaii.jfif" />
+    <Content Include="Images\northernOntario.png" />
+    <Content Include="Images\rockies.jpg" />
+    <Content Include="Images\Travel_Experts_Bus_200x200.png" />
+    <Content Include="Images\Travel_Experts_Palm_Trees_200x200.png" />
+    <Content Include="Images\Travel_Experts_Sun_200x200.png" />
+    <Content Include="Images\Travel_Experts_Sun_600x200.png" />
     <Content Include="Models\TravelExpertsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TravelExpertsModel.edmx</DependentUpon>
