@@ -18,42 +18,7 @@ namespace TravelExpertsClientPage.Controllers
         // GET: MultipleTable
         public ActionResult Index(int? custID = 105)
         {
-            List<Customer> customers = db.Customers.ToList();
-            List<Booking> bookings = db.Bookings.ToList();
-            List<Package> packages = db.Packages.ToList();
-            List<Products_Suppliers> products_Suppliers = db.Products_Suppliers.ToList();
-            List<Product> products = db.Products.ToList();
-            List<BookingDetail> bookingDetails = db.BookingDetails.ToList();
-            List<Fee> fees = db.Fees.ToList();
-
-            var clientDetails = from b in bookings
-                                join c in customers on b.CustomerId equals c.CustomerId into table1
-                                from c in table1.DefaultIfEmpty()
-                                join bd in bookingDetails on b.BookingId equals bd.BookingId into table2
-                                from bd in table2.DefaultIfEmpty()
-                                join p in packages on b.PackageId equals p.PackageId into table3
-                                from p in table3.DefaultIfEmpty()
-                                join f in fees on bd.FeeId equals f.FeeId into table4
-                                from f in table4.DefaultIfEmpty()
-                                select new MultipleTableClass
-                                {
-                                    bookingD = b,
-                                    customerDetails = c,
-                                    bookingDetails = bd,
-                                    packageDetails = p,
-                                    feeDetails = f
-                                };
-
-            //var index=    from p in packages
-            //                  join prod in products_Suppliers on p.PackageId equals prod.ProductId into table1
-            //                  from prod in table1.DefaultIfEmpty()
-            //                  join bd in bookingDetails on prod.ProductSupplierId equals bd.ProductSupplierId into table2
-            //                  from bd in table2.DefaultIfEmpty()
-            //                  join f in fees on bd?.FeeId equals f.FeeId into table3
-            //                  from f in table3.DefaultIfEmpty()
-            //                  select new MultipleTableClass { packageDetails = p, bookingDetails=bd, prod_supDetails = prod, feeDetails = f};
-
-            return View(clientDetails);
+            return View();
         }
 
         public ActionResult MultipleOrdersView(int? id = 1, string feeID = "BK")  // TODO: REMOVE THIS DEFAULT =1 When Your Passing Parameters OK

@@ -133,6 +133,7 @@ namespace TravelExpertsClientPage.Controllers
                         TempData["Status"] = "Registration Successful"; // set the Result status
                         Session["Authenticated"] = true;
                         Session["UserName"] = cust.CustEmail;
+                        Session["CustID"] = cust.CustomerId;
                         return RedirectToAction("Index"); // go back to 'Home'
                     }
                 }
@@ -169,6 +170,7 @@ namespace TravelExpertsClientPage.Controllers
                         select c).Single();
 
                 confirmPass= temp.VerifyPassword(cust.Password);
+                cust.CustomerId = temp.CustomerId;
                 
             }
             catch
@@ -181,6 +183,8 @@ namespace TravelExpertsClientPage.Controllers
 
                 Session["Authenticated"] = true;
                 Session["UserName"] = cust.CustEmail;
+                Session["CustID"] = cust.CustomerId;
+
                 return RedirectToAction("Index");
             }
             else

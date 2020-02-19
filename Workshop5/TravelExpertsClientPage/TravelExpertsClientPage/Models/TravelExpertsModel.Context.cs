@@ -45,5 +45,7 @@ namespace TravelExpertsClientPage.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TripType> TripTypes { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+
+        public System.Data.Entity.DbSet<TravelExpertsClientPage.Models.CustomerTravelProductsModel> CustomerTravelProductsModels { get; set; }
     }
 }
