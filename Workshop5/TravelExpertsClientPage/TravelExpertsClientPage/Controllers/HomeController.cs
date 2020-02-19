@@ -78,6 +78,29 @@ namespace TravelExpertsClientPage.Controllers
         {
             // setup a DataAccess object
             TravelExpertsEntities1 db = new TravelExpertsEntities1();
+
+            TempData["Status"] = ""; // This If block author: TH
+            if (!ModelState.IsValid) // the model will be invalid if this is an edit because the password wasn't entered
+            {                        // so we have to validate the password here
+                if (cust.Password != cust.ComparePassword)  // if the passwords aren't the same
+                { 
+                    TempData["Status"] = "Passwords do not match. Please try again.";
+                    return View(cust);
+                } 
+                else if (cust.Password == "" || cust.Password == null) // if nothing was entered, they either didn't click the change button                                                                   
+                {                                                      // or decided not to change it. so we'll plop in their current password & continue
+                    string username = (string)Session["UserName"];
+                    Customer oldCust = db.Customers.Where(c => c.CustEmail == username).Single();
+                    cust.Password = oldCust.Password;
+                    cust.ComparePassword = cust.Password;
+                }
+                else // otherwise the password must not be a valid password
+                {
+                    TempData["Status"] = "Invalid password entered. Please try again.";
+                    return View(cust);
+                }                            
+            }
+                        
             if (cust != null) // make sure the passed info exists
             {
                 // Checks DB for existing record that matches First and Last names and Email address
@@ -142,7 +165,7 @@ namespace TravelExpertsClientPage.Controllers
                 else // email already in use
 
                 {
-                    TempData["Status"] = "User Exists"; // set the Result status
+                    TempData["Status"] = "That email is already in our system. Please contact us if you forgot your password"; // set the Result status
                     return View();
                 }
 
@@ -152,6 +175,7 @@ namespace TravelExpertsClientPage.Controllers
                 return View();// no data present, return to Regisrtation form
             }
         }
+
         [HttpGet]
         public ActionResult Login(string id)
         {
