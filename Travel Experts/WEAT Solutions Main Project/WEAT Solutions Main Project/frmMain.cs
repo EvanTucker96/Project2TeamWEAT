@@ -228,6 +228,7 @@ namespace WEAT_Solutions_Main_Project
             lblWelcome.Text = "";
             btnLogin.Enabled = false;
             btnClear.Enabled = false;
+            txtUsername.Focus();
         }
     }
 }

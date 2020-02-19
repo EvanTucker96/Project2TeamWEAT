@@ -67,6 +67,7 @@ namespace WEAT_Solutions_Main_Project
             txtProdName.Focus();
             txtProdID.Text = "";
             txtProdName.Text = "";
+            EnableEditDelete();
         }
 
         //activates the edit records
@@ -106,7 +107,7 @@ namespace WEAT_Solutions_Main_Project
             txtProdName.Text = "";
             gbProductDetails.Enabled = false;
             btnNew.Enabled = true;
-            btnEdit.Enabled = true;
+            EnableEditDelete();
         }
 
 
@@ -134,7 +135,7 @@ namespace WEAT_Solutions_Main_Project
                         txtProdName.Text = "";
                         gbProductDetails.Enabled = false;
                         btnNew.Enabled = true;
-                        btnEdit.Enabled = true;
+                        //btnEdit.Enabled = true;
                     }
                     catch (Exception)
                     {
@@ -176,6 +177,7 @@ namespace WEAT_Solutions_Main_Project
         private void dgvProducts_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             EditRecords();
+
         }
 
         // close this form
@@ -205,6 +207,34 @@ namespace WEAT_Solutions_Main_Project
             var prod = dbContext.Products.Where(x => x.ProductId == prodID).SingleOrDefault();
             dbContext.Products.DeleteOnSubmit(prod);
         }
+        public void EnableEditDelete()
+        {
+            if (dgvProducts.SelectedRows.Count > 0 && isAdd == false)
+            {
+                btnDelete.Enabled = true;
+                btnEdit.Enabled = true;
+            }else
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+            }
+        }
 
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            isAdd = false;
+            gbProductDetails.Enabled = false;
+            EnableEditDelete();
+        }
+
+        private void txtProdID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EnableEditDelete();
+        }
+
+        private void txtProdName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EnableEditDelete();
+        }
     }
 }

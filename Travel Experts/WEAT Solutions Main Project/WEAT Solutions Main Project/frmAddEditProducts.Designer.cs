@@ -61,16 +61,20 @@
             this.productIdDataGridViewTextBoxColumn,
             this.prodNameDataGridViewTextBoxColumn});
             this.dgvProducts.DataSource = this.productBindingSource2;
-            this.dgvProducts.Location = new System.Drawing.Point(13, 13);
+            this.dgvProducts.Location = new System.Drawing.Point(17, 16);
+            this.dgvProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.Size = new System.Drawing.Size(626, 222);
+            this.dgvProducts.RowHeadersWidth = 51;
+            this.dgvProducts.Size = new System.Drawing.Size(835, 273);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProducts.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProducts_CellMouseDoubleClick);
             // 
             // productIdDataGridViewTextBoxColumn
             // 
             this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
             this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
             this.productIdDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -78,6 +82,7 @@
             // 
             this.prodNameDataGridViewTextBoxColumn.DataPropertyName = "ProdName";
             this.prodNameDataGridViewTextBoxColumn.HeaderText = "ProdName";
+            this.prodNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.prodNameDataGridViewTextBoxColumn.Name = "prodNameDataGridViewTextBoxColumn";
             this.prodNameDataGridViewTextBoxColumn.Width = 400;
             // 
@@ -101,18 +106,21 @@
             this.gbProductDetails.Controls.Add(this.lblProdName);
             this.gbProductDetails.Controls.Add(this.txtProdID);
             this.gbProductDetails.Controls.Add(this.lblProdID);
-            this.gbProductDetails.Location = new System.Drawing.Point(13, 252);
+            this.gbProductDetails.Location = new System.Drawing.Point(17, 310);
+            this.gbProductDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbProductDetails.Name = "gbProductDetails";
-            this.gbProductDetails.Size = new System.Drawing.Size(343, 135);
+            this.gbProductDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbProductDetails.Size = new System.Drawing.Size(457, 166);
             this.gbProductDetails.TabIndex = 1;
             this.gbProductDetails.TabStop = false;
             this.gbProductDetails.Text = "Update Product Details";
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(130, 94);
+            this.btnReset.Location = new System.Drawing.Point(173, 116);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.Size = new System.Drawing.Size(100, 28);
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -120,16 +128,19 @@
             // 
             // txtProdName
             // 
-            this.txtProdName.Location = new System.Drawing.Point(97, 55);
+            this.txtProdName.Location = new System.Drawing.Point(129, 68);
+            this.txtProdName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtProdName.Name = "txtProdName";
-            this.txtProdName.Size = new System.Drawing.Size(216, 20);
+            this.txtProdName.Size = new System.Drawing.Size(287, 22);
             this.txtProdName.TabIndex = 3;
+            this.txtProdName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdName_KeyPress);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(238, 94);
+            this.btnSave.Location = new System.Drawing.Point(317, 116);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -138,34 +149,39 @@
             // lblProdName
             // 
             this.lblProdName.AutoSize = true;
-            this.lblProdName.Location = new System.Drawing.Point(16, 58);
+            this.lblProdName.Location = new System.Drawing.Point(21, 71);
+            this.lblProdName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProdName.Name = "lblProdName";
-            this.lblProdName.Size = new System.Drawing.Size(75, 13);
+            this.lblProdName.Size = new System.Drawing.Size(98, 17);
             this.lblProdName.TabIndex = 2;
             this.lblProdName.Text = "Product Name";
             // 
             // txtProdID
             // 
-            this.txtProdID.Location = new System.Drawing.Point(97, 22);
+            this.txtProdID.Location = new System.Drawing.Point(129, 27);
+            this.txtProdID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtProdID.Name = "txtProdID";
             this.txtProdID.ReadOnly = true;
-            this.txtProdID.Size = new System.Drawing.Size(137, 20);
+            this.txtProdID.Size = new System.Drawing.Size(181, 22);
             this.txtProdID.TabIndex = 1;
+            this.txtProdID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdID_KeyPress);
             // 
             // lblProdID
             // 
             this.lblProdID.AutoSize = true;
-            this.lblProdID.Location = new System.Drawing.Point(16, 25);
+            this.lblProdID.Location = new System.Drawing.Point(21, 31);
+            this.lblProdID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProdID.Name = "lblProdID";
-            this.lblProdID.Size = new System.Drawing.Size(58, 13);
+            this.lblProdID.Size = new System.Drawing.Size(74, 17);
             this.lblProdID.TabIndex = 0;
             this.lblProdID.Text = "Product ID";
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(393, 267);
+            this.btnNew.Location = new System.Drawing.Point(524, 329);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 23);
+            this.btnNew.Size = new System.Drawing.Size(100, 28);
             this.btnNew.TabIndex = 2;
             this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -173,9 +189,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(493, 346);
+            this.btnExit.Location = new System.Drawing.Point(657, 426);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(100, 28);
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -183,9 +200,11 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(493, 267);
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Location = new System.Drawing.Point(657, 329);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Size = new System.Drawing.Size(100, 28);
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "E&dit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -193,9 +212,11 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(493, 305);
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(657, 375);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(100, 28);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -203,15 +224,16 @@
             // 
             // frmAddEditProducts
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 397);
+            this.ClientSize = new System.Drawing.Size(879, 489);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.gbProductDetails);
             this.Controls.Add(this.dgvProducts);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAddEditProducts";
             this.Text = "Add or Edit Products Available";
             this.Load += new System.EventHandler(this.frmAddEditProducts_Load_1);
