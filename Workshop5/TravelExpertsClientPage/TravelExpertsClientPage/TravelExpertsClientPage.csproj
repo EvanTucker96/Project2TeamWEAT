@@ -232,6 +232,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\asia.jpg" />
     <Content Include="Images\asia2.jpg" />
+    <Content Include="Images\bg.jpg" />
     <Content Include="Images\california.jpg" />
     <Content Include="Images\caribbean.jpg" />
     <Content Include="Images\East-Coast-Canada-Road-Trip.jpg" />

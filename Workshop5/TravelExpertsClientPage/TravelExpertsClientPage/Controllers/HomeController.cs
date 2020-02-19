@@ -31,6 +31,14 @@ namespace TravelExpertsClientPage.Controllers
             //get a list of agencies
             List<Agency> agencies = new TravelExpertsEntities1().Agencies.ToList();
 
+            foreach(Agency a in agencies) // convert to nice looking phone numbers for display
+            {                             // credit to teo van kot @ https://stackoverflow.com/questions/32727346/format-string-phone-number-mvc-razor-without-parsing-to-decimal
+                a.AgncyPhone = String.Format("({0}) {1}-{2}", a.AgncyPhone.Substring(0, 3), a.AgncyPhone.Substring(3, 3),
+                        a.AgncyPhone.Substring(6, a.AgncyPhone.Length - 6));
+                a.AgncyFax = String.Format("({0}) {1}-{2}", a.AgncyFax.Substring(0, 3), a.AgncyFax.Substring(3, 3),
+                     a.AgncyFax.Substring(6, a.AgncyFax.Length - 6));
+            }
+
             //pass it to the contact page
             return View(agencies);
         }
