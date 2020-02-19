@@ -6,7 +6,7 @@
 
 <h2>Order Details</h2>
 
-<p>@Html.ActionLink("Packages", "Index", "Packages", null, htmlAttributes: new { @class = "nav-link" })</p>
+<p>@Html.ActionLink("Packages", "Index", "Package", null, htmlAttributes: new { @class = "nav-link" })</p>
 
 <div class="container">
     <div>
@@ -148,6 +148,8 @@
                     table.appendChild(tr);
                 }
                 cont.appendChild(table);
+
+
 
                 totalCost.innerHTML =  "<b>Total Price</b> : " + value * @Model.packageDetails.PkgBasePrice;
             }

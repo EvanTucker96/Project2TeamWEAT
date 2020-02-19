@@ -1,0 +1,78 @@
+﻿@model TravelExpertsClientPage.Models.CustomerTravelProductsModel
+
+@{
+    ViewBag.Title = "Customer Travel Purchases";
+}
+
+<!--
+Customer Travel Purchases list page
+    Author: View Created by AL
+-->
+
+<h2>Customer Travel Purchases</h2>
+
+<p>@Html.ActionLink("Home", "Index", "Home", null, htmlAttributes: new { @class = "nav-link" })</p>
+
+<div>
+    <table class="table-dark">
+        <tr width="100%">
+            <th width="25%">Customer ID&nbsp;</th>
+            <th width="35%">Customer First Name&nbsp;</th>
+            <th></th>
+            <th width="40%">Customer Last Name&nbsp;</th>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.CustomerId)&nbsp;</td>
+            <td>@Html.DisplayFor(model => model.CustFirstName)&nbsp;</td>
+            <td></td>
+            <td>@Html.DisplayFor(model => model.CustLastName)&nbsp;</td>
+        </tr>
+    </table>
+</div>
+
+<div id="PackagesOrdered">
+    <table width="100%">
+        <tr >
+            <th width="25%">Itinerary Number</th>
+            <th width="25%">Package Name</th>
+            <th width="25%">Package Price</th>
+            <th width="25%">Fees</th>
+        </tr>
+        <tr><br /></tr>
+        @foreach (var pkg in Model.PkgOrd)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => pkg.ItineraryNo)</td>
+                <td>@Html.DisplayFor(mmodelItem => pkg.PkgName)</td>
+                <td>@String.Format("{0:c}", pkg.PkgBasePrice)</td>
+                <td>@String.Format("{0:c}", pkg.FeeAmt)</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div id="ProductsOrdered">
+    <table width="100%">
+        <tr>
+            <th width="25%">Itinerary Number</th>
+            <th width="25%">Product Name</th>
+            <th width="25%">Product Price</th>
+            <th width="25%">Fees</th>
+        </tr>
+        <tr><br /></tr>
+        @foreach (var prod in Model.ProdOrd)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => prod.ItineraryNo)</td>
+                <td>@Html.DisplayFor(modelItem => prod.ProdName)</td>
+                <td>@String.Format("{0:c}", prod.BasePrice)</td>
+                <td>@String.Format("{0:c}", prod.FeeAmt)</td>
+            </tr>
+        }
+    </table>
+
+</div>
+<hr noshade />
+
+<h4>Total Cost: &nbsp;&nbsp;&nbsp;@String.Format("{0:c}", Model.TotalCost)</h4>

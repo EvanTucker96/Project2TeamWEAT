@@ -134,6 +134,7 @@ namespace TravelExpertsClientPage.Controllers
                         Session["Authenticated"] = true;
                         Session["UserName"] = cust.CustEmail;
                         Session["CustID"] = Convert.ToInt32((from c in db.Customers where c.CustEmail == cust.CustEmail select c.CustomerId).Single());
+
                         return RedirectToAction("Index"); // go back to 'Home'
                     }
                     
@@ -171,6 +172,7 @@ namespace TravelExpertsClientPage.Controllers
                         select c).Single();
 
                 confirmPass= temp.VerifyPassword(cust.Password);
+                cust.CustomerId = temp.CustomerId;
                 
             }
             catch
@@ -183,6 +185,8 @@ namespace TravelExpertsClientPage.Controllers
 
                 Session["Authenticated"] = true;
                 Session["UserName"] = cust.CustEmail;
+                Session["CustID"] = cust.CustomerId;
+
                 return RedirectToAction("Index");
             }
             else

@@ -139,6 +139,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BackOfficeController.cs" />
+    <Compile Include="Controllers\CustomerTravelProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MultipleTableController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Models\Customers_Rewards.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerTravelProductsModel.cs" />
     <Compile Include="Models\Employee.cs">
       <DependentUpon>TravelExpertsModel.tt</DependentUpon>
     </Compile>
@@ -403,8 +405,9 @@
     <Content Include="Views\BackOffice\SupplierDetails.cshtml" />
     <Content Include="Views\BackOffice\SupplierEdit.cshtml" />
     <Content Include="Views\BackOffice\SupplierCreate.cshtml" />
-    <Content Include="Views\MultipleTable\Index.cshtml" />
+    <Content Include="Views\MultipleTable\IndexOld.cshtml" />
     <Content Include="Views\MultipleTable\MultipleOrdersView.cshtml" />
+    <Content Include="Views\CustomerTravelProducts\CustomerTravelProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

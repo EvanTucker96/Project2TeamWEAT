@@ -1,4 +1,4 @@
-﻿@model TravelExpertsClientPage.Models.MultipleTableClass
+﻿@model IEnumerable<TravelExpertsClientPage.Models.MultipleTableClass>
 
 
 @{
@@ -9,12 +9,12 @@
         <h2>Packages and Products Purchased</h2>
 
 
-            <h4>
+            @*<h4>
                 Client # : @Html.DisplayFor(model => model.customerDetails.CustomerId) &nbsp;&nbsp;
                 Client Name : @Html.DisplayFor(model => model.customerDetails.CustLastName),
                 @Html.DisplayFor(model => model.customerDetails.CustFirstName)
             </h4>
-            <hr />
+            <hr />*@
 
 
         @*<table class="table">
