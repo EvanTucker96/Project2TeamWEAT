@@ -5,26 +5,43 @@
 //     Manual changes to this file may cause unexpected behavior in your application.
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
+// data annotations by TH
 //------------------------------------------------------------------------------
 
 namespace TravelExpertsClientPage.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SupplierContact
     {
         public int SupplierContactId { get; set; }
+
+        [StringLength(50)]
+        [Display(Name ="First Name")]
         public string SupConFirstName { get; set; }
+
+        [StringLength(50)]
+        [Display(Name ="Last Name")]
         public string SupConLastName { get; set; }
+
+        [StringLength(255)]
+        [Display(Name ="Company")]
         public string SupConCompany { get; set; }
         public string SupConAddress { get; set; }
         public string SupConCity { get; set; }
         public string SupConProv { get; set; }
         public string SupConPostal { get; set; }
         public string SupConCountry { get; set; }
+        
+        [StringLength(50)]
+        [Display(Name ="Phone Number")]
         public string SupConBusPhone { get; set; }
         public string SupConFax { get; set; }
+
+        [StringLength(255)]
+        [Display(Name ="Email")]
         public string SupConEmail { get; set; }
         public string SupConURL { get; set; }
         public string AffiliationId { get; set; }
