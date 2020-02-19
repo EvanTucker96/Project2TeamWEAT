@@ -133,8 +133,10 @@ namespace TravelExpertsClientPage.Controllers
                         TempData["Status"] = "Registration Successful"; // set the Result status
                         Session["Authenticated"] = true;
                         Session["UserName"] = cust.CustEmail;
+                        Session["CustID"] = Convert.ToInt32((from c in db.Customers where c.CustEmail == cust.CustEmail select c.CustomerId).Single());
                         return RedirectToAction("Index"); // go back to 'Home'
                     }
+                    
                 }
                 else // email already in use
 
@@ -194,6 +196,7 @@ namespace TravelExpertsClientPage.Controllers
         {
             Session["Authenticated"] = false;
             Session["UserName"] = null;
+            Session["CustID"] = null;
             return RedirectToAction("Index");
 
         }
