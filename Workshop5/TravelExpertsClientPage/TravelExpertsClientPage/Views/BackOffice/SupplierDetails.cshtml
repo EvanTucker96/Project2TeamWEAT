@@ -22,6 +22,8 @@ Supplier detail page
         </dd>
 
     </dl>
+    @if (Model.Products_Suppliers != null)
+    {
     <dl class="dl-horizontal">
         <dt>Products Sold</dt>
         @foreach (var ps in Model.Products_Suppliers.ToList())
@@ -31,6 +33,7 @@ Supplier detail page
             </dd>
         }
     </dl>
+    }
     <hr />
     <h5>Supplier Contacts</h5>
     <table class="table">
@@ -52,7 +55,7 @@ Supplier detail page
                 @Html.DisplayNameFor(model => model.SupplierContacts.FirstOrDefault().SupConEmail)
             </th>
         </tr>
-        @foreach (var contact in Model.SupplierContacts.ToList())
+        @foreach (var contact in Model.SupplierContacts.Where(sc=>sc.SupConLastName!=null).ToList())
         {
             <tr>
 
