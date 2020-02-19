@@ -233,6 +233,7 @@
             this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.RowHeadersWidth = 51;
+            this.dgvSuppliers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSuppliers.Size = new System.Drawing.Size(851, 278);
             this.dgvSuppliers.TabIndex = 27;
             this.dgvSuppliers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellClick);
@@ -251,7 +252,7 @@
             this.supNameDataGridViewTextBoxColumn.HeaderText = "SupName";
             this.supNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.supNameDataGridViewTextBoxColumn.Name = "supNameDataGridViewTextBoxColumn";
-            this.supNameDataGridViewTextBoxColumn.Width = 400;
+            this.supNameDataGridViewTextBoxColumn.Width = 454;
             // 
             // supplierBindingSource
             // 

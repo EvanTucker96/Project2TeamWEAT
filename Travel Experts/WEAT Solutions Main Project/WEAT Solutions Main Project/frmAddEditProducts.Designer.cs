@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbProductDetails = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtProdName = new System.Windows.Forms.TextBox();
@@ -46,11 +41,16 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            this.gbProductDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
-            this.gbProductDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProducts
@@ -62,41 +62,14 @@
             this.prodNameDataGridViewTextBoxColumn});
             this.dgvProducts.DataSource = this.productBindingSource2;
             this.dgvProducts.Location = new System.Drawing.Point(17, 16);
-            this.dgvProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProducts.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.Size = new System.Drawing.Size(835, 273);
+            this.dgvProducts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvProducts.Size = new System.Drawing.Size(634, 273);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProducts.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProducts_CellMouseDoubleClick);
-            // 
-            // productIdDataGridViewTextBoxColumn
-            // 
-            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
-            this.productIdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // prodNameDataGridViewTextBoxColumn
-            // 
-            this.prodNameDataGridViewTextBoxColumn.DataPropertyName = "ProdName";
-            this.prodNameDataGridViewTextBoxColumn.HeaderText = "ProdName";
-            this.prodNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.prodNameDataGridViewTextBoxColumn.Name = "prodNameDataGridViewTextBoxColumn";
-            this.prodNameDataGridViewTextBoxColumn.Width = 400;
-            // 
-            // productBindingSource2
-            // 
-            this.productBindingSource2.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
-            // 
-            // productBindingSource1
-            // 
-            this.productBindingSource1.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
             // 
             // gbProductDetails
             // 
@@ -107,9 +80,9 @@
             this.gbProductDetails.Controls.Add(this.txtProdID);
             this.gbProductDetails.Controls.Add(this.lblProdID);
             this.gbProductDetails.Location = new System.Drawing.Point(17, 310);
-            this.gbProductDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbProductDetails.Margin = new System.Windows.Forms.Padding(4);
             this.gbProductDetails.Name = "gbProductDetails";
-            this.gbProductDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbProductDetails.Padding = new System.Windows.Forms.Padding(4);
             this.gbProductDetails.Size = new System.Drawing.Size(457, 166);
             this.gbProductDetails.TabIndex = 1;
             this.gbProductDetails.TabStop = false;
@@ -118,7 +91,7 @@
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(173, 116);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(100, 28);
             this.btnReset.TabIndex = 5;
@@ -129,7 +102,7 @@
             // txtProdName
             // 
             this.txtProdName.Location = new System.Drawing.Point(129, 68);
-            this.txtProdName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProdName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProdName.Name = "txtProdName";
             this.txtProdName.Size = new System.Drawing.Size(287, 22);
             this.txtProdName.TabIndex = 3;
@@ -138,7 +111,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(317, 116);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 3;
@@ -159,7 +132,7 @@
             // txtProdID
             // 
             this.txtProdID.Location = new System.Drawing.Point(129, 27);
-            this.txtProdID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProdID.Margin = new System.Windows.Forms.Padding(4);
             this.txtProdID.Name = "txtProdID";
             this.txtProdID.ReadOnly = true;
             this.txtProdID.Size = new System.Drawing.Size(181, 22);
@@ -178,8 +151,8 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(524, 329);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNew.Location = new System.Drawing.Point(524, 310);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(100, 28);
             this.btnNew.TabIndex = 2;
@@ -189,8 +162,8 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(657, 426);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Location = new System.Drawing.Point(524, 448);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 28);
             this.btnExit.TabIndex = 4;
@@ -201,8 +174,8 @@
             // btnEdit
             // 
             this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new System.Drawing.Point(657, 329);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Location = new System.Drawing.Point(524, 356);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 28);
             this.btnEdit.TabIndex = 4;
@@ -213,8 +186,8 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(657, 375);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(524, 402);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 28);
             this.btnDelete.TabIndex = 6;
@@ -222,27 +195,55 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // productIdDataGridViewTextBoxColumn
+            // 
+            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
+            this.productIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // prodNameDataGridViewTextBoxColumn
+            // 
+            this.prodNameDataGridViewTextBoxColumn.DataPropertyName = "ProdName";
+            this.prodNameDataGridViewTextBoxColumn.HeaderText = "ProdName";
+            this.prodNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.prodNameDataGridViewTextBoxColumn.Name = "prodNameDataGridViewTextBoxColumn";
+            this.prodNameDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // productBindingSource2
+            // 
+            this.productBindingSource2.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
+            // 
+            // productBindingSource1
+            // 
+            this.productBindingSource1.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(WEAT_Solutions_Main_Project.Product);
+            // 
             // frmAddEditProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 489);
+            this.ClientSize = new System.Drawing.Size(674, 489);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.gbProductDetails);
             this.Controls.Add(this.dgvProducts);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAddEditProducts";
             this.Text = "Add or Edit Products Available";
             this.Load += new System.EventHandler(this.frmAddEditProducts_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            this.gbProductDetails.ResumeLayout(false);
+            this.gbProductDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
-            this.gbProductDetails.ResumeLayout(false);
-            this.gbProductDetails.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -261,10 +262,10 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prodNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource productBindingSource1;
         private System.Windows.Forms.BindingSource productBindingSource2;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodNameDataGridViewTextBoxColumn;
     }
 }
