@@ -17,10 +17,9 @@ namespace WEAT_Solutions_Main_Project
     public partial class frmAddEditPackages : Form
     {
         // create global lists, objects and boolean variable for use throughout the form
-        public bool isAdd; // Are we adding a new Package?
+        public bool isAdd; // Used to check if we are adding a package
         List<Product> rmvProd = new List<Product>(); // list of items removed from an existing package
         List<Product> addProd = new List<Product>(); // list of tiems added to a package (new and existing)
-        //List<Product> products = new List<Product>(); // list of all available products
         List<Product> prodAssigned = new List<Product>(); // list of products current assigned to a Package (existing)
         List<Product> prodAvailable = new List<Product>(); // list of the products (less assigned) than can be assigned to a Package
         Package currPkg; // used for setting the currently selected package info
@@ -35,8 +34,8 @@ namespace WEAT_Solutions_Main_Project
             LoadDGV();
         }
         /// <summary>
-        /// Method GetProducts populates the products list with all
-        /// available products
+        /// Method GetProducts populates the products list 
+        /// with all available products
         /// </summary>
         public List<Product> GetProducts()
         {
@@ -62,7 +61,7 @@ namespace WEAT_Solutions_Main_Project
         }
         /// <summary>
         /// Get the currently assigned products for a package based on the supplied 'id'
-        /// add them to prodAssigned list
+        /// add items to prodAssigned list
         /// </summary>
         /// <param name="id"></param>
         public void GetAssigned(int id)
@@ -70,7 +69,6 @@ namespace WEAT_Solutions_Main_Project
             // setup DatAccess
             TravelExpertsDataContext dbContext = new TravelExpertsDataContext();
             List<Product> tmplist = new List<Product>(); // create a temporary list
-            //prodAssigned.Clear(); // clear the list
             // get all products from DB based on Package id, dump results into a var list
             var names = (from pd in dbContext.Products
                      join ps in dbContext.Products_Suppliers on pd.ProductId equals ps.ProductId
@@ -197,8 +195,6 @@ namespace WEAT_Solutions_Main_Project
             dtpPkgStart.Value = (DateTime)tmpPackage.PkgStartDate;
             dtpPkgEnd.Value = (DateTime)tmpPackage.PkgEndDate;
             txtPackageID.Text = tmpPackage.PackageId.ToString();
-            // packageId is not an editable field
-            //txtPackageID.Enabled = false;
             txtPkgName.Text = tmpPackage.PkgName;
             txtPkgDesc.Text = tmpPackage.PkgDesc;
             txtPkgBase.Text = tmpPackage.PkgBasePrice.ToString("c");
@@ -216,7 +212,7 @@ namespace WEAT_Solutions_Main_Project
         /// <summary>
         /// Searchs the DB for a Product that match the provided string
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="s">search string</param>
         /// <returns>returns a product object</returns>
         public Product GetProductByName(string s)
         {
@@ -412,14 +408,8 @@ namespace WEAT_Solutions_Main_Project
                     delItem = (from ppst in dbContext.Packages_Products_Suppliers
                                where ppst.PackageId == pw.PackageId && ppst.ProductSupplierId == pw.ProductSupplierId
                                select ppst).Single();
-                    //c = deleteDetails.ToList();
-                    //foreach (Packages_Products_Supplier item in c)
-                    //{
-                    //    delItem.PackageId = item.PackageId;
-                    //    delItem.ProductSupplierId = item.ProductSupplierId;
                     // delete the record
-                        dbContext.Packages_Products_Suppliers.DeleteOnSubmit(delItem);
-                    //}
+                    dbContext.Packages_Products_Suppliers.DeleteOnSubmit(delItem);
                     try
                     {
                         //Execute the delete
@@ -560,40 +550,38 @@ namespace WEAT_Solutions_Main_Project
                 pkg.PkgDesc = txtPkgDesc.Text;
                 pkg.PkgStartDate = dtpPkgStart.Value.Date;
                 pkg.PkgEndDate = dtpPkgEnd.Value.Date;
-                //if (pkg.PkgStartDate < pkg.PkgEndDate)
-                //{
-                    if (txtPkgBase.Text.StartsWith("$")) // remove the leading $ if it exists
-                    {
-                        basePrice = Convert.ToDecimal(txtPkgBase.Text.Remove(0, 1));
-                    }
-                    else
-                    {
-                        basePrice = Convert.ToDecimal(txtPkgBase.Text);
-                    }
-                    if (txtPakComm.Text.StartsWith("$")) // remove the leading $ if it exists
-                    {
-                        agcyComm = Convert.ToDecimal(txtPakComm.Text.Remove(0, 1));
-                    }
-                    else
-                    {
-                        agcyComm = Convert.ToDecimal(txtPakComm.Text);
-                    }
-                    // set object attributes
-                    pkg.PkgBasePrice = basePrice;
-                    pkg.PkgAgencyCommission = agcyComm;
-                    if (basePrice > agcyComm) // ensure commision is less than base price
-                    {
-                        dbContext.Packages.InsertOnSubmit(pkg);
-                        dbContext.SubmitChanges(); // submit the changes to the DB
+                if (txtPkgBase.Text.StartsWith("$")) // remove the leading $ if it exists
+                {
+                    basePrice = Convert.ToDecimal(txtPkgBase.Text.Remove(0, 1));
+                }
+                else
+                {
+                    basePrice = Convert.ToDecimal(txtPkgBase.Text);
+                }
+                if (txtPakComm.Text.StartsWith("$")) // remove the leading $ if it exists
+                {
+                    agcyComm = Convert.ToDecimal(txtPakComm.Text.Remove(0, 1));
+                }
+                else
+                {
+                    agcyComm = Convert.ToDecimal(txtPakComm.Text);
+                }
+                // set object attributes
+                pkg.PkgBasePrice = basePrice;
+                pkg.PkgAgencyCommission = agcyComm;
+                if (basePrice > agcyComm) // ensure commision is less than base price
+                {
+                    dbContext.Packages.InsertOnSubmit(pkg);
+                    dbContext.SubmitChanges(); // submit the changes to the DB
                     
-                    currPkg = (from pk in dbContext.Packages
-                              where pk.PkgName == pkg.PkgName
-                              select pk).Single();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Agency Commision is too high");
-                    }
+                currPkg = (from pk in dbContext.Packages
+                            where pk.PkgName == pkg.PkgName
+                            select pk).Single();
+                }
+                else
+                {
+                    MessageBox.Show("Agency Commision is too high");
+                }
                // need to retrieve the newly created package ID     
                 prodsToAdd = GetProducts_Suppliers(addProd);
                 ppsdList = GetPackages_Products_Suppliers(prodsToAdd);
@@ -698,6 +686,10 @@ namespace WEAT_Solutions_Main_Project
             NewOrClear();
             
         }
+        /// <summary>
+        /// This method sets up for adding a new package or it will clear the items if we are already
+        /// creating a new record
+        /// </summary>
         public void NewOrClear()
         {
             isAdd = true; // let other methods know we are adding a record

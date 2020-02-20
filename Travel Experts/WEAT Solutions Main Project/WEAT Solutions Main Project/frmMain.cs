@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using BCrypt.Net;
 
 /// <summary>
-/// inital form design Angela Dunwoodie-Lambert, login, clear and validation code by Wade Grimm
+/// inital form design Angela Dunwoodie-Lambert
+/// Login, clear and validation code by Wade Grimm
 /// </summary>
 namespace WEAT_Solutions_Main_Project
 {
