@@ -5,3 +5,8 @@
     height: 150px;
     text-indent: -9999px; /* hides the link text */
 }
+
+tr.prodDetails>td {
+    padding-bottom:30px;
+    border:solid 2px red;
+}

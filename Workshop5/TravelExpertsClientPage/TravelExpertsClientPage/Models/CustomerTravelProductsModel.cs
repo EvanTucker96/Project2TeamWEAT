@@ -24,6 +24,8 @@ namespace TravelExpertsClientPage.Models
 
         public class PackagesOrdered
         {
+            public int BookingId { get; set; }
+
             public double ItineraryNo { get; set; }
 
             public string PkgName { get; set; }
@@ -42,6 +44,8 @@ namespace TravelExpertsClientPage.Models
             public double BasePrice { get; set; }
 
             public double FeeAmt { get; set; }
+
+            public double PkgCost { get; set; }
         }
     }
 }

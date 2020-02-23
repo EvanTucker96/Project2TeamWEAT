@@ -36,47 +36,38 @@ Customer Travel Purchases list page
     <h6>Packages Ordered</h6>
     <table width="100%">
         <tr>
-            <th width="25%">Itinerary Number</th>
-            <th width="25%">Package Name</th>
-            <th width="25%">Package Price</th>
-            <th width="25%">Fees</th>
+            <th width="15%">Itinerary Number</th>
+            <th width="15%">Package Name</th>
+            <th width="15%">Products Included</th>
+            <th width="15%">Package Price</th>
+            <th width="15%">Fees</th>
+            <th width="15%">Total Package Cost</th>
         </tr>
-        <tr><br /></tr>
+        <tr></tr>
         @foreach (var pkg in Model.PkgOrd)
         {
+            var prod = Model.ProdOrd.Find(i => i.ItineraryNo == pkg.ItineraryNo);
             <tr>
                 <td>@Html.DisplayFor(modelItem => pkg.ItineraryNo)</td>
                 <td>@Html.DisplayFor(mmodelItem => pkg.PkgName)</td>
-                <td>@String.Format("{0:c}", pkg.PkgBasePrice)</td>
-                <td>@String.Format("{0:c}", pkg.FeeAmt)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
+                <tr>
+                    <td style="padding-bottom:15px; border-bottom: .25px dotted #8d8d8d;"></td>
+                    <td style="padding-bottom:15px; border-bottom: .25px dotted #8d8d8d;"></td>
+                    <td style="padding-bottom:15px; border-bottom: .25px dotted #8d8d8d;">@Html.DisplayFor(modelItem => prod.ProdName)</td>
+                    <td style="padding-bottom:15px; border-bottom: .25px dotted #8d8d8d;">@String.Format("{0:c}", prod.BasePrice)</td>
+                    <td style="padding-bottom:15px; border-bottom: .25px dotted #8d8d8d;">@String.Format("{0:c}", prod.FeeAmt)</td>
+                    <td style="padding-bottom:15px; border-bottom: .25px dotted #8d8d8d;">@String.Format("{0:c}", prod.PkgCost)</td>
+                </tr>
         }
     </table>
 </div>
 <br />
-<br />
-<div id="ProductsOrdered">
-    <h6>Products Ordered</h6>
-    <table width="100%">
-        <tr>
-            <th width="25%">Itinerary Number</th>
-            <th width="25%">Product Name</th>
-            <th width="25%">Product Price</th>
-            <th width="25%">Fees</th>
-        </tr>
-        <tr><br /></tr>
-        @foreach (var prod in Model.ProdOrd)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => prod.ItineraryNo)</td>
-                <td>@Html.DisplayFor(modelItem => prod.ProdName)</td>
-                <td>@String.Format("{0:c}", prod.BasePrice)</td>
-                <td>@String.Format("{0:c}", prod.FeeAmt)</td>
-            </tr>
-        }
-    </table>
 
+<div style="text-align:right; width:100%">
+    <h4>Total Cost: &nbsp;&nbsp;&nbsp;@String.Format("{0:c}", Model.TotalCost)</h4>
 </div>
-<hr noshade />
-
-<h4>Total Cost: &nbsp;&nbsp;&nbsp;@String.Format("{0:c}", Model.TotalCost)</h4>

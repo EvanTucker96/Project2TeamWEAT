@@ -26,12 +26,8 @@ namespace TravelExpertsClientPage.Controllers
                                     on b.BookingId = bd.BookingId
                                     where c.CustomerId = @CustomerId";
 
-            string pkgQuery = @"select bd.ItineraryNo, pa.PkgName, pa.PkgBasePrice, f.FeeAmt
-                                from packages as pa
-                                join Bookings as b
-                                on b.PackageId = pa.PackageId
-                                join BookingDetails as bd
-                                on bd.BookingId=b.BookingId
+            string pkgQuery = @"select bd.BookingId, bd.ItineraryNo, bd.Destination, bd.BasePrice, f.FeeAmt
+                                from BookingDetails as bd
                                 join Fees as f
                                 on f.FeeId = bd.FeeId
                                 where bd.ItineraryNo = @itinerary";
@@ -96,10 +92,13 @@ namespace TravelExpertsClientPage.Controllers
                             productOrdered.ProdName = Convert.ToString(prodReader["ProdName"]);
                             productOrdered.BasePrice = Convert.ToDouble(prodReader["BasePrice"]);
                             productOrdered.FeeAmt = Convert.ToDouble(prodReader["FeeAmt"]);
+                            //show cost per package
+                            productOrdered.PkgCost = productOrdered.BasePrice + productOrdered.FeeAmt;
+                            
                             model.ProdOrd.Add(productOrdered);
 
                             //add to totalCost
-                            model.TotalCost += productOrdered.BasePrice + productOrdered.FeeAmt;
+                            model.TotalCost += productOrdered.PkgCost;
                         }
                     }
                     finally
@@ -124,14 +123,16 @@ namespace TravelExpertsClientPage.Controllers
                         {
                             //add to model
                             CustomerTravelProductsModel.PackagesOrdered packagesOrdered = new CustomerTravelProductsModel.PackagesOrdered();
+                            packagesOrdered.BookingId = Convert.ToInt32(pkgReader["BookingId"]);
                             packagesOrdered.ItineraryNo = Convert.ToDouble(pkgReader["ItineraryNo"]);
-                            packagesOrdered.PkgName = Convert.ToString(pkgReader["PkgName"]);
-                            packagesOrdered.PkgBasePrice = Convert.ToDouble(pkgReader["PkgBasePrice"]);
+                            packagesOrdered.PkgName = Convert.ToString(pkgReader["Destination"]);
+                            packagesOrdered.PkgBasePrice = Convert.ToDouble(pkgReader["BasePrice"]);
                             packagesOrdered.FeeAmt = Convert.ToDouble(pkgReader["FeeAmt"]);
-                            model.PkgOrd.Add(packagesOrdered);
 
-                            //add to totalCost
-                            model.TotalCost += packagesOrdered.PkgBasePrice + packagesOrdered.FeeAmt;
+
+                        model.PkgOrd.Add(packagesOrdered);
+
+
                         }
                     }
                     finally
