@@ -78,7 +78,7 @@
 
         <br />
 
-        <form id="travellerForm" action="PostData" method="post">
+        <form id="travellerForm" action="../PostData" method="post">
             <input type="hidden" name="packageID" value="@Model.packageDetails.PackageId" />
             <div id="cont">
                 @* table will be rendered here...see script below *@
@@ -149,13 +149,18 @@
                 }
                 cont.appendChild(table);
 
+                var formatter = new Intl.NumberFormat('en-CA',
+                    {
+                        style: 'currency',
+                        currency: 'CAD',
+                    });
 
 
-                totalCost.innerHTML =  "<b>Total Price</b> : " + value * @Model.packageDetails.PkgBasePrice;
+                var tc = value * @Model.packageDetails.PkgBasePrice;
+
+                totalCost.innerHTML = "<b>Total Price</b> : " + formatter.format(tc);
             }
 
         </script>
-
-
     </div>
 </div>

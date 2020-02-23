@@ -15,7 +15,6 @@ namespace TravelExpertsClientPage.Controllers
         {
             CustomerTravelProductsModel model = new CustomerTravelProductsModel();
 
-            //TODO : Wade help me get customer ID from session
             model.CustomerId = (int)Session["CustID"];
             model.TotalCost = 0;
 

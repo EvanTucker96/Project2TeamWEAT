@@ -8,9 +8,6 @@ namespace TravelExpertsClientPage.Models
 {
     public class MultipleTableClass
     {
-        [Key]
-        public int MultipleTableClassID { get; set; }
-        
         public Customer customerDetails { get; set; }
 
         public Booking bookingD { get; set; }
@@ -25,6 +22,9 @@ namespace TravelExpertsClientPage.Models
 
         public Fee feeDetails { get; set; }
 
+
+
+        //calculate the insurance price based on the package cost
         public decimal InsurancePrice
         {
             get
@@ -36,6 +36,9 @@ namespace TravelExpertsClientPage.Models
             }
         }
 
+
+
+        // add booking fee to package order page.
         public decimal bookingFee
         {
             get
@@ -45,7 +48,11 @@ namespace TravelExpertsClientPage.Models
             }
         }
 
-
+        //post form data to the db.
+        public string sendToDB
+        {
+            get; set;
+        }
 
     }
 }

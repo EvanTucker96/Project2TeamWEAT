@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\654812\Documents\GitHub\Project2TeamWEAT\Workshop5\TravelExpertsClientPage\TravelExpertsClientPage\Models\TravelExpertsModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Code\Fall 2019 intake\Project2TeamWEAT\Workshop5\TravelExpertsClientPage\TravelExpertsClientPage\Models\TravelExpertsModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
