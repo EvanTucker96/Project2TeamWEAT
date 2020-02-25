@@ -90,6 +90,7 @@ namespace TravelExpertsClientPage.Controllers
                     command.Parameters.AddWithValue("@PackageId", booking.PackageId);
                     connection.Open();
                     booking.BookingId = (int)command.ExecuteScalar();
+                    booking.CustomerId = (int)command.ExecuteScalar();
                 }
 
 
@@ -128,12 +129,10 @@ namespace TravelExpertsClientPage.Controllers
                         command.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("Package order successful", "Package Ordered" );
                 return RedirectToAction("MultipleOrdersView/" + packageID, "MultipleTable");
             }
             else
             {
-                MessageBox.Show("You are not currently logged in. You will now be redirected to the login screen", "Redirecting to Login");
                 return RedirectToAction("Login", "Home");
             }
         }

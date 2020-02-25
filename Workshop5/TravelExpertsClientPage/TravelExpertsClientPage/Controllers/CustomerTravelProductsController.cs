@@ -26,11 +26,13 @@ namespace TravelExpertsClientPage.Controllers
                                     on b.BookingId = bd.BookingId
                                     where c.CustomerId = @CustomerId";
 
-            string pkgQuery = @"select bd.BookingId, bd.ItineraryNo, bd.Destination, bd.BasePrice, f.FeeAmt
+            string pkgQuery = @"select bd.BookingId, bd.ItineraryNo, bd.Destination, bd.BasePrice, f.FeeAmt, b.CustomerId
                                 from BookingDetails as bd
+								join Bookings as b
+								on b.BookingId = bd.BookingId
                                 join Fees as f
                                 on f.FeeId = bd.FeeId
-                                where bd.ItineraryNo = @itinerary";
+                                where b.CustomerId = @CustomerId and bd.ItineraryNo = @ItineraryNo";
 
             string prodQuery = @"select  bd.ItineraryNo, pr.ProdName, bd.BasePrice, f.FeeAmt 
                                 from Products as pr
@@ -42,7 +44,7 @@ namespace TravelExpertsClientPage.Controllers
                                 on b.BookingId = bd.BookingId
                                 join Fees as f
                                 on f.FeeId = bd.FeeId
-                                where bd.ItineraryNo = @itinerary";
+                                where b.CustomerId = @CustomerId and bd.ItineraryNo = @ItineraryNo";
 
             string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=TravelExperts;Integrated Security=True";
 
@@ -64,6 +66,7 @@ namespace TravelExpertsClientPage.Controllers
                         itinerarys.Add(Convert.ToInt32(reader["ItineraryNo"]));
                         model.CustFirstName = Convert.ToString(reader["CustFirstName"]);
                         model.CustLastName = Convert.ToString(reader["CustLastName"]);
+                        model.CustomerId = Convert.ToInt32(reader["CustomerId"]);
                     }
                 }
                 finally
@@ -77,7 +80,8 @@ namespace TravelExpertsClientPage.Controllers
                 foreach ( var itNo in itinerarys )
                 {
                     command = new SqlCommand(prodQuery, connection);
-                    command.Parameters.AddWithValue("@itinerary",itNo);
+                    command.Parameters.AddWithValue("@ItineraryNo", itNo);
+                    command.Parameters.AddWithValue("@CustomerId", model.CustomerId);
 
                     //loop through each product
                     SqlDataReader prodReader = command.ExecuteReader();
@@ -112,10 +116,11 @@ namespace TravelExpertsClientPage.Controllers
                 foreach (var itNo in itinerarys)
                 {
                     command = new SqlCommand(pkgQuery, connection);
-                    command.Parameters.AddWithValue("@itinerary", itNo);
+                    command.Parameters.AddWithValue("@ItineraryNo", itNo);
+                    command.Parameters.AddWithValue("@CustomerId", model.CustomerId);
 
                     //loop through each package 
-                   SqlDataReader pkgReader = command.ExecuteReader();
+                    SqlDataReader pkgReader = command.ExecuteReader();
                     try
                     {
                         //loop through each itinerary
@@ -128,6 +133,7 @@ namespace TravelExpertsClientPage.Controllers
                             packagesOrdered.PkgName = Convert.ToString(pkgReader["Destination"]);
                             packagesOrdered.PkgBasePrice = Convert.ToDouble(pkgReader["BasePrice"]);
                             packagesOrdered.FeeAmt = Convert.ToDouble(pkgReader["FeeAmt"]);
+                            packagesOrdered.CustomerId = Convert.ToInt32(pkgReader["CustomerId"]);
 
 
                         model.PkgOrd.Add(packagesOrdered);

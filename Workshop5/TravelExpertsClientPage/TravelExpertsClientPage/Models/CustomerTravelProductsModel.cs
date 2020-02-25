@@ -33,6 +33,8 @@ namespace TravelExpertsClientPage.Models
             public double PkgBasePrice { get; set; }
 
             public double FeeAmt { get; set; }
+
+            public int CustomerId { get; set; }
         }
 
         public class ProductsOrdered
