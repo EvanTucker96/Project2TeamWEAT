@@ -30,7 +30,7 @@ namespace TravelExpertsClientPage.Controllers
                                 from BookingDetails as bd
 								join Bookings as b
 								on b.BookingId = bd.BookingId
-                                join Fees as f
+                                full outer join Fees as f
                                 on f.FeeId = bd.FeeId
                                 where b.CustomerId = @CustomerId and bd.ItineraryNo = @ItineraryNo";
 
@@ -42,7 +42,7 @@ namespace TravelExpertsClientPage.Controllers
                                 on bd.ProductSupplierId = ps.ProductSupplierId
                                 join Bookings as b
                                 on b.BookingId = bd.BookingId
-                                join Fees as f
+                                full outer join Fees as f
                                 on f.FeeId = bd.FeeId
                                 where b.CustomerId = @CustomerId and bd.ItineraryNo = @ItineraryNo";
 
@@ -95,7 +95,15 @@ namespace TravelExpertsClientPage.Controllers
                             productOrdered.ItineraryNo = Convert.ToDouble(prodReader["ItineraryNo"]);
                             productOrdered.ProdName = Convert.ToString(prodReader["ProdName"]);
                             productOrdered.BasePrice = Convert.ToDouble(prodReader["BasePrice"]);
-                            productOrdered.FeeAmt = Convert.ToDouble(prodReader["FeeAmt"]);
+                            if (prodReader["FeeAmt"] == DBNull.Value)
+                            {
+                                productOrdered.FeeAmt = 0;
+                            }
+                            else
+                            {
+                                productOrdered.FeeAmt = Convert.ToDouble(prodReader["FeeAmt"]);
+                            }
+
                             //show cost per package
                             productOrdered.PkgCost = productOrdered.BasePrice + productOrdered.FeeAmt;
                             
@@ -132,7 +140,16 @@ namespace TravelExpertsClientPage.Controllers
                             packagesOrdered.ItineraryNo = Convert.ToDouble(pkgReader["ItineraryNo"]);
                             packagesOrdered.PkgName = Convert.ToString(pkgReader["Destination"]);
                             packagesOrdered.PkgBasePrice = Convert.ToDouble(pkgReader["BasePrice"]);
-                            packagesOrdered.FeeAmt = Convert.ToDouble(pkgReader["FeeAmt"]);
+
+                            if(pkgReader["FeeAmt"] == DBNull.Value)
+                            {
+                                packagesOrdered.FeeAmt = 0;
+                            }
+                            else
+                            {
+                                packagesOrdered.FeeAmt = Convert.ToDouble(pkgReader["FeeAmt"]);
+                            }
+
                             packagesOrdered.CustomerId = Convert.ToInt32(pkgReader["CustomerId"]);
 
 
