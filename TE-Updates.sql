@@ -1,3 +1,5 @@
+USE TravelExperts
+/* Step one: run the below commands to update the db */
 /* Make BusPhone not required */
 alter table customers
 alter column
@@ -7,14 +9,6 @@ custbusphone nvarchar(20) null
 alter table Customers 
 add Password varchar(128) not null default '$2a$11$P7OHmF7BN95z56SkArdWI.SHEvsoJaeqzg1YFobDUP.saDAix6npi'
 
-
-
-/* If Password column does exist in Agents, increase size from 50
-and set a default 'password' */
-alter table Agents
-alter column Password varchar(128)
-update Agents set password='$2a$11$P7OHmF7BN95z56SkArdWI.SHEvsoJaeqzg1YFobDUP.saDAix6npi'
-
 /* If Password column does not exist in Agents */
 alter table Agents 
 add Password varchar(128) not null default '$2a$11$P7OHmF7BN95z56SkArdWI.SHEvsoJaeqzg1YFobDUP.saDAix6npi'
@@ -22,6 +16,8 @@ add Password varchar(128) not null default '$2a$11$P7OHmF7BN95z56SkArdWI.SHEvsoJ
 /* update packages to allow for image files */
 alter table Packages
 add PkgImageFile varchar(30) null
+
+/* Step two: run ths after the above finishes sucessfully */
 ​
 UPDATE dbo.Packages set [PkgImageFile] = 'caribbean.jpg' where [PackageId] = 1
 UPDATE dbo.Packages set [PkgImageFile] = 'hawaii.jfif' where [PackageId] = 2
