@@ -129,7 +129,7 @@ namespace TravelExpertsClientPage.Controllers
                         command.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("MultipleOrdersView/" + packageID, "MultipleTable");
+                return RedirectToAction("CustomerTravelProducts", "CustomerTravelProducts");
             }
             else
             {
