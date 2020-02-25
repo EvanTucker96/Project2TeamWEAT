@@ -90,7 +90,7 @@ namespace TravelExpertsClientPage.Controllers
                     command.Parameters.AddWithValue("@PackageId", booking.PackageId);
                     connection.Open();
                     booking.BookingId = (int)command.ExecuteScalar();
-                    booking.CustomerId = (int)command.ExecuteScalar();
+                   // booking.CustomerId = (int)command.ExecuteScalar();
                 }
 
 
